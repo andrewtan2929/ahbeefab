@@ -1,0 +1,126 @@
+{{ define "main" }}
+<section class="drawings-page">
+  <!-- Hero Section -->
+  <div class="drawings-hero">
+    <div class="drawings-container">
+      <h1 class="drawings-title">Technical Drawings</h1>
+      <p class="drawings-subtitle">Professional CAD drawings and specifications for Ahbee Fabrication products</p>
+    </div>
+  </div>
+
+  <!-- Drawings Content -->
+  <div class="drawings-content">
+    <div class="drawings-container">
+      <!-- Drawing Cards -->
+      <div class="drawings-grid">
+        <!-- Drawing 80000A -->
+        <div class="drawing-card">
+          <div class="drawing-preview">
+            <div class="pdf-icon">📄</div>
+            <!-- Optional: Add preview image or remove this line -->
+            <div class="drawing-thumbnail-placeholder">
+              <span>PDF Document</span>
+            </div>
+            <div class="drawing-overlay">
+              <button class="view-drawing-btn" data-pdf="Dwg. No 80000A.pdf">View Drawing</button>
+            </div>
+          </div>
+          <div class="drawing-info">
+            <h3 class="drawing-title">Dwg. No 80000A</h3>
+            <p class="drawing-description">Main assembly drawing with detailed specifications</p>
+            <div class="drawing-meta">
+              <span class="file-size">PDF Document</span>
+              <span class="drawing-date">2024</span>
+            </div>
+            <a href="/images/drawings/Dwg. No 80000A.pdf" class="download-btn" download>Download PDF</a>
+          </div>
+        </div>
+
+        <!-- Drawing 80000B -->
+        <div class="drawing-card">
+          <div class="drawing-preview">
+            <div class="pdf-icon">📄</div>
+            <!-- Optional: Add preview image or remove this line -->
+            <div class="drawing-thumbnail-placeholder">
+              <span>PDF Document</span>
+            </div>
+            <div class="drawing-overlay">
+              <button class="view-drawing-btn" data-pdf="Dwg. No 80000B.pdf">View Drawing</button>
+            </div>
+          </div>
+          <div class="drawing-info">
+            <h3 class="drawing-title">Dwg. No 80000B</h3>
+            <p class="drawing-description">Detailed component drawing and measurements</p>
+            <div class="drawing-meta">
+              <span class="file-size">PDF Document</span>
+              <span class="drawing-date">2024</span>
+            </div>
+            <a href="/images/drawings/Dwg. No 80000B.pdf" class="download-btn" download>Download PDF</a>
+          </div>
+        </div>
+      </div>
+
+    <!-- PDF Modal - Single Close Button -->
+    <div id="pdfModal" class="pdf-modal">
+      <div class="pdf-modal-content">
+        <div class="pdf-modal-header">
+          <h3 id="pdfModalTitle">Drawing Viewer</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="pdf-modal-body">
+          <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- JavaScript -->
+<script>
+// Clean JavaScript - No Emergency Close
+document.addEventListener('DOMContentLoaded', function() {
+  const viewButtons = document.querySelectorAll('.view-drawing-btn');
+  const pdfModal = document.getElementById('pdfModal');
+  const pdfViewer = document.getElementById('pdfViewer');
+  const pdfModalTitle = document.getElementById('pdfModalTitle');
+  const closeModal = document.querySelector('.close-modal');
+
+  // Open PDF in modal
+  viewButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const pdfFile = this.getAttribute('data-pdf');
+      const pdfTitle = this.closest('.drawing-card').querySelector('.drawing-title').textContent;
+
+      pdfViewer.src = `/images/drawings/${pdfFile}`;
+      pdfModalTitle.textContent = pdfTitle;
+      pdfModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close modal
+  closeModal.addEventListener('click', function() {
+    pdfModal.style.display = 'none';
+    pdfViewer.src = '';
+    document.body.style.overflow = 'auto';
+  });
+
+  // Close modal when clicking outside
+  pdfModal.addEventListener('click', function(e) {
+    if (e.target === pdfModal) {
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+      document.body.style.overflow = 'auto';
+    }
+  });
+});
+</script>
+{{ end }}

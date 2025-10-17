@@ -1,0 +1,73 @@
+{{ define "main" }}
+<!-- Enhanced About Page -->
+<section class="enhanced-about">
+  <div class="about-hero">
+    <div class="container">
+      <h1 class="hero-title">{{ .Title }}</h1>
+      <p class="hero-subtitle">Crafting Excellence Since 2023</p>
+    </div>
+  </div>
+
+  <div class="about-main-content">
+    <div class="container">
+      <div class="mission-statement">
+        <div class="mission-icon">⚙️</div>
+        <h2>Our Mission</h2>
+        <p class="mission-text">To deliver exceptional custom trailers that combine durability, precision, and value — built to perform and made to last.</p>
+      </div>
+
+      <!-- This will display your markdown content -->
+      <div class="about-story">
+        <div class="story-content">
+          {{ .Content }}
+        </div>
+      </div>
+
+      <div class="values-section">
+        <h3>Why Choose Ahbee Fabrication?</h3>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🔧</div>
+            <h4>Expert Craftsmanship</h4>
+            <p>Precision engineering and attention to detail in every build</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🛡️</div>
+            <h4>Built to Last</h4>
+            <p>Durable materials and construction that stands the test of time</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h4>Custom Solutions</h4>
+            <p>Tailored designs to meet your specific requirements</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💎</div>
+            <h4>Quality Guarantee</h4>
+            <p>Uncompromising quality standards in every project</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="commitment-section">
+        <div class="commitment-content">
+          <h3>Our Commitment</h3>
+          <p>We're committed to delivering trailers that not only meet but exceed your expectations. Every project receives the same level of care, precision, and dedication — because at Ahbee Fabrication, your satisfaction is our ultimate measure of success.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="about-cta-enhanced">
+    <div class="container">
+      <h2>Ready to Build Your Perfect Trailer?</h2>
+      <p>Let's discuss your project and create something exceptional together</p>
+      <div class="cta-buttons">
+        <a href="/contact" class="cta-btn primary">Start Your Project</a>
+        <a href="/gallery" class="cta-btn secondary">View Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

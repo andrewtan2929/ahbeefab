@@ -1,0 +1,323 @@
+/* ===== Centered About Page Styles ===== */
+
+.enhanced-about {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  text-align: center; /* Force center all text */
+}
+
+/* Force ALL text to be centered */
+.enhanced-about * {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  width: 100%;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.4rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+/* Main Content */
+.about-main-content {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+/* Mission Statement */
+.mission-statement {
+  margin-bottom: 4rem;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  max-width: 900px;
+}
+
+.mission-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.mission-statement h2 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.mission-text {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #6c757d;
+  max-width: 700px;
+}
+
+/* Story Section */
+.about-story {
+  margin-bottom: 4rem;
+  max-width: 900px;
+}
+
+.story-content h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.story-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #495057;
+  margin-bottom: 2rem;
+  max-width: 800px;
+}
+
+.story-content strong {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Values Section */
+.values-section {
+  margin-bottom: 4rem;
+  max-width: 1200px;
+}
+
+.values-section h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.value-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #f1f3f4;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.value-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.value-card h4 {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.value-card p {
+  color: #6c757d;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Commitment Section */
+.commitment-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  margin: 4rem auto;
+  max-width: 900px;
+}
+
+.commitment-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.commitment-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  max-width: 700px;
+}
+
+/* Enhanced CTA */
+.about-cta-enhanced {
+  background: #2c3e50;
+  color: white;
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.about-cta-enhanced h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.about-cta-enhanced p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cta-btn.primary {
+  background: #e74c3c;
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: white;
+  border-color: white;
+}
+
+.cta-btn.secondary:hover {
+  background: white;
+  color: #2c3e50;
+  transform: scale(1.05);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .mission-statement {
+    padding: 2rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .mission-icon {
+    font-size: 3rem;
+  }
+
+  .mission-statement h2 {
+    font-size: 1.8rem;
+  }
+
+  .mission-text {
+    font-size: 1.1rem;
+  }
+
+  .story-content p {
+    font-size: 1.1rem;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .value-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .commitment-section {
+    margin: 2rem 1rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .about-cta-enhanced h2 {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-btn {
+    width: 200px;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* ===== AGGRESSIVE SPACE REDUCTION ===== */
+.enhanced-about .about-hero {
+  padding: 40px 5px 40px 5px !important;
+}
+
+.enhanced-about .about-hero .hero-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.1 !important;
+}
+
+.enhanced-about .about-hero .hero-subtitle {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}

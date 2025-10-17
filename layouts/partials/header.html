@@ -1,0 +1,20 @@
+{{ if eq .Section "gallery" }}
+  <!-- Gallery Header -->
+  <header class="gallery-header">
+    <div class="gallery-left">
+      <img src="/images/logo.png" alt="Ahbee Fabrication Logo" class="gallery-logo">
+      <h1 class="gallery-title">Ahbee Fabrication</h1>
+    </div>
+
+    <div class="gallery-right">
+      <button class="btn-header" data-target="cage">Cage Trailer</button>
+      <button class="btn-header" data-target="kitchen">Kitchen Trailer</button>
+    </div>
+  </header>
+{{ else }}
+  <!-- Default Header for Non-Gallery Pages -->
+  <header class="site-header default-header non-gallery-header">
+    <img src="/images/logo.png" alt="Ahbee Fabrication Logo" class="logo">
+    <h1 class="site-title">Ahbee Fabrication</h1>
+  </header>
+{{ end }}

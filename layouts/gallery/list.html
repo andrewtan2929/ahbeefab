@@ -1,0 +1,159 @@
+{{ define "main" }}
+<!-- Intro Statement -->
+<div class="gallery-intro-statement" id="galleryIntro">
+  <h1>Welcome to Our Gallery</h1>
+  <p>Explore our premium cage trailers and kitchen trailers, crafted with precision and built to last. Click the buttons above to view each collection.</p>
+</div>
+
+<!-- Trailer Selection Buttons -->
+<div class="trailer-selection">
+  <button class="trailer-btn" data-target="cage">View Cage Trailers</button>
+  <button class="trailer-btn" data-target="kitchen">View Kitchen Trailers</button>
+</div>
+
+<!-- Gallery Section -->
+<section class="gallery-section">
+  <!-- Control Buttons -->
+  <div class="slideshow-controls">
+    <button class="control-btn" id="stopSlideshow">⏸️ Stop</button>
+    <button class="control-btn" id="startSlideshow">▶️ Start</button>
+  </div>
+
+  <!-- Cage Trailer Swiper -->
+  <div class="swiper cage-trailer-swiper" style="display: none;">
+    <div class="swiper-wrapper">
+      {{ $images := readDir "static/images/cage-trailer" }}
+      {{ range $i, $img := $images }}
+        <div class="swiper-slide">
+          <img src="/images/cage-trailer/{{ $img.Name }}"
+               alt="Ahbee Fabrication cage trailer {{ add $i 1 }} - Heavy duty custom trailer Perth"
+               loading="lazy">
+        </div>
+      {{ end }}
+    </div>
+    <div class="swiper-button-next cage-next"></div>
+    <div class="swiper-button-prev cage-prev"></div>
+    <div class="swiper-pagination cage-pagination"></div>
+  </div>
+
+  <!-- Kitchen Trailer Swiper -->
+  <div class="swiper kitchen-trailer-swiper" style="display: none;">
+    <div class="swiper-wrapper">
+      {{ $images := readDir "static/images/kitchen-trailer" }}
+      {{ range $i, $img := $images }}
+        <div class="swiper-slide">
+          <img src="/images/kitchen-trailer/{{ $img.Name }}"
+               alt="Ahbee Fabrication kitchen trailer {{ add $i 1 }} - Mobile catering trailer Perth"
+               loading="lazy">
+        </div>
+      {{ end }}
+    </div>
+    <div class="swiper-button-next kitchen-next"></div>
+    <div class="swiper-button-prev kitchen-prev"></div>
+    <div class="swiper-pagination kitchen-pagination"></div>
+  </div>
+</section>
+
+<!-- Swiper CSS & JS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cageBtn = document.querySelector('button[data-target="cage"]');
+    const kitchenBtn = document.querySelector('button[data-target="kitchen"]');
+    const galleryIntro = document.getElementById('galleryIntro');
+    const stopBtn = document.getElementById('stopSlideshow');
+    const startBtn = document.getElementById('startSlideshow');
+
+    let activeSwiper = null;
+
+    // Initialize swipers
+    const cageSwiper = new Swiper('.cage-trailer-swiper', {
+        loop: true,
+        pagination: { el: '.cage-pagination', clickable: true },
+        navigation: { nextEl: '.cage-next', prevEl: '.cage-prev' },
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        spaceBetween: 20,
+    });
+
+    const kitchenSwiper = new Swiper('.kitchen-trailer-swiper', {
+        loop: true,
+        pagination: { el: '.kitchen-pagination', clickable: true },
+        navigation: { nextEl: '.kitchen-next', prevEl: '.kitchen-prev' },
+        autoplay: { delay: 3000, disableOnInteraction: false },
+        spaceBetween: 20,
+    });
+
+    // Initially hide swipers and controls
+    cageSwiper.autoplay.stop();
+    kitchenSwiper.autoplay.stop();
+    document.querySelector('.cage-trailer-swiper').style.display = 'none';
+    document.querySelector('.kitchen-trailer-swiper').style.display = 'none';
+    document.querySelector('.slideshow-controls').style.display = 'none';
+
+    // Stop button functionality
+    stopBtn.addEventListener('click', function() {
+        if (activeSwiper) {
+            activeSwiper.autoplay.stop();
+        }
+    });
+
+    // Start button functionality
+    startBtn.addEventListener('click', function() {
+        if (activeSwiper) {
+            activeSwiper.autoplay.start();
+        }
+    });
+
+    // Click handlers for trailer selection
+    if (cageBtn) {
+        cageBtn.addEventListener('click', function() {
+            showSwiper('cage', cageSwiper);
+        });
+    }
+
+    if (kitchenBtn) {
+        kitchenBtn.addEventListener('click', function() {
+            showSwiper('kitchen', kitchenSwiper);
+        });
+    }
+
+    function showSwiper(type, swiperInstance) {
+        // Fade out intro statement
+        if (galleryIntro) {
+            galleryIntro.classList.add('fade-out');
+        }
+
+        // Hide both swipers
+        document.querySelector('.cage-trailer-swiper').style.display = 'none';
+        document.querySelector('.kitchen-trailer-swiper').style.display = 'none';
+
+        // Stop any running autoplay
+        cageSwiper.autoplay.stop();
+        kitchenSwiper.autoplay.stop();
+
+        // Show selected swiper and controls
+        const targetElement = document.querySelector(`.${type}-trailer-swiper`);
+        targetElement.style.display = 'block';
+        document.querySelector('.slideshow-controls').style.display = 'flex';
+
+        // Set active swiper
+        activeSwiper = swiperInstance;
+
+        // Force swiper to recalculate and start
+        setTimeout(() => {
+            swiperInstance.update();
+            swiperInstance.slideTo(0);
+            swiperInstance.autoplay.start();
+
+            // Scroll to gallery section
+            document.querySelector('.gallery-section').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }, 50);
+    }
+});
+</script>
+{{ end }}

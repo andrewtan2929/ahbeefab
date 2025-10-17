@@ -1,0 +1,54 @@
+baseURL = "https://ahbeefab.netlify.app/"
+languageCode = "en-au"
+title = "Ahbee Fabrication | Premium Trailer Manufacturing Perth WA"
+
+[params]
+  description = "Ahbee Fabrication - Professional cage trailers & kitchen trailers manufacturing in Perth, Western Australia. Custom fabrication services."
+  author = "Ahbee Fabrication"
+
+# XML sitemap configuration
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    identifier = "services"
+    name = "Services"
+    url = "/services/"
+    weight = 3
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 4
+  [[menu.main]]
+    identifier = "gallery"
+    name = "Gallery"
+    url = "/gallery/"
+    weight = 5
+  [[menu.main]]
+    identifier = "drawings"
+    name = "Drawings"
+    url = "/drawings/"
+    weight = 6
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 7

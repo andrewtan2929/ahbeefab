@@ -1,0 +1,43 @@
+[build]
+  publish = "public"
+  command = "hugo"
+
+[build.environment]
+  HUGO_VERSION = "0.149.1"
+
+# Redirects for clean URLs
+[[redirects]]
+  from = "/projects/"
+  to = "/projects"
+  status = 301
+
+[[redirects]]
+  from = "/about/"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/services/"
+  to = "/services"
+  status = 301
+
+[[redirects]]
+  from = "/gallery/"
+  to = "/gallery"
+  status = 301
+
+[[redirects]]
+  from = "/contact/"
+  to = "/contact"
+  status = 301
+
+# Netlify Forms configuration
+[context.production.environment]
+  HUGO_ENV = "production"
+
+# Optional: Branch deploy settings
+[context.deploy-preview]
+  command = "hugo -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy]
+  command = "hugo -b $DEPLOY_PRIME_URL"
