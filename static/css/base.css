@@ -1,15 +1,19 @@
 /* ===== Global Styles ===== */
+/* Replace your current html, body rule with this: */
 html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  color: #333;
+    height: 100%;
+    margin: 0 !important; /* Add !important to force it */
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    color: #333;
 }
 
+/* Additional constraint to prevent overflow */
 body {
-  background: #fafafa; /* default background for non-home pages */
+    width: 100%;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* Keep footer at bottom */
