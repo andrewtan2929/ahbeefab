@@ -34,33 +34,6 @@
   overflow: hidden;
 }
 
-/* ===== Trailer Selection Buttons ===== */
-.trailer-selection {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
-  padding: 0 1rem;
-}
-
-.trailer-btn {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.trailer-btn:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
-}
-
 /* ===== Gallery Section ===== */
 .gallery-section {
   width: 100%;
