@@ -1,16 +1,20 @@
 /* ===== Centered About Page Styles ===== */
-
 .enhanced-about {
   min-height: 100vh;
   background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-  text-align: center; /* Force center all text */
+  text-align: center;
 }
 
-/* Force ALL text to be centered */
-.enhanced-about * {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+/* Targeted centering for specific elements */
+.enhanced-about h1,
+.enhanced-about h2,
+.enhanced-about h3,
+.enhanced-about h4,
+.enhanced-about p,
+.enhanced-about div {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Container */
@@ -242,6 +246,23 @@
   transform: scale(1.05);
 }
 
+/* ===== AGGRESSIVE SPACE REDUCTION ===== */
+.enhanced-about .about-hero {
+  padding: 40px 5px 40px 5px !important;
+}
+
+.enhanced-about .about-hero .hero-title {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.1 !important;
+}
+
+.enhanced-about .about-hero .hero-subtitle {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
+}
+
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
   .hero-title {
@@ -304,22 +325,3 @@
     padding: 0 1rem;
   }
 }
-
-/* ===== AGGRESSIVE SPACE REDUCTION ===== */
-.enhanced-about .about-hero {
-  padding: 40px 5px 40px 5px !important;
-}
-
-.enhanced-about .about-hero .hero-title {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1.1 !important;
-}
-
-.enhanced-about .about-hero .hero-subtitle {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 1.2 !important;
-}
-
-* { border: 1px solid red !important; }
