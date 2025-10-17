@@ -13,38 +13,38 @@
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image.jpg">
+  <meta property="og:image" content="{{ "images/og-image.jpg" | absURL }}">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="{{ .Permalink }}">
   <meta property="twitter:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
   <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta property="twitter:image" content="{{ .Site.BaseURL }}images/og-image.jpg">
+  <meta property="twitter:image" content="{{ "images/og-image.jpg" | absURL }}">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
 
-  <!-- CSS Files -->
-  <link rel="stylesheet" href="{{ "css/base.css" | relURL }}">
-  <link rel="stylesheet" href="{{ "css/general.css" | relURL }}">
+<!-- CSS Files -->
+<link rel="stylesheet" href="{{ "css/base.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/general.css" | absURL }}">
 
-  <!-- Conditional CSS Loading -->
-  {{ if .IsHome }}
-    <link rel="stylesheet" href="{{ "css/home.css" | relURL }}">
-  {{ else if eq .Section "about" }}
-    <link rel="stylesheet" href="{{ "css/about.css" | relURL }}">
-  {{ else if eq .Section "services" }}
-    <link rel="stylesheet" href="{{ "css/services.css" | relURL }}">
-  {{ else if eq .Section "projects" }}
-    <link rel="stylesheet" href="{{ "css/projects.css" | relURL }}">
-  {{ else if eq .Section "gallery" }}
-    <link rel="stylesheet" href="{{ "css/gallery.css" | relURL }}">
-  {{ else if eq .Section "drawings" }}
-    <link rel="stylesheet" href="{{ "css/drawings.css" | relURL }}">
-  {{ else if eq .Section "contact" }}
-    <link rel="stylesheet" href="{{ "css/contact.css" | relURL }}">
-  {{ end }}
+<!-- Conditional CSS Loading -->
+{{ if .IsHome }}
+  <link rel="stylesheet" href="{{ "css/home.css" | absURL }}">
+{{ else if eq .Section "about" }}
+  <link rel="stylesheet" href="{{ "css/about.css" | absURL }}">
+{{ else if eq .Section "services" }}
+  <link rel="stylesheet" href="{{ "css/services.css" | absURL }}">
+{{ else if eq .Section "projects" }}
+  <link rel="stylesheet" href="{{ "css/projects.css" | absURL }}">
+{{ else if eq .Section "gallery" }}
+  <link rel="stylesheet" href="{{ "css/gallery.css" | absURL }}">
+{{ else if eq .Section "drawings" }}
+  <link rel="stylesheet" href="{{ "css/drawings.css" | absURL }}">
+{{ else if eq .Section "contact" }}
+  <link rel="stylesheet" href="{{ "css/contact.css" | absURL }}">
+{{ end }}
 </head>
 
 <body class="{{ if .IsHome }}homepage{{ else if eq .Section "gallery" }}gallery-page{{ else }}{{ .Section }}-page{{ end }}">
