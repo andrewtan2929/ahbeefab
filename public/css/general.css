@@ -1,0 +1,48 @@
+/* Buttons */
+.btn {
+  background: #e67e22;
+  color: white;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #cf711f;
+}
+
+/* Page-specific content */
+main h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+main p {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Example: contact page */
+.contact-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Example: logo adjustments for responsive */
+@media (max-width: 768px) {
+  .site-header .logo {
+    max-height: 60px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Make gallery section cover full viewport */
+.gallery-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;       /* full viewport height */
+  overflow: hidden;
+}
+
