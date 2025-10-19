@@ -411,3 +411,122 @@
   text-align: left !important;
   padding-left: 12px !important;
 }
+
+/* ===== MOBILE FIXES (PORTRAIT & LANDSCAPE) ===== Oct 19 2025 */
+@media (max-width: 768px) {
+  /* Fix text size and spacing in hero section */
+  .projects-hero-title {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .projects-hero-subtitle {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Fix intro section text overlap and line spacing */
+  .projects-intro-text {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+    margin: 0 auto !important;
+  }
+
+  .projects-intro-text ul {
+    margin-left: 1rem !important;
+    padding-left: 0 !important;
+  }
+
+  .projects-intro-text li {
+    margin-bottom: 0.8rem !important;
+    text-align: left !important;
+  }
+
+  /* Reduce padding in sections to prevent crowding */
+  .projects-intro-section {
+    padding: 1.5rem 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .project-form-section {
+    padding: 1.5rem 1rem !important;
+    margin: 1rem 0.5rem 2rem 0.5rem !important;
+  }
+
+  /* Fix form text sizes */
+  .project-form-section h2 {
+    font-size: 1.6rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .form-subtitle {
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .form-group h3 {
+    font-size: 1.1rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Ensure form elements don't overflow */
+  .form-column input,
+  .form-column select,
+  .form-column textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 0.8rem !important;
+  }
+
+  /* Fix main content padding */
+  .projects-main-content {
+    padding: 2rem 0 !important;
+  }
+
+  /* Reduce step card padding */
+  .step-card {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .step-card h4 {
+    font-size: 1.1rem !important;
+  }
+
+  .step-card p {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Fix container padding for mobile */
+  .projects-container {
+    padding: 0 1rem !important;
+  }
+
+  /* Fix form row layout for mobile */
+  .form-row {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .form-column {
+    min-width: 100% !important;
+  }
+
+  /* Adjust hero padding for mobile */
+  .projects-hero {
+    padding: 30px 10px !important;
+  }
+
+  /* Fix checkbox group spacing */
+  .checkbox-group {
+    gap: 0.8rem !important;
+  }
+
+  /* Adjust submit button for mobile */
+  .submit-btn {
+    padding: 0.9rem 2rem !important;
+    font-size: 1rem !important;
+    min-width: 180px !important;
+  }
+}

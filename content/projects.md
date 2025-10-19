@@ -10,9 +10,9 @@ Ready to bring your trailer vision to life? At Ahbee Fabrication, we specialize 
 
 **Why Choose Us for Your Project?**
 - 🎯 **Custom Solutions**: Tailored to your exact specifications
-- 🔧 **Expert Craftsmanship**: Precision engineering and quality workmanship
-- ⏱️ **Timely Delivery**: We respect your deadlines and budget
-- 💬 **Clear Communication**: Regular updates throughout the project
-- ✅ **Quality Guarantee**: Built to last with premium materials
+  - 🔧 **Expert Craftsmanship**: Precision engineering and quality workmanship
+  - ⏱️ **Timely Delivery**: We respect your deadlines and budget
+  - 💬 **Clear Communication**: Regular updates throughout the project
+  - ✅ **Quality Guarantee**: Built to last with premium materials
 
 *Fill out the form below to get started with your free consultation!*
