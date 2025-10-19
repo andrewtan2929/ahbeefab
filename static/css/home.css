@@ -67,19 +67,22 @@
 /* Responsive */
 @media (max-width: 768px) {
   .non-gallery-header {
-    flex-direction: column;       /* stack logo + title on small screens */
+    flex-direction: row !important;       /* Keep logo + title side by side */
     height: auto;
     padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 
   .non-gallery-header .logo {
-    height: 5px;
+    height: 25px !important;  /* Reasonable mobile size */
+    width: auto;
   }
 
   .non-gallery-header .site-title {
-    font-size: 0.4rem;
-    line-height: 40px;            /* match smaller logo */
-    margin-top: 5px;
+    font-size: 1.3rem !important;  /* Readable mobile size */
+    line-height: normal;
+    margin-top: 0;
   }
 }
-

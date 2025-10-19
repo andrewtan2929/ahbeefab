@@ -323,10 +323,3 @@ body.services-page {
   }
 }
 
-/* Debug: Add temporary border to see if styles are applying */
-@media (max-width: 768px) {
-  .header-container {
-    border: 2px solid red !important; /* Remove this after testing */
-  }
-}
-
