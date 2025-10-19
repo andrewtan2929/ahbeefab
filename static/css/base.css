@@ -329,3 +329,20 @@ body.services-page {
     border: 2px solid red !important; /* Remove this after testing */
   }
 }
+
+/* ===== FORCE HORIZONTAL HEADER ON MOBILE - HIGH SPECIFICITY ===== */
+@media (max-width: 768px) {
+  .site-header .header-container {
+    flex-direction: row !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .site-header .header-container .logo,
+  .site-header .header-container .site-title {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    float: none !important;
+  }
+}
