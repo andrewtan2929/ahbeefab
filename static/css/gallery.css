@@ -203,4 +203,85 @@ body.gallery-page .gallery-header .button-group .btn-header:hover {
 .control-btn {
   padding: 8px;
 
+/* ===== Gallery Mobile Header Fix ===== */
+/* Mobile Portrait - Keep logo and title side by side */
+@media (max-width: 768px) {
+  body.gallery-page .gallery-header {
+    padding: 0.8rem 5% !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
 
+  body.gallery-page .gallery-left {
+    flex-direction: row !important; /* Force horizontal layout */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-wrap: nowrap !important;
+  }
+
+  body.gallery-page .gallery-logo {
+    width: 40px !important; /* Smaller logo for mobile */
+    height: auto !important;
+  }
+
+  body.gallery-page .gallery-title {
+    font-size: 1.1rem !important; /* Smaller title for mobile */
+    white-space: nowrap !important; /* Prevent title from breaking */
+  }
+
+  /* Adjust buttons for mobile */
+  body.gallery-page .gallery-header .button-group {
+    gap: 0.5rem !important;
+  }
+
+  body.gallery-page .gallery-header .button-group .btn-header {
+    padding: 0.3rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Mobile Landscape - Even more compact */
+@media (max-width: 768px) and (orientation: landscape) {
+  body.gallery-page .gallery-header {
+    padding: 0.5rem 4% !important;
+  }
+
+  body.gallery-page .gallery-logo {
+    width: 35px !important;
+  }
+
+  body.gallery-page .gallery-title {
+    font-size: 1rem !important;
+  }
+
+  body.gallery-page .gallery-header .button-group .btn-header {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  body.gallery-page .gallery-header {
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+  }
+
+  body.gallery-page .gallery-left {
+    order: 1;
+  }
+
+  body.gallery-page .gallery-header .button-group {
+    order: 2;
+    justify-content: center !important;
+  }
+
+  body.gallery-page .gallery-logo {
+    width: 35px !important;
+  }
+
+  body.gallery-page .gallery-title {
+    font-size: 1rem !important;
+  }
+}
