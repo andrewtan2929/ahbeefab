@@ -397,3 +397,23 @@
     gap: 2rem;
   }
 }
+
+/* ===== Center Placeholder Text for Contact Form ===== */
+.contact-inquiry-form input::placeholder,
+.contact-inquiry-form textarea::placeholder {
+  text-align: center !important;
+  color: #6c757d;
+  opacity: 0.8;
+}
+
+/* Keep user-typed text aligned left */
+.contact-inquiry-form input,
+.contact-inquiry-form textarea {
+  text-align: left;
+}
+
+/* Specific fixes for your form fields */
+#subject::placeholder,
+#message::placeholder {
+  text-align: center !important;
+}
