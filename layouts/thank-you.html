@@ -1,11 +1,46 @@
+{{ define "main" }}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Ahbee Fabrication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/body.jpg');
+            background-size: cover;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Thank You!</h1>
-    <p>Your message has been sent successfully. We'll get back to you within 2-4 hours.</p>
-    <a href="/">Return to Homepage</a>
+    <div class="container">
+        <h1>✅ Message Sent Successfully!</h1>
+        <p>Thank you for contacting Ahbee Fabrication. We have received your message and will get back to you within 2-4 business hours.</p>
+        <p>For urgent inquiries, please call us at <a href="tel:+61403872586" style="color: #ffb400;">+61 403 872 586</a></p>
+        <a href="/" class="btn">Return to Homepage</a>
+    </div>
 </body>
 </html>
+{{ end }}
