@@ -8,6 +8,8 @@
   <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
 
+    <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="4a08652be1cd0c4e" />
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
