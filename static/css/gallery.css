@@ -285,3 +285,60 @@ body.gallery-page .gallery-header .button-group .btn-header:hover {
     font-size: 1rem !important;
   }
 }
+
+/* ===== GALLERY MOBILE PORTRAIT FIX ===== */
+@media (max-width: 768px) and (orientation: portrait) {
+  body.gallery-page .gallery-header {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    padding: 0.6rem 5% !important;
+    flex-wrap: nowrap !important;
+  }
+
+  body.gallery-page .gallery-left {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  body.gallery-page .gallery-logo {
+    width: 35px !important;
+    height: auto !important;
+  }
+
+  body.gallery-page .gallery-title {
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+  }
+
+  body.gallery-page .gallery-header .button-group {
+    flex-shrink: 0 !important;
+    gap: 0.4rem !important;
+  }
+
+  body.gallery-page .gallery-header .button-group .btn-header {
+    padding: 0.3rem 0.7rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* ===== GALLERY SMALL MOBILE PORTRAIT ===== */
+@media (max-width: 480px) and (orientation: portrait) {
+  body.gallery-page .gallery-header {
+    padding: 0.5rem 4% !important;
+  }
+
+  body.gallery-page .gallery-logo {
+    width: 30px !important;
+  }
+
+  body.gallery-page .gallery-title {
+    font-size: 0.9rem !important;
+  }
+
+  body.gallery-page .gallery-header .button-group .btn-header {
+    padding: 0.25rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
+}
