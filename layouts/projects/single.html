@@ -25,7 +25,8 @@
         <h2>Get Your Free Project Consultation</h2>
         <p class="form-subtitle">Complete the form below and we'll contact you within 24 hours</p>
 
-        <form class="project-inquiry-form" id="projectForm" name="project-inquiry" method="POST" netlify netlify-honeypot="bot-field">
+            <form class="project-inquiry-form" id="projectForm" name="project-inquiry" method="POST" netlify netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="project-inquiry" />
           <!-- Add honeypot field -->
           <div class="hidden">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
@@ -202,28 +203,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnText = submitBtn.querySelector('.btn-text');
   const btnLoading = submitBtn.querySelector('.btn-loading');
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
+  // Remove this event listener entirely to let Netlify handle submission
+  // Or keep it but DON'T use e.preventDefault() - let the form submit normally
 
-    // Show loading state
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline';
-    submitBtn.disabled = true;
-
-    // Simulate form submission (replace with actual form handling)
-    setTimeout(function() {
-      // Hide form and show success message
-      form.style.display = 'none';
-      successMessage.style.display = 'block';
-
-      // Reset button
-      btnText.style.display = 'inline';
-      btnLoading.style.display = 'none';
-      submitBtn.disabled = false;
-    }, 2000);
-  });
-
-  // Add real-time validation
+  // Just keep the validation part:
   const inputs = form.querySelectorAll('input, select, textarea');
   inputs.forEach(input => {
     input.addEventListener('blur', function() {
