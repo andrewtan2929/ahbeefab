@@ -323,3 +323,32 @@ body.services-page {
   }
 }
 
+/* ===== MOBILE FIX: Default Header Logo + Title Alignment ===== */
+@media (max-width: 768px) {
+  /* Fix for default header - center logo and title horizontally */
+  .default-header {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-align: center !important;
+  }
+
+  .default-header .logo,
+  .default-header .site-title {
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
+  }
+
+  .default-header .logo {
+    height: 25px !important;
+    width: auto !important;
+  }
+
+  .default-header .site-title {
+    font-size: 1.3rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
