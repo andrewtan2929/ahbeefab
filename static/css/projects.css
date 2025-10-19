@@ -380,3 +380,34 @@
   padding: 0 !important;
   line-height: 1.2 !important;
 }
+
+/* Fix text starting in middle of input fields */
+.project-inquiry-form input,
+.project-inquiry-form textarea,
+.project-inquiry-form select {
+  text-align: left !important;
+  padding-left: 12px !important;
+}
+
+/* Ensure proper alignment for all form elements */
+.form-column input,
+.form-column textarea,
+.form-column select {
+  text-align: left;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Specific fix for textareas */
+.project-inquiry-form textarea {
+  text-align: left !important;
+  padding: 12px !important;
+  resize: vertical;
+}
+
+/* Fix for select dropdowns */
+.project-inquiry-form select {
+  text-align: left !important;
+  padding-left: 12px !important;
+}
