@@ -69,7 +69,7 @@
 
 .projects-intro-text {
   font-size: 1.2rem;
-  line-height: 0.7;
+  line-height: 1.6;  /* ← FIXED: Changed from 0.7 to 1.6 */
   color: #6c757d;
   max-width: 800px;
   text-align: left !important;
@@ -82,7 +82,7 @@
 
 .projects-intro-text li {
   text-align: left !important;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;  /* ← Better spacing */
 }
 
 /* Form Section */
