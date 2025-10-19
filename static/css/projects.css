@@ -412,8 +412,8 @@
   padding-left: 12px !important;
 }
 
-/* ===== MOBILE FIXES (PORTRAIT & LANDSCAPE) ===== Oct 19 2025 */
-@media (max-width: 768px) {
+/* ===== MOBILE FIXES (PORTRAIT ONLY) ===== */
+@media (max-width: 768px) and (orientation: portrait) {
   /* Fix text size and spacing in hero section */
   .projects-hero-title {
     font-size: 2rem !important;
