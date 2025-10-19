@@ -298,3 +298,34 @@ body.services-page {
     max-width: 90%;
   }
 }
+
+/* ===== FORCE HEADER TO STAY HORIZONTAL ON MOBILE ===== */
+@media (max-width: 768px) {
+  /* Override any column direction for header container */
+  .header-container {
+    flex-direction: row !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* Ensure logo and title stay inline */
+  .header-container .logo,
+  .header-container .site-title {
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  /* Prevent any stacking behavior */
+  .site-header {
+    text-align: center !important;
+  }
+}
+
+/* Debug: Add temporary border to see if styles are applying */
+@media (max-width: 768px) {
+  .header-container {
+    border: 2px solid red !important; /* Remove this after testing */
+  }
+}
