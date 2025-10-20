@@ -398,22 +398,67 @@
   }
 }
 
-/* ===== Center Form Fields ===== */
+/* ===== Center Form Fields - FIXED ===== */
+.contact-form-section form {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form-section .form-group {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form-section .form-group h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.contact-form-section .form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .contact-form-section .form-column {
-  text-align: center !important;
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.contact-form-section .form-column.full-width {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
 .contact-form-section .form-column label {
-  text-align: center !important;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
   width: 100%;
 }
 
 .contact-form-section .form-column input,
 .contact-form-section .form-column select,
 .contact-form-section .form-column textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
   text-align: center;
   margin: 0 auto;
 }
@@ -421,10 +466,15 @@
 /* Center placeholder text */
 .contact-form-section .form-column input::placeholder,
 .contact-form-section .form-column textarea::placeholder {
-  text-align: center !important;
+  text-align: center;
+  color: #6c757d;
+  opacity: 0.8;
 }
 
-/* Ensure the form rows are properly centered */
-.contact-form-section .form-row {
-  justify-content: center !important;
+.contact-form-section .form-column input:focus,
+.contact-form-section .form-column select:focus,
+.contact-form-section .form-column textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
