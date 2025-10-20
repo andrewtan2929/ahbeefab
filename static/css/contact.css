@@ -398,22 +398,33 @@
   }
 }
 
-/* ===== Center Placeholder Text for Contact Form ===== */
-.contact-inquiry-form input::placeholder,
-.contact-inquiry-form textarea::placeholder {
+/* ===== Center Form Fields ===== */
+.contact-form-section .form-column {
   text-align: center !important;
-  color: #6c757d;
-  opacity: 0.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Keep user-typed text aligned left */
-.contact-inquiry-form input,
-.contact-inquiry-form textarea {
-  text-align: left;
+.contact-form-section .form-column label {
+  text-align: center !important;
+  width: 100%;
 }
 
-/* Specific fixes for your form fields */
-#subject::placeholder,
-#message::placeholder {
+.contact-form-section .form-column input,
+.contact-form-section .form-column select,
+.contact-form-section .form-column textarea {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* Center placeholder text */
+.contact-form-section .form-column input::placeholder,
+.contact-form-section .form-column textarea::placeholder {
   text-align: center !important;
+}
+
+/* Ensure the form rows are properly centered */
+.contact-form-section .form-row {
+  justify-content: center !important;
 }
