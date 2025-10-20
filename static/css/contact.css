@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
   padding: 3px 0;
-  background: transparent; /* Remove any background */
+  background: transparent;
 }
 
 /* Rest of your CSS remains the same */
@@ -55,8 +55,6 @@
   width: 100%;
   align-items: center;
 }
-
-
 
 /* Contact Information Section - Centered */
 .contact-info-section {
@@ -227,7 +225,9 @@
   color: #2c3e50;
   margin-bottom: 1.5rem;
   font-size: 1.3rem;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  padding-left: 50px;
 }
 
 .form-row {
@@ -243,6 +243,9 @@
   min-width: 250px;
   max-width: 100%;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-column.full-width {
@@ -256,18 +259,28 @@
   font-weight: 600;
   color: #2c3e50;
   text-align: left;
+  width: 300px;
 }
 
 .form-column input,
 .form-column select,
 .form-column textarea {
-  width: 100%;
+  width: 300px;
   padding: 0.75rem 1rem;
   border: 2px solid #e9ecef;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
   background: white;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.form-column.full-width input,
+.form-column.full-width select,
+.form-column.full-width textarea {
+  width: 500px;
+  max-width: 90%;
 }
 
 .form-column input:focus,
@@ -361,6 +374,30 @@
     min-width: 100%;
   }
 
+  .form-column label {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-column input,
+  .form-column select,
+  .form-column textarea {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-column.full-width input,
+  .form-column.full-width select,
+  .form-column.full-width textarea {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .form-group h3 {
+    padding-left: 0;
+    text-align: center;
+  }
+
   /* Business hours mobile fix */
   .hours-grid {
     grid-template-columns: 1fr;
@@ -396,42 +433,10 @@
   .vertical-contact-layout {
     gap: 2rem;
   }
-}
 
-/* ===== Center Form Field Boxes Only ===== */
-.contact-form-section .form-group h3 {
-  text-align: left !important;
-  margin-left: 0 !important;
-}
-
-.contact-form-section .form-column label {
-  text-align: left !important;
-  margin-left: 0 !important;
-  width: 100%;
-}
-
-.contact-form-section .form-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers the field boxes only */
-}
-
-.contact-form-section .form-column input,
-.contact-form-section .form-column select,
-.contact-form-section .form-column textarea {
-  width: 80% !important;
-  max-width: 400px !important;
-  margin: 0 auto !important; /* Centers the boxes */
-  text-align: left !important; /* Text inside boxes stays left */
-}
-
-/* Keep placeholder text left-aligned */
-.contact-form-section .form-column input::placeholder,
-.contact-form-section .form-column textarea::placeholder {
-  text-align: left !important;
-}
-
-/* Ensure form rows don't stretch full width */
-.contact-form-section .form-row {
-  justify-content: flex-start !important;
+  .form-column input,
+  .form-column select,
+  .form-column textarea {
+    max-width: 280px;
+  }
 }
