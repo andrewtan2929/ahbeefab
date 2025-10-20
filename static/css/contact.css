@@ -398,30 +398,40 @@
   }
 }
 
-/* ===== Center Form Field Boxes ===== */
-.contact-inquiry-form .form-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* This centers the boxes horizontally */
-  text-align: center;
+/* ===== Center Form Field Boxes Only ===== */
+.contact-form-section .form-group h3 {
+  text-align: left !important;
+  margin-left: 0 !important;
 }
 
-.contact-inquiry-form .form-column input,
-.contact-inquiry-form .form-column select,
-.contact-inquiry-form .form-column textarea {
-  width: 80%; /* Reduce width so you can see they're centered */
-  max-width: 400px; /* Optional: set max width */
-  margin: 0 auto; /* This centers the boxes */
-  text-align: left; /* Keep text inside aligned left */
-}
-
-.contact-inquiry-form .form-column label {
-  text-align: center;
+.contact-form-section .form-column label {
+  text-align: left !important;
+  margin-left: 0 !important;
   width: 100%;
 }
 
+.contact-form-section .form-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the field boxes only */
+}
+
+.contact-form-section .form-column input,
+.contact-form-section .form-column select,
+.contact-form-section .form-column textarea {
+  width: 80% !important;
+  max-width: 400px !important;
+  margin: 0 auto !important; /* Centers the boxes */
+  text-align: left !important; /* Text inside boxes stays left */
+}
+
 /* Keep placeholder text left-aligned */
-.contact-inquiry-form .form-column input::placeholder,
-.contact-inquiry-form .form-column textarea::placeholder {
-  text-align: left;
+.contact-form-section .form-column input::placeholder,
+.contact-form-section .form-column textarea::placeholder {
+  text-align: left !important;
+}
+
+/* Ensure form rows don't stretch full width */
+.contact-form-section .form-row {
+  justify-content: flex-start !important;
 }
