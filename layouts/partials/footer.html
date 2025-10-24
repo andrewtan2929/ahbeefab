@@ -1,3 +1,44 @@
 <footer class="site-footer">
-  <p>&copy; {{ now.Format "2006" }} Ahbee Fabrication. All rights reserved.</p>
+    <div class="footer-content">
+        <!-- Your existing footer content -->
+        <div class="footer-main">
+            <div class="footer-section">
+                <h4>Ahbee Fabrication</h4>
+                <p>Professional metal fabrication services in Australia</p>
+                <p>📍 Your Address Here</p>
+                <p>📞 <a href="tel:+61403872586">+61 403 872 586</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="{{ "/" | relURL }}">Home</a></li>
+                    <li><a href="{{ "/services/" | relURL }}">Services</a></li>
+                    <li><a href="{{ "/portfolio/" | relURL }}">Portfolio</a></li>
+                    <li><a href="{{ "/contact/" | relURL }}">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SISTER COMPANY SECTION -->
+        <div class="sister-company-section">
+            <div class="sister-company-divider"></div>
+            <div class="sister-company-content">
+                <div class="sister-company-info">
+                    <h4>Our Web Development Partner</h4>
+                    <p>Need a professional website for your business? Our sister company specializes in affordable, mobile-friendly websites for small businesses.</p>
+                </div>
+                <div class="sister-company-cta">
+                    <a href="https://ahbeeweb.com" target="_blank" rel="noopener" class="sister-company-btn">
+                        <span class="btn-icon">🌐</span>
+                        Visit AhbeeWeb
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Format "2006" }} Ahbee Fabrication. All rights reserved.</p>
+        </div>
+    </div>
 </footer>
