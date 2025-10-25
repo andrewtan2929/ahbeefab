@@ -172,19 +172,78 @@ nav a {
   align-items: center;
 }
 
-.logo-link {
+/* Simple text link without background */
+.text-link-simple {
   display: block;
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 8px 12px;
+  color: #666; /* Subtle text color */
+  padding: 4px 8px;
   transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
 }
 
-.logo-link:hover {
-  background: #ffffff; /* Keep pure white */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
-  transform: translateY(-2px);
+.text-link-simple:hover {
+  color: #000; /* Darker text on hover */
+  border-bottom: 2px solid #000; /* Underline effect */
+}
+
+/* Sister business link styling */
+.sister-business-item {
+  position: relative;
+  margin: 0 5px;
+}
+
+.sister-business-link {
+  display: block;
+  color: #1a365d; /* Strong dark blue */
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.sister-business-link:hover {
+  color: #2d3748; /* Slightly lighter blue on hover */
+  transform: translateY(-1px);
+}
+
+/* Tooltip that shows "Our Sister Business: Web Design" */
+.sister-tooltip {
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.sister-business-link:hover .sister-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Add a small arrow to the tooltip */
+.sister-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #333;
 }
 
 /* ===== Header ===== */
