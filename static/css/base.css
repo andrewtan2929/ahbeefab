@@ -124,6 +124,69 @@ nav a {
   font-weight: bold;
 }
 
+/* Basic logo styling */
+.nav-logo {  /* This class needs to be on the <img> tag */
+  height: 24px;
+  width: auto;
+  vertical-align: middle;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.nav-logo:hover {
+  opacity: 1;
+}
+
+/* For logo with tooltip */
+.logo-nav-item {
+  position: relative;
+}
+
+.logo-tooltip {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.logo-link:hover .logo-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.logo-link {
+  cursor: pointer;
+}
+
+.logo-nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: block;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.logo-link:hover {
+  background: #ffffff; /* Keep pure white */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* Enhanced shadow on hover */
+  transform: translateY(-2px);
+}
+
 /* ===== Header ===== */
 .site-header {
   width: 100%;
