@@ -191,13 +191,12 @@ nav a {
 /* Sister business link styling */
 .sister-business-item {
   position: relative;
-  margin: 0 5px;
 }
 
 .sister-business-link {
   display: block;
-  color: #1a365d; /* Strong dark blue */
-  padding: 4px 8px;
+  color: red; /* Purple color */
+  padding: 4px 12px;
   transition: all 0.3s ease;
   text-decoration: none;
   font-weight: 600;
@@ -206,14 +205,14 @@ nav a {
 }
 
 .sister-business-link:hover {
-  color: #2d3748; /* Slightly lighter blue on hover */
+  color: #553c9a; /* Darker purple on hover */
   transform: translateY(-1px);
 }
 
-/* Tooltip that shows "Our Sister Business: Web Design" */
+/* Tooltip styling remains the same */
 .sister-tooltip {
   position: absolute;
-  bottom: -35px;
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: #333;
@@ -227,6 +226,7 @@ nav a {
   transition: all 0.3s ease;
   pointer-events: none;
   z-index: 1000;
+  margin-top: 8px;
 }
 
 .sister-business-link:hover .sister-tooltip {
@@ -234,11 +234,10 @@ nav a {
   visibility: visible;
 }
 
-/* Optional: Add a small arrow to the tooltip */
 .sister-tooltip::before {
   content: '';
   position: absolute;
-  top: -5px;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   border-left: 5px solid transparent;
