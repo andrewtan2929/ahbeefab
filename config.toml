@@ -43,9 +43,9 @@ title = "Ahbee Fabrication | Premium Trailer Manufacturing Perth WA"
     url = "/gallery/"
     weight = 5
   [[menu.main]]
-    identifier = "drawings"
-    name = "Drawings"
-    url = "/drawings/"
+    identifier = "designs"
+    name = "Designs"
+    url = "/designs/"
     weight = 6
   [[menu.main]]
     identifier = "contact"

@@ -1,61 +1,59 @@
 {{ define "main" }}
-<section class="drawings-page">
+<section class="designs-page">
   <!-- Hero Section -->
-  <div class="drawings-hero">
-    <div class="drawings-container">
-      <h1 class="drawings-title">Technical Drawings</h1>
-      <p class="drawings-subtitle">Professional CAD drawings and specifications for Ahbee Fabrication products</p>
+  <div class="designs-hero">
+    <div class="designs-container">
+      <h1 class="designs-title">Custom Trailer Designs</h1>
+      <p class="designs-subtitle">Explore our technical specifications and design portfolio for Ahbee Fabrication products</p>
     </div>
   </div>
 
-  <!-- Drawings Content -->
-  <div class="drawings-content">
-    <div class="drawings-container">
-      <!-- Drawing Cards -->
-      <div class="drawings-grid">
-        <!-- Drawing 80000A -->
-        <div class="drawing-card">
-          <div class="drawing-preview">
+  <!-- Designs Content -->
+  <div class="designs-content">
+    <div class="designs-container">
+      <!-- Design Cards -->
+      <div class="designs-grid">
+        <!-- Design 80000A -->
+        <div class="design-card">
+          <div class="design-preview">
             <div class="pdf-icon">📄</div>
-            <!-- Optional: Add preview image or remove this line -->
-            <div class="drawing-thumbnail-placeholder">
-              <span>PDF Document</span>
+            <div class="design-thumbnail-placeholder">
+              <span>Design Specification</span>
             </div>
-            <div class="drawing-overlay">
-              <button class="view-drawing-btn" data-pdf="Dwg. No 80000A.pdf">View Drawing</button>
+            <div class="design-overlay">
+              <button class="view-design-btn" data-pdf="Dwg. No 80000A.pdf">View Design</button>
             </div>
           </div>
-          <div class="drawing-info">
-            <h3 class="drawing-title">Dwg. No 80000A</h3>
-            <p class="drawing-description">Main assembly drawing with detailed specifications</p>
-            <div class="drawing-meta">
+          <div class="design-info">
+            <h3 class="design-title">Design Specification 80000A</h3>
+            <p class="design-description">Main assembly design with detailed specifications and measurements</p>
+            <div class="design-meta">
               <span class="file-size">PDF Document</span>
-              <span class="drawing-date">2024</span>
+              <span class="design-date">2024</span>
             </div>
-            <a href="/images/drawings/Dwg. No 80000A.pdf" class="download-btn" download>Download PDF</a>
+            <a href="/images/drawings/Dwg. No 80000A.pdf" class="download-btn" download>Download Design PDF</a>
           </div>
         </div>
 
-        <!-- Drawing 80000B -->
-        <div class="drawing-card">
-          <div class="drawing-preview">
+        <!-- Design 80000B -->
+        <div class="design-card">
+          <div class="design-preview">
             <div class="pdf-icon">📄</div>
-            <!-- Optional: Add preview image or remove this line -->
-            <div class="drawing-thumbnail-placeholder">
-              <span>PDF Document</span>
+            <div class="design-thumbnail-placeholder">
+              <span>Design Specification</span>
             </div>
-            <div class="drawing-overlay">
-              <button class="view-drawing-btn" data-pdf="Dwg. No 80000B.pdf">View Drawing</button>
+            <div class="design-overlay">
+              <button class="view-design-btn" data-pdf="Dwg. No 80000B.pdf">View Design</button>
             </div>
           </div>
-          <div class="drawing-info">
-            <h3 class="drawing-title">Dwg. No 80000B</h3>
-            <p class="drawing-description">Detailed component drawing and measurements</p>
-            <div class="drawing-meta">
+          <div class="design-info">
+            <h3 class="design-title">Design Specification 80000B</h3>
+            <p class="design-description">Detailed component design and technical measurements</p>
+            <div class="design-meta">
               <span class="file-size">PDF Document</span>
-              <span class="drawing-date">2024</span>
+              <span class="design-date">2024</span>
             </div>
-            <a href="/images/drawings/Dwg. No 80000B.pdf" class="download-btn" download>Download PDF</a>
+            <a href="/images/drawings/Dwg. No 80000B.pdf" class="download-btn" download>Download Design PDF</a>
           </div>
         </div>
       </div>
@@ -64,7 +62,7 @@
     <div id="pdfModal" class="pdf-modal">
       <div class="pdf-modal-content">
         <div class="pdf-modal-header">
-          <h3 id="pdfModalTitle">Drawing Viewer</h3>
+          <h3 id="pdfModalTitle">Design Viewer</h3>
           <button class="close-modal">&times;</button>
         </div>
         <div class="pdf-modal-body">
@@ -78,7 +76,7 @@
 <script>
 // Clean JavaScript - No Emergency Close
 document.addEventListener('DOMContentLoaded', function() {
-  const viewButtons = document.querySelectorAll('.view-drawing-btn');
+  const viewButtons = document.querySelectorAll('.view-design-btn');
   const pdfModal = document.getElementById('pdfModal');
   const pdfViewer = document.getElementById('pdfViewer');
   const pdfModalTitle = document.getElementById('pdfModalTitle');
@@ -88,10 +86,10 @@ document.addEventListener('DOMContentLoaded', function() {
   viewButtons.forEach(button => {
     button.addEventListener('click', function() {
       const pdfFile = this.getAttribute('data-pdf');
-      const pdfTitle = this.closest('.drawing-card').querySelector('.drawing-title').textContent;
+      const designTitle = this.closest('.design-card').querySelector('.design-title').textContent;
 
       pdfViewer.src = `/images/drawings/${pdfFile}`;
-      pdfModalTitle.textContent = pdfTitle;
+      pdfModalTitle.textContent = designTitle;
       pdfModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
     });

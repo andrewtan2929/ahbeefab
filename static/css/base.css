@@ -188,63 +188,6 @@ nav a {
   border-bottom: 2px solid #000; /* Underline effect */
 }
 
-/* Sister business link styling */
-.sister-business-item {
-  position: relative;
-}
-
-.sister-business-link {
-  display: block;
-  color: red; /* Purple color */
-  padding: 4px 12px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  font-weight: 600;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.sister-business-link:hover {
-  color: #553c9a; /* Darker purple on hover */
-  transform: translateY(-1px);
-}
-
-/* Tooltip styling remains the same */
-.sister-tooltip {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  z-index: 1000;
-  margin-top: 8px;
-}
-
-.sister-business-link:hover .sister-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.sister-tooltip::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid #333;
-}
-
 /* ===== Header ===== */
 .site-header {
   width: 100%;
