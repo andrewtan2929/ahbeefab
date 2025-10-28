@@ -399,3 +399,28 @@
     margin-top: 30px; /* Increased from 10px to 30px */
   }
 }
+
+/* Tablet-specific fixes (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .designs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+
+  .design-preview {
+    height: 250px;
+  }
+
+  .design-info {
+    padding: 18px;
+  }
+
+  .design-title {
+    font-size: 1.1rem;
+  }
+
+  .design-description {
+    font-size: 0.9rem;
+  }
+}
