@@ -15,7 +15,7 @@ title = "Ahbee Fabrication | Premium Trailer Manufacturing Perth WA"
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-disableKinds = ["taxonomy", "term", "RSS"]
+disableKinds = ["section", "taxonomy", "term"]
 
 # Menu configuration
 [menu]
