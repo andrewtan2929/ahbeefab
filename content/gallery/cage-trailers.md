@@ -1,6 +1,5 @@
 ---
-title: "Cage Trailer"
-date: 2025-10-07
-draft: false
+title: "Cage Trailers"
+date: 2024-01-15T00:00:00+00:00
+lastmod: 2024-01-15T00:00:00+00:00
 ---
-
