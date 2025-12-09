@@ -1,25 +1,15 @@
 ---
-title: "About Ahbee Fabrication | Trailer Manufacturers Perth"
-description: "Learn about Ahbee Fabrication's expertise in trailer manufacturing, cage trailers, kitchen trailers, and custom metal fabrication in Perth WA."
+title: "About Ahbee Fabrication | Custom Trailer Specialist"
+description: "Learn about my expertise in custom trailer fabrication, specializing in bespoke trailers built from my Perth home workshop."
 date: 2024-01-01
 layout: "about"
 ---
 
-## Our Mission
+## My Story
 
-To deliver exceptional custom trailers that combine superior performance, lasting value, and meticulous attention to detail.
+Ahbee Fabrication was built on a simple but powerful belief — **quality should never be compromised**. I specialize in crafting custom trailers that are not only highly functional but engineered for longevity, combining robust strength, precision engineering, and careful attention in every weld and joint.
 
-## Our Story
+Operating from my home workshop allows me to focus completely on each project, ensuring you receive personal attention throughout the entire build process. From initial design concepts to final quality inspections, I'm committed to delivering trailers that exceed your expectations while maintaining fair, competitive pricing. **I don't cut corners** — every trailer is built to withstand demanding conditions and daily use, ensuring you get outstanding value and complete peace of mind.
 
-Ahbee Fabrication was built on a simple but powerful belief — **quality should never be compromised**. We specialize in crafting custom trailers that are not only highly functional but engineered for longevity, combining robust strength, precision engineering, and careful attention in every weld and joint.
+What sets my work apart is my personal dedication to craftsmanship. I see every project as more than just steel and bolts — **it's a personal commitment to reliability, endurance, and workmanship you can trust**. When you choose my workshop, you're choosing a fabricator who stands behind every build with personal pride and integrity.
 
-From initial design concepts to final quality inspections, we're committed to delivering trailers that exceed your expectations while maintaining fair, competitive pricing. **We don't cut corners** — every trailer is built to withstand demanding conditions and daily use, ensuring you get outstanding value and complete peace of mind.
-
-What sets us apart is our unwavering dedication to craftsmanship. We see every project as more than just steel and bolts — **it's a commitment to reliability, endurance, and workmanship you can trust**. When you choose Ahbee Fabrication, you're choosing a partner who stands behind every build with pride and integrity.
-
-## Why Choose Us?
-
-- **Expert Engineering**: Innovative solutions tailored to your requirements
-- **Robust Construction**: Premium materials designed for tough conditions
-- **Custom Designs**: Solutions made specifically for your needs
-- **Quality Assurance**: Consistent excellence in every project
