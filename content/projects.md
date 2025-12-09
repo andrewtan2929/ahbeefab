@@ -6,12 +6,12 @@ description: "Start your custom trailer project with Ahbee Fabrication. Get a fr
 
 ## Let's Build Something Amazing Together
 
-Ready to bring your trailer vision to life? At Ahbee Fabrication, we specialize in turning ideas into reality. Whether you need a custom cage trailer, kitchen trailer, or any specialized fabrication work, we're here to make it happen.
+Ready to bring your trailer vision to life? At Ahbee Fabrication, I specialize in turning ideas into reality. Whether you need a custom cage trailer, kitchen trailer, or any specialized fabrication work, I'm here to make it happen.
 
-**Why Choose Us for Your Project?**
+**Why Choose Ahbee Fabrication for Your Project?**
 - 🎯 **Custom Solutions**: Tailored to your exact specifications
   - 🔧 **Expert Craftsmanship**: Precision engineering and quality workmanship
-  - ⏱️ **Timely Delivery**: We respect your deadlines and budget
+  - ⏱️ **Timely Delivery**: I respect your deadlines and budget
   - 💬 **Clear Communication**: Regular updates throughout the project
   - ✅ **Quality Guarantee**: Built to last with premium materials
 
