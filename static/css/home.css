@@ -4,39 +4,47 @@
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background-color: #e74c3c; /* adjust as needed */
+  background-color: #e74c3c;
   color: white;
   text-decoration: none;
   border-radius: 0.3rem;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.home-intro .btn:hover {
+.home-intro .btn:hover,
+.home-intro .btn:focus {
   background-color: #c0392b;
+  transform: translateY(-2px); /* Optional subtle lift effect */
 }
 
 /* Homepage section styling */
 .home-intro {
   text-align: center;
   padding: 5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 .home-intro h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
+
 .home-intro p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
 /* ===== Non-Gallery Header ===== */
 .non-gallery-header {
-  display: flex;                  /* horizontal layout */
+  display: flex;
   flex-direction: row;
-  justify-content: center;        /* center horizontally */
-  align-items: center;            /* center vertically */
-  gap: 15px;                      /* space between logo and title */
-  height: 100px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  min-height: 100px; /* Changed from height to min-height */
   background-color: #fff;
   border-bottom: 2px solid #eee;
   padding: 0 20px;
@@ -44,24 +52,70 @@
 
 /* Logo */
 .non-gallery-header .logo {
-  height: 35px;                  /* adjust logo size */
+  height: 35px;
   width: auto;
   display: block;
 }
 
 /* Title */
 .non-gallery-header .site-title {
-  font-size: 0  .2rem;
+  font-size: 2rem; /* Fixed the bug */
   font-weight: 600;
-  margin: 0;                     /* reset default margin */
-  padding: 0;                    /* reset padding */
-  line-height: 30px;             /* match logo height for vertical centering */
+  margin: 0;
+  padding: 0;
+  line-height: 35px; /* Match logo height */
 }
 
 /* Optional: adjust spacing */
 .non-gallery-header .site-title {
-  margin-top: 5px;               /* moves title down slightly relative to logo */
-  margin-bottom: 0;              /* space below title */
+  margin-top: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-intro {
+    padding: 3rem 1rem;
+  }
+
+  .home-intro h2 {
+    font-size: 2rem;
+  }
+
+  .home-intro p {
+    font-size: 1.1rem;
+  }
+
+  .non-gallery-header {
+    flex-direction: row;
+    min-height: 80px;
+    padding: 10px 20px;
+    gap: 10px;
+  }
+
+  .non-gallery-header .logo {
+    height: 30px;
+  }
+
+  .non-gallery-header .site-title {
+    font-size: 1.5rem;
+    line-height: 30px;
+    margin-top: 0;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .non-gallery-header {
+    gap: 8px;
+  }
+
+  .non-gallery-header .site-title {
+    font-size: 1.2rem;
+  }
+
+  .home-intro h2 {
+    font-size: 1.8rem;
+  }
 }
 
 /* Responsive */
