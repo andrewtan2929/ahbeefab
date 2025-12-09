@@ -1,0 +1,66 @@
+{{ define "main" }}
+<!-- Services Page - Matching About Page Structure -->
+<section class="services-page-wrapper">
+  <!-- Hero Section -->
+  <div class="services-hero">
+    <div class="services-container">
+      <h1 class="services-hero-title">{{ .Title }}</h1>
+      <p class="services-hero-subtitle">Expert Fabrication Solutions</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="services-main-content">
+    <div class="services-container">
+      <!-- Intro Section -->
+      <div class="services-intro-section">
+        <div class="services-intro-icon">⚙️</div>
+        <h2>Our Services</h2>
+        <p class="services-intro-text">
+          {{ .Content }}
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-section">
+        <h3>What We Offer</h3>
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-icon">🚛</div>
+            <h4>Custom Trailer Builds</h4>
+            <p>We design and build custom trailers to your specifications, ensuring durability and performance for any application.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔩</div>
+            <h4>Steel & Aluminum Fabrication</h4>
+            <p>From structural components to artistic metalwork, our skilled team fabricates with precision and care.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">🔧</div>
+            <h4>Repairs & Modifications</h4>
+            <p>We offer professional repairs and modifications to extend the life and functionality of your equipment.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">📐</div>
+            <h4>Design Consultation</h4>
+            <p>Need help bringing your ideas to life? Our design consultation services help you plan and optimize your projects.</p>
+          </article>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="services-cta-section">
+        <h2>Ready to Start Your Project?</h2>
+        <p>Let's discuss your needs and create something exceptional together</p>
+        <div class="cta-buttons">
+          <a href="/contact/" class="cta-btn primary">Get Free Quote</a>
+          <a href="/gallery/" class="cta-btn secondary">View Our Work</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
