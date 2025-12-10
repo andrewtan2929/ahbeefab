@@ -76,12 +76,12 @@
 }
 
 .services-hero-subtitle {
-    font-size: clamp(0.875rem, 1.8vw, 1.125rem) !important; /* Reduced from 1.75rem */
+    font-size: clamp(0.875rem, 1.8vw, 1.125rem) !important;
     font-weight: 300;
     opacity: 0.9;
     max-width: 600px;
-    margin: 0 auto !important;
-    line-height: 1.3 !important; /* Reduced line height */
+    margin: 0 auto 2rem auto !important; /* FIXED: Shorthand with bottom margin */
+    line-height: 1.3 !important;
 }
 
 /* ===== MAIN CONTENT AREA ===== */
@@ -398,6 +398,8 @@
 
     .services-hero-subtitle {
         font-size: clamp(0.75rem, 1.5vw, 1rem) !important;
+        margin: 0 auto 1.5rem auto !important; /* FIXED: Mobile margin */
+        line-height: 1.3 !important;
     }
 
     .services-container {
@@ -531,3 +533,4 @@
         color: black !important;
     }
 }
+
