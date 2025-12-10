@@ -254,7 +254,7 @@
 
 @media (max-width: 768px) {
   .non-gallery-header {
-    min-height: 30px; /* Much more compact */
+    min-height: 25px; /* Much more compact */
     padding: 5px 15px; /* Reduced vertical padding */
   }
 
