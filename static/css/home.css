@@ -44,7 +44,7 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  min-height: 100px; /* Changed from height to min-height */
+  min-height: 75px; /* Changed from height to min-height */
   background-color: #fff;
   border-bottom: 2px solid #eee;
   padding: 0 20px;
