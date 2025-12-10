@@ -251,3 +251,19 @@
     margin-top: 0;
   }
 }
+
+@media (max-width: 768px) {
+  .non-gallery-header {
+    min-height: 50px; /* Much more compact */
+    padding: 5px 15px; /* Reduced vertical padding */
+  }
+
+  .non-gallery-header .logo {
+    height: 25px;
+  }
+
+  .non-gallery-header .site-title {
+    font-size: 1.2rem;
+    margin: 0; /* Remove any margins */
+  }
+}
