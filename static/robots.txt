@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://ahbeefab.netlify.app/sitemap.xml
+Sitemap: https://www.ahbeefabrication.com.au/sitemap.xml
+
