@@ -1,41 +1,45 @@
 [build]
   publish = "public"
-  command = "hugo --gc --minify"  # Added flags
+  command = "hugo --gc --minify"
 
 [build.environment]
   HUGO_VERSION = "0.149.1"
 
-# Redirects for clean URLs
+# 1. CANONICAL REDIRECTS (MOST IMPORTANT)
+# Redirect all HTTP and non-www to HTTPS & www
 [[redirects]]
-  from = "/projects/"
-  to = "/projects"
+  from = "http://ahbeefabrication.com.au/*"
+  to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
 [[redirects]]
-  from = "/about/"
-  to = "/about"
+  from = "http://www.ahbeefabrication.com.au/*"
+  to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
 [[redirects]]
-  from = "/services/"
-  to = "/services"
+  from = "https://ahbeefabrication.com.au/*"
+  to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
+# 2. OLD NETLIFY APP DOMAIN REDIRECT
 [[redirects]]
-  from = "/gallery/"
-  to = "/gallery"
+  from = "https://ahbeefab.netlify.app/*"
+  to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
+# 3. TRAILING SLASH HANDLING (Simplified)
+# Remove trailing slashes for ALL paths, not just specific pages
 [[redirects]]
-  from = "/contact/"
-  to = "/contact"
+  from = "/*/"
+  to = "/:splat"
   status = 301
+  force = true  # Ensures it overrides Hugo's default behavior
 
-# Netlify Forms configuration
+# Netlify Forms and environment settings
 [context.production.environment]
   HUGO_ENV = "production"
 
-# Optional: Branch deploy settings
 [context.deploy-preview]
   command = "hugo -b $DEPLOY_PRIME_URL"
 
