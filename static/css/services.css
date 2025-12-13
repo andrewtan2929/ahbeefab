@@ -148,8 +148,12 @@
 /* ===== SERVICES GRID - 2x2 LAYOUT ===== */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Always 2 columns */
-    grid-template-rows: repeat(2, auto);   /* Always 2 rows */
+    /* Define the 2x2 template and name the areas */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+        "card1 card2"
+        "card3 card4";
     gap: var(--spacing-xl);
     margin-top: var(--spacing-xl);
     max-width: 1000px;
@@ -157,12 +161,33 @@
     margin-right: auto;
 }
 
-/* FIXED: Remove min-height: 0 which was causing overlap */
-.services-grid > * {
-    /* Reset any problematic properties */
-    min-height: initial;
+/* Assign each card to its specific area */
+.service-card:nth-child(1) { grid-area: card1; }
+.service-card:nth-child(2) { grid-area: card2; }
+.service-card:nth-child(3) { grid-area: card3; }
+.service-card:nth-child(4) { grid-area: card4; }
+
+/* Styles for individual cards - KEEP THIS RULE BELOW the grid-area assignments */
+.service-card {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-xl);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+    box-sizing: border-box;
 }
 
+/* 2. Assign each card to a specific grid area */
+.service-card:nth-child(1) { grid-area: card1; }
+.service-card:nth-child(2) { grid-area: card2; }
+.service-card:nth-child(3) { grid-area: card3; }
+.service-card:nth-child(4) { grid-area: card4; }
 .service-card {
     background: white;
     border-radius: var(--border-radius-lg);
