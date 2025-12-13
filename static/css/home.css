@@ -203,9 +203,36 @@
   transform: translateY(-2px);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .home-intro {
-    padding: 1.5rem 1rem;
+    padding: 3rem 1rem;
+  }
+
+  .home-intro h2 {
+    font-size: 2rem;
+  }
+
+  .home-intro p {
+    font-size: 1.1rem;
+  }
+
+  /* === CONSOLIDATED HEADER RULE === */
+  .non-gallery-header {
+    flex-direction: row;
+    min-height: 80px; /* Consistent with other pages */
+    padding: 10px 20px;
+    gap: 10px;
+  }
+
+  .non-gallery-header .logo {
+    height: 30px;
+  }
+
+  .non-gallery-header .site-title {
+    font-size: 1.5rem;
+    line-height: 30px;
+    margin-top: 0;
   }
 
   .home-cta-buttons {
@@ -218,52 +245,28 @@
     max-width: 250px;
   }
 
-  .workshop-notice {
+  .simple-notice {
     padding: 1rem;
     margin: 1.5rem 0;
   }
 
-  .workshop-notice li {
+  .simple-notice li {
     padding-left: 1.25rem;
     font-size: 0.95rem;
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Extra small devices */
+@media (max-width: 480px) {
   .non-gallery-header {
-    flex-direction: row !important;       /* Keep logo + title side by side */
-    height: auto;
-    padding: 10px 20px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .non-gallery-header .logo {
-    height: 25px !important;  /* Reasonable mobile size */
-    width: auto;
-  }
-
-  .non-gallery-header .site-title {
-    font-size: 1.3rem !important;  /* Readable mobile size */
-    line-height: normal;
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .non-gallery-header {
-    min-height: 25px; /* Much more compact */
-    padding: 5px 15px; /* Reduced vertical padding */
-  }
-
-  .non-gallery-header .logo {
-    height: 25px;
+    gap: 8px;
   }
 
   .non-gallery-header .site-title {
     font-size: 1.2rem;
-    margin: 0; /* Remove any margins */
+  }
+
+  .home-intro h2 {
+    font-size: 1.8rem;
   }
 }
