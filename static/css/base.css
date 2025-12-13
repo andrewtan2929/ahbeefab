@@ -48,10 +48,18 @@ body.homepage h2 {
   margin-bottom: 1rem;
 }
 
-body.homepage p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
+/* ===== Homepage specific content, exclude footer ===== */
+body.homepage main p {
+    font-size: 1.25rem;   /* Only affects content in main */
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  body.homepage main p {
+      font-size: 1rem;   /* Only content in main, not footer */
+      max-width: 90%;
+  }
 }
 
 body.homepage a.btn {
@@ -73,8 +81,8 @@ footer {
   margin-top: auto;
   background: url("../images/wallpaper/footer.avif") no-repeat center center;
   background-size: cover;
-  font-size: 1rem;
-  color: green;
+  font-size: 0.875rem;   /* Standard font size for all pages */
+  color: green;          /* Footer text color */
   padding: 0 0;
   text-align: center;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.4);
@@ -88,10 +96,33 @@ footer {
   min-height: 50px;
   padding: 1px 0 !important;
   text-align: center;
+  font-size: 0.875rem !important;  /* Ensure consistency */
 }
 
 .site-footer p {
   margin: 0 !important;
+  font-size: 0.875rem !important;  /* Prevent inheritance from homepage p */
+  line-height: 1.4;
+  color: inherit;                  /* Inherits green from footer */
+}
+
+/* ===== Footer: Universal, overrides homepage p ===== */
+footer,
+footer *,
+.site-footer,
+.site-footer p {
+    font-size: 0.875rem !important;   /* Ensures all footer text same size */
+    line-height: 1.4 !important;
+    color: green !important;
+    margin: 0 !important;
+}
+
+/* ===== Footer Responsive ===== */
+@media (max-width: 768px) {
+  .site-footer, .site-footer p {
+    font-size: 0.75rem !important;
+    padding: 8px 0 !important;
+  }
 }
 
 /* ===== Navigation ===== */
