@@ -1,5 +1,5 @@
 ---
-title: "Ahbee Fabrication | Premium Trailer Manufacturing Perth"
-description: "Professional cage trailers & kitchen trailers manufacturing in Perth, Western Australia. Custom fabrication, repairs, and metal work services."
+title: "Ahbee Fabrication | Custom Trailer Manufacturing in Perth"
+description: "Custom cage trailers, kitchen trailers, and metal fabrication services in Perth, Western Australia. Built to order with quality workmanship."
 date: 2024-01-01
 ---
