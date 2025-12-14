@@ -131,6 +131,33 @@ body.homepage a.btn:hover {
     transform: translateY(-2px);
 }
 
+/* ===== Consistent Branding for ALL Headers ===== */
+.gallery-logo,
+.non-gallery-header .logo {
+    height: 35px;
+    width: auto;
+}
+
+.gallery-title,
+.non-gallery-header .site-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+}
+
+/* Optional: Add responsive rules for these shared styles */
+@media (max-width: 768px) {
+    .gallery-logo,
+    .non-gallery-header .logo {
+        height: 25px;
+    }
+    .gallery-title,
+    .non-gallery-header .site-title {
+        font-size: 1.3rem;
+    }
+}
+
 /* ===== Navigation ===== */
 nav {
     background: url("../images/wallpaper/nav.avif") no-repeat center center;

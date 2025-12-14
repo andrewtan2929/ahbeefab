@@ -34,7 +34,41 @@
   overflow: hidden;
 }
 
-/* ===== Trailer Selection Buttons ===== */
+/* ===== Gallery Page Header & Buttons ===== */
+.gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: url('../images/wallpaper/nav.avif') no-repeat center center; /* Match other pages */
+    background-size: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Match other pages */
+}
+
+/* Unique styles for the button container */
+.gallery-header .gallery-right {
+    display: flex;
+    gap: 15px;
+}
+
+/* Button styles for the gallery page */
+.gallery-header .btn-header {
+    padding: 0.5rem 1rem;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.gallery-header .btn-header:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+/* ===== Trailer Selection Buttons (if still needed) ===== */
 .trailer-selection {
   display: flex;
   justify-content: center;
@@ -73,7 +107,7 @@
 /* Swiper container - desktop only +10% */
 .swiper {
   width: 100%;
-  height: 65vh; /* Original for all devices */
+  height: 65vh;
   max-height: 700px;
   min-height: 400px;
   position: relative;
@@ -83,9 +117,9 @@
 /* Desktop only +10% increase */
 @media (min-width: 1025px) {
   .swiper {
-    height: 71.5vh; /* 65vh + 10% = 71.5vh */
-    max-height: 770px; /* 700px + 10% = 770px */
-    min-height: 440px; /* 400px + 10% = 440px */
+    height: 71.5vh;
+    max-height: 770px;
+    min-height: 440px;
   }
 }
 
@@ -133,214 +167,33 @@
   opacity: 1;
 }
 
-/* ===== Gallery Header ===== */
-body.gallery-page .gallery-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0.8rem 8%;
-  background: url("{{ "/images/wallpaper/nav.avif" | relURL }}") no-repeat center center;
-  background-size: cover;
-  color: black;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-}
-
-/* Left side: logo + title */
-body.gallery-page .gallery-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-body.gallery-page .gallery-logo {
-  width: 70px;
-  height: auto;
-}
-
-body.gallery-page .gallery-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-/* Button group styles */
-body.gallery-page .gallery-header .button-group {
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-}
-
-body.gallery-page .gallery-header .button-group .btn-header {
-  padding: 0.4rem 1.2rem;
-  font-size: 0.9rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  background-color: #ffb400;
-  color: #1c1c1c;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-body.gallery-page .gallery-header .button-group .btn-header:hover {
-  background-color: #ffd65a;
-  transform: scale(1.05);
-}
-
-/* ===== Slideshow Controls ===== */
-.slideshow-controls {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 10px;
-  z-index: 100;
-  display: none; /* Fixed: Removed duplicate display property */
-}
-
-.control-btn {
-  padding: 8px;
-}
-
-
-/* ===== Gallery Mobile Header Fix ===== */
-/* Mobile Portrait - Keep logo and title side by side */
+/* ===== Gallery Mobile Responsive ===== */
 @media (max-width: 768px) {
-  body.gallery-page .gallery-header {
-    padding: 0.8rem 5% !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
+  .gallery-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.8rem 1rem;
   }
 
-  body.gallery-page .gallery-left {
-    flex-direction: row !important; /* Force horizontal layout */
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    flex-wrap: nowrap !important;
+  .gallery-header .gallery-right {
+    gap: 0.5rem;
   }
 
-  body.gallery-page .gallery-logo {
-    width: 40px !important; /* Smaller logo for mobile */
-    height: auto !important;
+  .gallery-header .btn-header {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
   }
 
-  body.gallery-page .gallery-title {
-    font-size: 1.1rem !important; /* Smaller title for mobile */
-    white-space: nowrap !important; /* Prevent title from breaking */
-  }
-
-  /* Adjust buttons for mobile */
-  body.gallery-page .gallery-header .button-group {
-    gap: 0.5rem !important;
-  }
-
-  body.gallery-page .gallery-header .button-group .btn-header {
-    padding: 0.3rem 0.8rem !important;
-    font-size: 0.8rem !important;
+  /* Adjust Swiper for mobile */
+  .swiper {
+    height: 50vh;
+    min-height: 300px;
   }
 }
 
-/* Mobile Landscape - Even more compact */
-@media (max-width: 768px) and (orientation: landscape) {
-  body.gallery-page .gallery-header {
-    padding: 0.5rem 4% !important;
-  }
-
-  body.gallery-page .gallery-logo {
-    width: 35px !important;
-  }
-
-  body.gallery-page .gallery-title {
-    font-size: 1rem !important;
-  }
-
-  body.gallery-page .gallery-header .button-group .btn-header {
-    padding: 0.25rem 0.6rem !important;
-    font-size: 0.75rem !important;
-  }
-}
-
-/* Small Mobile Devices */
 @media (max-width: 480px) {
-  body.gallery-page .gallery-header {
-    flex-direction: column !important;
-    gap: 0.8rem !important;
-  }
-
-  body.gallery-page .gallery-left {
-    order: 1;
-  }
-
-  body.gallery-page .gallery-header .button-group {
-    order: 2;
-    justify-content: center !important;
-  }
-
-  body.gallery-page .gallery-logo {
-    width: 35px !important;
-  }
-
-  body.gallery-page .gallery-title {
-    font-size: 1rem !important;
-  }
-}
-
-/* ===== GALLERY MOBILE PORTRAIT FIX ===== */
-@media (max-width: 768px) and (orientation: portrait) {
-  body.gallery-page .gallery-header {
-    flex-direction: row !important;
-    justify-content: space-between !important;
-    padding: 0.6rem 5% !important;
-    flex-wrap: nowrap !important;
-  }
-
-  body.gallery-page .gallery-left {
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    flex-shrink: 0 !important;
-  }
-
-  body.gallery-page .gallery-logo {
-    width: 35px !important;
-    height: auto !important;
-  }
-
-  body.gallery-page .gallery-title {
-    font-size: 1rem !important;
-    white-space: nowrap !important;
-  }
-
-  body.gallery-page .gallery-header .button-group {
-    flex-shrink: 0 !important;
-    gap: 0.4rem !important;
-  }
-
-  body.gallery-page .gallery-header .button-group .btn-header {
-    padding: 0.3rem 0.7rem !important;
-    font-size: 0.75rem !important;
-  }
-}
-
-/* ===== GALLERY SMALL MOBILE PORTRAIT ===== */
-@media (max-width: 480px) and (orientation: portrait) {
-  body.gallery-page .gallery-header {
-    padding: 0.5rem 4% !important;
-  }
-
-  body.gallery-page .gallery-logo {
-    width: 30px !important;
-  }
-
-  body.gallery-page .gallery-title {
-    font-size: 0.9rem !important;
-  }
-
-  body.gallery-page .gallery-header .button-group .btn-header {
-    padding: 0.25rem 0.6rem !important;
-    font-size: 0.7rem !important;
+  .gallery-header .btn-header {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
   }
 }
