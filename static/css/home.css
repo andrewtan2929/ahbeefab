@@ -28,29 +28,64 @@
 }
 
 /* ===== NON-GALLERY HEADER (For Homepage) ===== */
-/* REMOVED: min-height and padding to allow base.css .site-header rules to control size */
+/* Match EXACTLY the .site-header styling from base.css */
 .non-gallery-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  background-color: #fff;
-  border-bottom: 2px solid #eee;
+    width: 100%;
+    background: url('../images/wallpaper/nav.avif') no-repeat center center;
+    background-size: cover;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Container that holds logo+title - MUST match .header-container */
+.non-gallery-header .header-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .non-gallery-header .logo {
-  height: 35px;
-  width: auto;
-  display: block;
+    height: 35px;
+    width: auto;
+    max-height: 60px;
 }
 
 .non-gallery-header .site-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
-  line-height: 35px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .non-gallery-header {
+        padding: 10px 0; /* Match base.css mobile padding */
+    }
+
+    .non-gallery-header .header-container {
+        gap: 10px; /* Match base.css mobile gap */
+    }
+
+    .non-gallery-header .logo {
+        height: 25px;
+        max-height: 30px;
+    }
+
+    .non-gallery-header .site-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .non-gallery-header .site-title {
+        font-size: 1.1rem;
+    }
 }
 
 /* ===== NOTICE & CTA ===== */
