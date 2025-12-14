@@ -37,22 +37,24 @@
 /* ===== Gallery Page Header & Buttons ===== */
 .gallery-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* ← This pushes .gallery-left left and .gallery-header-right right */
     align-items: center;
     padding: 1rem 2rem;
-    background: url('../images/wallpaper/nav.avif') no-repeat center center; /* Match other pages */
+    background: url('../images/wallpaper/nav.avif') no-repeat center center;
     background-size: cover;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Match other pages */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    position: relative;
 }
 
-/* Unique styles for the button container */
-.gallery-header .gallery-right {
+/* Container for logo + title */
+.gallery-left {
     display: flex;
+    align-items: center;
     gap: 15px;
 }
 
-/* Button styles for the gallery page */
-.gallery-header .btn-header {
+/* Button styles - Keep if .btn-header is used elsewhere */
+.btn-header {
     padding: 0.5rem 1rem;
     background-color: #e74c3c;
     color: white;
@@ -63,137 +65,145 @@
     transition: background 0.3s, transform 0.2s;
 }
 
-.gallery-header .btn-header:hover {
+.btn-header:hover {
     background-color: #c0392b;
     transform: translateY(-2px);
 }
 
-/* ===== Trailer Selection Buttons (if still needed) ===== */
-.trailer-selection {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
-  padding: 0 1rem;
+/* ===== Gallery Header Right-Side Layout ===== */
+.gallery-header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Space between trailer buttons and slideshow controls */
 }
 
-.trailer-btn {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* Style for the trailer selection buttons container */
+.trailer-selection-buttons {
+    display: flex;
+    gap: 15px;
 }
 
-.trailer-btn:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
+/* Style for the placeholder where slideshow controls will go */
+.slideshow-controls-placeholder {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
 }
 
-/* ===== Gallery Section ===== */
-.gallery-section {
-  width: 100%;
-  height: auto;
-  min-height: 0;
-  overflow: hidden;
-  position: relative;
+/* Styles for the slideshow controls AFTER they are moved */
+.gallery-header-right .slideshow-controls {
+    display: flex;
+    gap: 10px;
+    margin: 0;
 }
 
-/* Swiper container - desktop only +10% */
-.swiper {
-  width: 100%;
-  height: 65vh;
-  max-height: 700px;
-  min-height: 400px;
-  position: relative;
-  z-index: 1;
-}
-
-/* Desktop only +10% increase */
-@media (min-width: 1025px) {
-  .swiper {
-    height: 71.5vh;
-    max-height: 770px;
-    min-height: 440px;
-  }
-}
-
-/* Each slide fills swiper fully */
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* Slide images - contain to maintain aspect ratio */
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-/* Swiper navigation arrows */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #e74c3c;
-  background: rgba(255, 255, 255, 0.7);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px;
-}
-
-/* Pagination bullets */
-.swiper-pagination-bullet {
-  background: #e74c3c;
-  opacity: 0.5;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: 1;
-}
-
-/* ===== Gallery Mobile Responsive ===== */
-@media (max-width: 768px) {
-  .gallery-header {
-    flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.8rem 1rem;
-  }
-
-  .gallery-header .gallery-right {
-    gap: 0.5rem;
-  }
-
-  .gallery-header .btn-header {
-    padding: 0.4rem 0.8rem;
+/* Style the individual control buttons */
+.gallery-header-right .slideshow-controls .control-btn {
+    padding: 0.4rem 0.9rem;
+    background-color: #3498db; /* Distinct blue */
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-weight: bold;
     font-size: 0.9rem;
-  }
+    transition: background 0.3s, transform 0.2s;
+    white-space: nowrap;
+}
 
-  /* Adjust Swiper for mobile */
-  .swiper {
-    height: 50vh;
-    min-height: 300px;
-  }
+.gallery-header-right .slideshow-controls .control-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ===== Swiper Styles (Keep these if needed) ===== */
+.swiper {
+    width: 100%;
+    height: 65vh;
+    max-height: 700px;
+    min-height: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Mobile Responsive (CONSOLIDATED) ===== */
+@media (max-width: 768px) {
+    .gallery-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .gallery-left {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+
+    .gallery-header-right {
+        flex-direction: row; /* Changed from column to row to keep buttons side-by-side */
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+        justify-content: flex-end; /* ← THIS pushes everything to the right */
+    }
+
+    .trailer-selection-buttons {
+        justify-content: flex-end; /* ← Changed from center to flex-end */
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .gallery-header-right .slideshow-controls {
+        justify-content: flex-end; /* ← Changed from center to flex-end */
+        order: 2;
+        position: static;
+        transform: none;
+        margin-top: 0; /* Changed from 10px to 0 */
+        width: auto; /* Changed from 100% to auto */
+    }
+
+    .btn-header {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .gallery-header-right .slideshow-controls .control-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .swiper {
+        height: 50vh;
+        min-height: 300px;
+    }
 }
 
 @media (max-width: 480px) {
-  .gallery-header .btn-header {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.8rem;
-  }
+    .gallery-header-right {
+        flex-direction: column; /* Stack vertically on very small screens */
+        align-items: flex-end; /* Align items to the right */
+        gap: 10px;
+    }
+
+    .trailer-selection-buttons {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .gallery-header-right .slideshow-controls {
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .btn-header {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+    }
+
+    .gallery-header-right .slideshow-controls .control-btn {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.8rem;
+    }
 }

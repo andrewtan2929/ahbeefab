@@ -1,15 +1,17 @@
 <header class="gallery-header">
   <div class="gallery-left">
-    <!-- Use the same simple path as header.html for consistency -->
     <img src="/images/logo.png" alt="Ahbee Fabrication Logo" class="gallery-logo">
-    <!-- CHANGE TO <h1> to match header.html and improve SEO -->
     <h1 class="gallery-title">Ahbee Fabrication</h1>
   </div>
 
-  <!-- CHANGE class to 'gallery-right' to match header.html -->
-  <div class="gallery-right">
-    <!-- BUTTONS ARE UNTOUCHED - functionality remains identical -->
-    <button class="btn-header" data-target="cage">Cage Trailer</button>
-    <button class="btn-header" data-target="kitchen">Kitchen Trailer</button>
+  <!-- Right-side container for ALL controls -->
+  <div class="gallery-header-right">
+    <!-- Main trailer selection buttons -->
+    <div class="trailer-selection-buttons">
+      <button class="btn-header" data-target="cage">Cage Trailer</button>
+      <button class="btn-header" data-target="kitchen">Kitchen Trailer</button>
+    </div>
+    <!-- Slideshow controls will be moved here by JavaScript -->
+    <div class="slideshow-controls-placeholder"></div>
   </div>
 </header>

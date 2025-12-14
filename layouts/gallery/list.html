@@ -86,6 +86,20 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.kitchen-trailer-swiper').style.display = 'none';
     document.querySelector('.slideshow-controls').style.display = 'none';
 
+    // Function to move controls into the gallery header
+    function moveControlsToHeader() {
+        const controlsContainer = document.querySelector('.slideshow-controls');
+        const galleryHeader = document.querySelector('.gallery-header');
+
+        if (controlsContainer && galleryHeader && !controlsContainer.moved) {
+            // Append the controls to the header
+            galleryHeader.appendChild(controlsContainer);
+            // Add a flag to prevent moving it multiple times
+            controlsContainer.moved = true;
+            console.log('Controls moved to gallery header.');
+        }
+    }
+
     // Stop button functionality
     stopBtn.addEventListener('click', function() {
         if (activeSwiper) {
@@ -130,7 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show selected swiper and controls
         const targetElement = document.querySelector(`.${type}-trailer-swiper`);
         targetElement.style.display = 'block';
-        document.querySelector('.slideshow-controls').style.display = 'flex';
+
+        // Show and MOVE the controls to the header
+        const controlsContainer = document.querySelector('.slideshow-controls');
+        controlsContainer.style.display = 'flex';
+        moveControlsToHeader(); // <-- CRITICAL: Call the move function here
 
         // Set active swiper
         activeSwiper = swiperInstance;
