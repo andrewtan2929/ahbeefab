@@ -34,65 +34,110 @@
   overflow: hidden;
 }
 
-/* ===== Gallery Page Header & Buttons ===== */
+/* ===== Gallery Page Header ===== */
 .gallery-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: url('../images/wallpaper/nav.avif') no-repeat center center; /* Match other pages */
-    background-size: cover;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Match other pages */
-}
-
-/* Unique styles for the button container */
-.gallery-header .gallery-right {
-    display: flex;
-    gap: 15px;
-}
-
-/* Button styles for the gallery page */
-.gallery-header .btn-header {
-    padding: 0.5rem 1rem;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.gallery-header .btn-header:hover {
-    background-color: #c0392b;
-    transform: translateY(-2px);
-}
-
-/* ===== Trailer Selection Buttons (if still needed) ===== */
-.trailer-selection {
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 2rem auto;
-  max-width: 600px;
-  padding: 0 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: url('../images/wallpaper/nav.avif') no-repeat center center;
+  background-size: cover;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  gap: 1rem;
 }
 
-.trailer-btn {
-  background: #e74c3c;
+/* Left section with logo and title */
+.gallery-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.gallery-logo {
+  height: 50px;
+  width: auto;
+  display: block;
+}
+
+.gallery-title {
+  font-size: 1.8rem;
+  color: black;
+  font-weight: 700;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Right section with all controls */
+.gallery-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+/* Trailer selection buttons row */
+.trailer-selection-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Slideshow controls container */
+.slideshow-controls-placeholder {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Button styles */
+.btn-header {
+  padding: 0.5rem 1.2rem;
+  background-color: #e74c3c;
   color: white;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  border-radius: 0.3rem;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.2s;
+  white-space: nowrap;
 }
 
-.trailer-btn:hover {
-  background: #c0392b;
+.btn-header:hover {
+  background-color: #c0392b;
   transform: translateY(-2px);
+}
+
+/* Swiper slideshow controls (will be moved to placeholder by JS) */
+.swiper-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #e74c3c;
+  background: rgba(255, 255, 255, 0.7);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  margin-top: 0;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 16px;
 }
 
 /* ===== Gallery Section ===== */
@@ -102,9 +147,10 @@
   min-height: 0;
   overflow: hidden;
   position: relative;
+  margin-top: 1rem;
 }
 
-/* Swiper container - desktop only +10% */
+/* Swiper container - desktop */
 .swiper {
   width: 100%;
   height: 65vh;
@@ -131,7 +177,7 @@
   height: 100%;
 }
 
-/* Slide images - contain to maintain aspect ratio */
+/* Slide images */
 .swiper-slide img {
   width: 100%;
   height: 100%;
@@ -139,25 +185,12 @@
   display: block;
 }
 
-/* Swiper navigation arrows */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #e74c3c;
-  background: rgba(255, 255, 255, 0.7);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Swiper pagination bullets */
+.swiper-pagination {
+  position: relative;
+  margin-top: 1rem;
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
-  font-size: 20px;
-}
-
-/* Pagination bullets */
 .swiper-pagination-bullet {
   background: #e74c3c;
   opacity: 0.5;
@@ -167,33 +200,115 @@
   opacity: 1;
 }
 
-/* ===== Gallery Mobile Responsive ===== */
-@media (max-width: 768px) {
+/* ===== Mobile Responsive ===== */
+@media (max-width: 1024px) {
   .gallery-header {
     flex-direction: column;
-    gap: 0.8rem;
-    padding: 0.8rem 1rem;
+    padding: 1rem;
+    gap: 1rem;
   }
 
-  .gallery-header .gallery-right {
+  .gallery-left {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .gallery-header-right {
+    width: 100%;
+    align-items: center;
+  }
+
+  .trailer-selection-buttons {
+    justify-content: center;
+  }
+
+  .slideshow-controls-placeholder {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-left {
+    gap: 0.75rem;
+  }
+
+  .gallery-logo {
+    height: 40px;
+  }
+
+  .gallery-title {
+    font-size: 1.5rem;
+  }
+
+  .trailer-selection-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.5rem;
   }
 
-  .gallery-header .btn-header {
-    padding: 0.4rem 0.8rem;
+  .btn-header {
+    padding: 0.4rem 0.9rem;
     font-size: 0.9rem;
   }
 
-  /* Adjust Swiper for mobile */
   .swiper {
     height: 50vh;
     min-height: 300px;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 32px;
+    height: 32px;
+  }
+
+  .swiper-button-next:after,
+  .swiper-button-prev:after {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
-  .gallery-header .btn-header {
-    padding: 0.3rem 0.7rem;
+  .gallery-header {
+    padding: 0.75rem;
+  }
+
+  .gallery-logo {
+    height: 35px;
+  }
+
+  .gallery-title {
+    font-size: 1.3rem;
+  }
+
+  .btn-header {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .trailer-selection-buttons {
+    gap: 0.35rem;
+  }
+}
+
+/* Small screen adjustments */
+@media (max-width: 360px) {
+  .gallery-title {
+    font-size: 1.1rem;
+  }
+
+  .btn-header {
+    padding: 0.3rem 0.6rem;
     font-size: 0.8rem;
+  }
+
+  .trailer-selection-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trailer-selection-buttons .btn-header {
+    width: 100%;
+    max-width: 200px;
   }
 }
