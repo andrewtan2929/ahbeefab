@@ -7,10 +7,9 @@
 
 <!-- Gallery Section -->
 <section class="gallery-section">
-  <!-- Control Buttons -->
-  <div class="slideshow-controls">
-    <button class="control-btn" id="stopSlideshow">⏸️ Stop</button>
-    <button class="control-btn" id="startSlideshow">▶️ Start</button>
+  <!-- Status Indicator -->
+  <div class="slideshow-status" id="slideshowStatus" style="display: none;">
+    Slideshow: Running
   </div>
 
   <!-- Cage Trailer Swiper -->
@@ -57,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const cageBtn = document.querySelector('button[data-target="cage"]');
     const kitchenBtn = document.querySelector('button[data-target="kitchen"]');
     const galleryIntro = document.getElementById('galleryIntro');
-    const stopBtn = document.getElementById('stopSlideshow');
-    const startBtn = document.getElementById('startSlideshow');
+    const statusIndicator = document.getElementById('slideshowStatus');
 
     let activeSwiper = null;
+    let currentGallery = null;
 
     // Initialize swipers
     const cageSwiper = new Swiper('.cage-trailer-swiper', {
@@ -79,55 +78,63 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceBetween: 20,
     });
 
-    // Initially hide swipers and controls
+    // Initially hide swipers and stop autoplay
     cageSwiper.autoplay.stop();
     kitchenSwiper.autoplay.stop();
     document.querySelector('.cage-trailer-swiper').style.display = 'none';
     document.querySelector('.kitchen-trailer-swiper').style.display = 'none';
-    document.querySelector('.slideshow-controls').style.display = 'none';
 
-    // Function to move controls into the gallery header
-    function moveControlsToHeader() {
-        const controlsContainer = document.querySelector('.slideshow-controls');
-        const galleryHeader = document.querySelector('.gallery-header');
+    // Function to update button states
+    function updateButtonStates(activeGallery, isRunning) {
+        // Remove all states from buttons
+        cageBtn.classList.remove('active', 'slideshow-running', 'slideshow-paused');
+        kitchenBtn.classList.remove('active', 'slideshow-running', 'slideshow-paused');
 
-        if (controlsContainer && galleryHeader && !controlsContainer.moved) {
-            // Append the controls to the header
-            galleryHeader.appendChild(controlsContainer);
-            // Add a flag to prevent moving it multiple times
-            controlsContainer.moved = true;
-            console.log('Controls moved to gallery header.');
+        // Update active button
+        if (activeGallery === 'cage') {
+            cageBtn.classList.add('active');
+            cageBtn.classList.add(isRunning ? 'slideshow-running' : 'slideshow-paused');
+        } else if (activeGallery === 'kitchen') {
+            kitchenBtn.classList.add('active');
+            kitchenBtn.classList.add(isRunning ? 'slideshow-running' : 'slideshow-paused');
+        }
+
+        // Update button text
+        if (activeGallery) {
+            cageBtn.textContent = activeGallery === 'cage' ?
+                (isRunning ? '⏸️ Cage Trailer' : '▶️ Cage Trailer') : 'Cage Trailer';
+            kitchenBtn.textContent = activeGallery === 'kitchen' ?
+                (isRunning ? '⏸️ Kitchen Trailer' : '▶️ Kitchen Trailer') : 'Kitchen Trailer';
+        }
+
+        // Update status indicator
+        if (activeGallery && statusIndicator) {
+            statusIndicator.style.display = 'block';
+            statusIndicator.textContent = `Slideshow: ${isRunning ? 'Running' : 'Paused'}`;
+            statusIndicator.classList.toggle('paused', !isRunning);
+        } else if (statusIndicator) {
+            statusIndicator.style.display = 'none';
         }
     }
 
-    // Stop button functionality
-    stopBtn.addEventListener('click', function() {
-        if (activeSwiper) {
-            activeSwiper.autoplay.stop();
+    // Toggle gallery function
+    function toggleGallery(type, swiperInstance) {
+        // If clicking the same gallery that's currently active
+        if (currentGallery === type) {
+            // Toggle autoplay
+            if (activeSwiper.autoplay.running) {
+                activeSwiper.autoplay.stop();
+                updateButtonStates(type, false);
+            } else {
+                activeSwiper.autoplay.start();
+                updateButtonStates(type, true);
+            }
+            return;
         }
-    });
 
-    // Start button functionality
-    startBtn.addEventListener('click', function() {
-        if (activeSwiper) {
-            activeSwiper.autoplay.start();
-        }
-    });
+        // If switching to a different gallery
+        currentGallery = type;
 
-    // Click handlers for trailer selection
-    if (cageBtn) {
-        cageBtn.addEventListener('click', function() {
-            showSwiper('cage', cageSwiper);
-        });
-    }
-
-    if (kitchenBtn) {
-        kitchenBtn.addEventListener('click', function() {
-            showSwiper('kitchen', kitchenSwiper);
-        });
-    }
-
-    function showSwiper(type, swiperInstance) {
         // Fade out intro statement
         if (galleryIntro) {
             galleryIntro.classList.add('fade-out');
@@ -141,14 +148,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cageSwiper.autoplay.stop();
         kitchenSwiper.autoplay.stop();
 
-        // Show selected swiper and controls
+        // Show selected swiper
         const targetElement = document.querySelector(`.${type}-trailer-swiper`);
         targetElement.style.display = 'block';
-
-        // Show and MOVE the controls to the header
-        const controlsContainer = document.querySelector('.slideshow-controls');
-        controlsContainer.style.display = 'flex';
-        moveControlsToHeader(); // <-- CRITICAL: Call the move function here
 
         // Set active swiper
         activeSwiper = swiperInstance;
@@ -159,12 +161,28 @@ document.addEventListener('DOMContentLoaded', function() {
             swiperInstance.slideTo(0);
             swiperInstance.autoplay.start();
 
+            // Update button states
+            updateButtonStates(type, true);
+
             // Scroll to gallery section
             document.querySelector('.gallery-section').scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }, 50);
+    }
+
+    // Click handlers for trailer selection
+    if (cageBtn) {
+        cageBtn.addEventListener('click', function() {
+            toggleGallery('cage', cageSwiper);
+        });
+    }
+
+    if (kitchenBtn) {
+        kitchenBtn.addEventListener('click', function() {
+            toggleGallery('kitchen', kitchenSwiper);
+        });
     }
 });
 </script>

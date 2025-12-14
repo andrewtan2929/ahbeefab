@@ -44,7 +44,6 @@
   background-size: cover;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   gap: 2rem;
-  position: relative;
 }
 
 /* Left section with logo and title */
@@ -69,51 +68,23 @@
   white-space: nowrap;
 }
 
-/* Main controls container - FIXED: Keeps everything stable */
-.gallery-controls-container {
+/* Main controls wrapper */
+.gallery-controls-wrapper {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   flex-grow: 1;
   justify-content: flex-end;
-  min-width: 0; /* Allows proper shrinking */
 }
 
-/* Combined button container - FIXED: All buttons live here */
-.gallery-buttons-container {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  transition: all 0.3s ease;
-}
-
-/* Trailer selection buttons */
+/* Trailer selection buttons - now with dual function */
 .trailer-selection-buttons {
   display: flex;
   gap: 1rem;
   flex-shrink: 0;
 }
 
-/* Slideshow controls (Start/Stop buttons) - initially hidden */
-.slideshow-controls-placeholder {
-  display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
-  opacity: 0;
-  width: 0;
-  overflow: hidden;
-  transition: opacity 0.3s ease, width 0.3s ease;
-}
-
-/* When slideshow is active */
-.slideshow-controls-placeholder.active {
-  opacity: 1;
-  width: auto;
-  overflow: visible;
-}
-
-/* Button styles */
+/* Button styles - with states for active slideshow */
 .btn-header {
   padding: 0.5rem 1.2rem;
   background-color: #e74c3c;
@@ -123,9 +94,11 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
-  transition: background 0.3s, transform 0.2s;
+  transition: all 0.3s ease;
   white-space: nowrap;
   flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-header:hover {
@@ -133,14 +106,36 @@
   transform: translateY(-2px);
 }
 
-/* Swiper navigation buttons */
-.swiper-controls {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  flex-shrink: 0;
+/* Active state for button when its gallery is displayed */
+.btn-header.active {
+  background-color: #2ecc71;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
 }
 
+/* Slideshow running state */
+.btn-header.slideshow-running {
+  background-color: #3498db;
+  animation: pulse 2s infinite;
+}
+
+/* Paused state */
+.btn-header.slideshow-paused {
+  background-color: #e67e22;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+  }
+}
+
+/* Swiper navigation buttons */
 .swiper-button-next,
 .swiper-button-prev {
   color: #e74c3c;
@@ -169,6 +164,7 @@
   overflow: hidden;
   position: relative;
   margin-top: 1rem;
+  padding: 1rem;
 }
 
 /* Swiper container - desktop */
@@ -179,6 +175,8 @@
   min-height: 400px;
   position: relative;
   z-index: 1;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Desktop only +10% increase */
@@ -196,6 +194,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  background: #f8f9fa;
 }
 
 /* Slide images */
@@ -204,6 +203,11 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide img:hover {
+  transform: scale(1.02);
 }
 
 /* Swiper pagination bullets */
@@ -215,10 +219,32 @@
 .swiper-pagination-bullet {
   background: #e74c3c;
   opacity: 0.5;
+  transition: all 0.3s ease;
+  width: 12px;
+  height: 12px;
 }
 
 .swiper-pagination-bullet-active {
   opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Status indicator */
+.slideshow-status {
+  text-align: center;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+  color: #3498db;
+  font-weight: 500;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.slideshow-status.paused {
+  background: rgba(230, 126, 34, 0.1);
+  color: #e67e22;
 }
 
 /* ===== Mobile Responsive ===== */
@@ -234,32 +260,17 @@
     justify-content: center;
   }
 
-  .gallery-controls-container {
+  .gallery-controls-wrapper {
     width: 100%;
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .gallery-buttons-container {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
   .trailer-selection-buttons {
     width: 100%;
     justify-content: center;
-  }
-
-  .slideshow-controls-placeholder {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .slideshow-controls-placeholder.active {
-    width: 100%;
+    flex-wrap: wrap;
   }
 }
 
@@ -276,11 +287,6 @@
     font-size: 1.5rem;
   }
 
-  .gallery-buttons-container {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
   .trailer-selection-buttons {
     flex-wrap: wrap;
     justify-content: center;
@@ -290,6 +296,7 @@
   .btn-header {
     padding: 0.4rem 0.9rem;
     font-size: 0.9rem;
+    min-width: 140px;
   }
 
   .swiper {
@@ -306,6 +313,11 @@
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 14px;
+  }
+
+  .slideshow-status {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
@@ -325,9 +337,10 @@
   .btn-header {
     padding: 0.35rem 0.8rem;
     font-size: 0.85rem;
+    min-width: 120px;
   }
 
-  .gallery-buttons-container {
+  .trailer-selection-buttons {
     gap: 0.5rem;
   }
 }
@@ -341,6 +354,7 @@
   .btn-header {
     padding: 0.3rem 0.6rem;
     font-size: 0.8rem;
+    min-width: 110px;
   }
 
   .trailer-selection-buttons {
@@ -350,17 +364,6 @@
   }
 
   .trailer-selection-buttons .btn-header {
-    width: 100%;
-    max-width: 200px;
-  }
-
-  .slideshow-controls-placeholder {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-
-  .slideshow-controls-placeholder .btn-header {
     width: 100%;
     max-width: 200px;
   }
