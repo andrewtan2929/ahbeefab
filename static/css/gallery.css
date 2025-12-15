@@ -219,14 +219,14 @@
 .swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Changed from center to flex-start */
+  align-items: center; /* Keep center alignment */
   height: 100%;
   background: #f8f9fa;
   width: 100%;
   padding: 0;
   margin: 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Changed to visible for stars to show outside */
 }
 
 /* Slide images - FILL FULL SPACE */
@@ -390,28 +390,28 @@
     min-height: 270px; /* Reduced from 300px by 10% */
     background: #0a0e17; /* Dark space background */
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Changed to visible for stars */
   }
 
   .swiper::before {
     opacity: 1; /* Show starry background */
   }
 
-  /* FIX: Fill the space - image takes more height */
+  /* FIX: Image centered with starry background around */
   .swiper-slide {
     background: transparent; /* Remove white background */
-    align-items: flex-start; /* Align to top */
-    padding-top: 2%; /* Small top padding */
+    align-items: center; /* Center image vertically */
   }
 
-  /* FIXED: Image fills more space - removed max constraints */
+  /* Image takes reasonable height, centered */
   .swiper-slide img {
     object-fit: contain; /* Show full image without cropping */
-    height: 85%; /* Increased from auto to fill more space */
-    width: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Fill width */
+    height: auto; /* Auto height */
+    max-height: 65%; /* Image takes 65% of height, leaving 35% for stars (17.5% top, 17.5% bottom) */
+    width: auto;
+    max-width: 90%; /* Slight side margins */
     background: transparent;
-    margin-top: 2%; /* Small top margin */
+    z-index: 2; /* Above stars */
   }
 
   .swiper-button-next,
@@ -419,9 +419,10 @@
     width: 32px;
     height: 32px;
     background: rgba(231, 76, 60, 0.9);
-    top: 50%; /* Center vertically */
+    top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
+    z-index: 3; /* Above everything */
   }
 
   .swiper-button-next:after,
@@ -430,7 +431,7 @@
     color: white;
   }
 
-  /* Position stars better in the empty space */
+  /* Star animations - visible everywhere */
   .star {
     opacity: 0.7;
     animation: twinkle 3s infinite;
@@ -441,13 +442,31 @@
     animation: shoot 5s infinite;
   }
 
-  /* Target more stars to bottom area (where empty space is) */
-  .star:nth-child(n+20) {
-    top: 70% !important; /* Force more stars to bottom 30% */
+  /* Distribute stars evenly - some in top area */
+  .star:nth-child(odd) {
+    top: 0% !important; /* Top 25% area */
+    animation-delay: 0s !important;
   }
 
-  .shooting-star:nth-child(n+2) {
-    top: 80% !important; /* Shooting stars in bottom area */
+  .star:nth-child(even) {
+    top: 75% !important; /* Bottom 25% area */
+    animation-delay: 1.5s !important;
+  }
+
+  /* Shooting stars in both top and bottom */
+  .shooting-star:nth-child(1) {
+    top: 20% !important; /* Top area */
+    animation-delay: 0s !important;
+  }
+
+  .shooting-star:nth-child(2) {
+    top: 50% !important; /* Middle area */
+    animation-delay: 2.5s !important;
+  }
+
+  .shooting-star:nth-child(3) {
+    top: 80% !important; /* Bottom area */
+    animation-delay: 4s !important;
   }
 
   @keyframes twinkle {
@@ -465,7 +484,7 @@
     }
     20% {
       opacity: 0;
-      transform: translateX(100px) translateY(50px);
+      transform: translateX(100vw) translateY(50px);
     }
     100% {
       opacity: 0;
@@ -502,15 +521,19 @@
     min-height: 252px; /* Reduced from 280px by 10% */
   }
 
-  /* Even more height for smaller screens */
+  /* Adjust image size for smaller screens */
   .swiper-slide img {
-    height: 88%; /* More height on smaller screens */
-    margin-top: 1%; /* Less top margin */
+    max-height: 70%; /* Slightly larger on smaller screens */
+    max-width: 95%; /* More width */
   }
 
-  /* More stars in bottom area for smaller screens */
-  .star:nth-child(n+15) {
-    top: 75% !important;
+  /* More stars for smaller screens */
+  .star:nth-child(odd) {
+    top: 0% !important;
+  }
+
+  .star:nth-child(even) {
+    top: 80% !important;
   }
 }
 
@@ -543,8 +566,8 @@
   }
 
   .swiper-slide img {
-    height: 90%; /* Maximum height on very small screens */
-    margin-top: 0; /* No top margin */
+    max-height: 75%; /* Even larger on very small screens */
+    max-width: 98%; /* Almost full width */
   }
 }
 
@@ -555,6 +578,6 @@
   }
 
   .swiper-slide img {
-    height: 82%; /* Adjust for tall screens */
+    max-height: 60%; /* Smaller image on tall screens for more star space */
   }
 }
