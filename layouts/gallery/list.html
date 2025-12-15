@@ -7,11 +7,6 @@
 
 <!-- Gallery Section -->
 <section class="gallery-section">
-  <!-- Status Indicator -->
-  <div class="slideshow-status" id="slideshowStatus" style="display: none;">
-    Slideshow: Running
-  </div>
-
   <!-- Cage Trailer Swiper -->
   <div class="swiper cage-trailer-swiper" style="display: none;">
     <div class="swiper-wrapper">
@@ -56,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cageBtn = document.querySelector('button[data-target="cage"]');
     const kitchenBtn = document.querySelector('button[data-target="kitchen"]');
     const galleryIntro = document.getElementById('galleryIntro');
-    const statusIndicator = document.getElementById('slideshowStatus');
 
     let activeSwiper = null;
     let currentGallery = null;
@@ -105,15 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 (isRunning ? '⏸️ Cage Trailer' : '▶️ Cage Trailer') : 'Cage Trailer';
             kitchenBtn.textContent = activeGallery === 'kitchen' ?
                 (isRunning ? '⏸️ Kitchen Trailer' : '▶️ Kitchen Trailer') : 'Kitchen Trailer';
-        }
-
-        // Update status indicator
-        if (activeGallery && statusIndicator) {
-            statusIndicator.style.display = 'block';
-            statusIndicator.textContent = `Slideshow: ${isRunning ? 'Running' : 'Paused'}`;
-            statusIndicator.classList.toggle('paused', !isRunning);
-        } else if (statusIndicator) {
-            statusIndicator.style.display = 'none';
         }
     }
 

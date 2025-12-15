@@ -164,38 +164,27 @@
   overflow: hidden;
   position: relative;
   margin-top: 1rem;
-  padding: 0; /* Changed from 1rem to 0 for full width */
+  padding: 1rem;
 }
 
-/* Swiper container - FULL WIDTH */
+/* Swiper container - desktop */
 .swiper {
   width: 100%;
-  height: 75vh; /* Increased from 65vh for more space */
-  max-height: 800px; /* Increased for better utilization */
-  min-height: 450px;
+  height: 65vh;
+  max-height: 700px;
+  min-height: 400px;
   position: relative;
   z-index: 1;
-  border-radius: 0; /* Removed border radius for full width */
-  box-shadow: none; /* Removed shadow for cleaner full-width look */
-  margin: 0;
-  padding: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Desktop - even larger for big screens */
+/* Desktop only +10% increase */
 @media (min-width: 1025px) {
   .swiper {
-    height: 80vh; /* Increased from 71.5vh */
-    max-height: 850px;
-    min-height: 500px;
-  }
-}
-
-/* Ultra-wide screens */
-@media (min-width: 1600px) {
-  .swiper {
-    height: 85vh;
-    max-height: 900px;
-    min-height: 550px;
+    height: 71.5vh;
+    max-height: 770px;
+    min-height: 440px;
   }
 }
 
@@ -206,31 +195,25 @@
   align-items: center;
   height: 100%;
   background: #f8f9fa;
-  width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
-/* Slide images - FILL FULL SPACE */
+/* Slide images */
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Changed from contain to cover for full area coverage */
+  object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
-  margin: 0;
-  padding: 0;
 }
 
 .swiper-slide img:hover {
-  transform: scale(1.01); /* Slight scale for hover effect */
+  transform: scale(1.02);
 }
 
 /* Swiper pagination bullets */
 .swiper-pagination {
   position: relative;
   margin-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .swiper-pagination-bullet {
@@ -244,6 +227,24 @@
 .swiper-pagination-bullet-active {
   opacity: 1;
   transform: scale(1.2);
+}
+
+/* Status indicator */
+.slideshow-status {
+  text-align: center;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+  color: #3498db;
+  font-weight: 500;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.slideshow-status.paused {
+  background: rgba(230, 126, 34, 0.1);
+  color: #e67e22;
 }
 
 /* ===== Mobile Responsive ===== */
@@ -270,19 +271,6 @@
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-  }
-
-  .swiper {
-    height: 60vh; /* Adjusted for tablets */
-    min-height: 350px;
-  }
-}
-
-/* Mobile Landscape */
-@media (max-width: 768px) and (orientation: landscape) {
-  .swiper {
-    height: 75vh; /* More height in landscape */
-    min-height: 300px;
   }
 }
 
@@ -312,12 +300,8 @@
   }
 
   .swiper {
-    height: 55vh; /* Good height for mobile portrait */
+    height: 50vh;
     min-height: 300px;
-  }
-
-  .swiper-slide img {
-    object-fit: contain; /* Changed to contain for mobile to see full images */
   }
 
   .swiper-button-next,
@@ -330,9 +314,13 @@
   .swiper-button-prev:after {
     font-size: 14px;
   }
+
+  .slideshow-status {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
 }
 
-/* Small Mobile Devices */
 @media (max-width: 480px) {
   .gallery-header {
     padding: 0.75rem;
@@ -355,14 +343,9 @@
   .trailer-selection-buttons {
     gap: 0.5rem;
   }
-
-  .swiper {
-    height: 50vh;
-    min-height: 280px;
-  }
 }
 
-/* Very Small Screens */
+/* Small screen adjustments */
 @media (max-width: 360px) {
   .gallery-title {
     font-size: 1.1rem;
@@ -383,17 +366,5 @@
   .trailer-selection-buttons .btn-header {
     width: 100%;
     max-width: 200px;
-  }
-
-  .swiper {
-    height: 45vh;
-    min-height: 250px;
-  }
-}
-
-/* For very tall screens (like some mobile devices in portrait) */
-@media (max-height: 600px) and (max-width: 768px) {
-  .swiper {
-    height: 65vh;
   }
 }
