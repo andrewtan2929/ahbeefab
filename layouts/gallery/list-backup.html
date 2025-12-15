@@ -54,11 +54,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let activeSwiper = null;
     let currentGallery = null;
+    let starsCreated = false;
 
     // Initialize swipers
     const cageSwiper = new Swiper('.cage-trailer-swiper', {
         loop: true,
-        pagination: { el: '.cage-pagination', clickable: true },
+        pagination: {
+            el: '.cage-pagination',
+            clickable: true,
+            type: 'bullets', // Ensure bullets type
+            dynamicBullets: false // Disable dynamic bullets that might cause text
+        },
         navigation: { nextEl: '.cage-next', prevEl: '.cage-prev' },
         autoplay: { delay: 3000, disableOnInteraction: false },
         spaceBetween: 20,
@@ -66,17 +72,65 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const kitchenSwiper = new Swiper('.kitchen-trailer-swiper', {
         loop: true,
-        pagination: { el: '.kitchen-pagination', clickable: true },
+        pagination: {
+            el: '.kitchen-pagination',
+            clickable: true,
+            type: 'bullets',
+            dynamicBullets: false
+        },
         navigation: { nextEl: '.kitchen-next', prevEl: '.kitchen-prev' },
         autoplay: { delay: 3000, disableOnInteraction: false },
         spaceBetween: 20,
     });
 
-    // Initially hide swipers and stop autoplay
-    cageSwiper.autoplay.stop();
-    kitchenSwiper.autoplay.stop();
-    document.querySelector('.cage-trailer-swiper').style.display = 'none';
-    document.querySelector('.kitchen-trailer-swiper').style.display = 'none';
+    // Function to create starry background for mobile portrait
+    function createStarryBackground(swiperElement) {
+        // Only create stars once and only for mobile portrait
+        if (starsCreated || window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
+            return;
+        }
+
+        const swiper = swiperElement;
+        const starCount = 30;
+        const shootingStarCount = 3;
+
+        // Create stars
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+
+            // Random size between 1-3px
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+
+            // Random position
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+
+            // Random twinkle delay
+            star.style.animationDelay = `${Math.random() * 3}s`;
+
+            swiper.appendChild(star);
+        }
+
+        // Create shooting stars
+        for (let i = 0; i < shootingStarCount; i++) {
+            const shootingStar = document.createElement('div');
+            shootingStar.className = 'shooting-star';
+
+            // Random position and angle
+            shootingStar.style.left = `${Math.random() * 100}%`;
+            shootingStar.style.top = `${Math.random() * 100}%`;
+
+            // Random shoot delay
+            shootingStar.style.animationDelay = `${Math.random() * 5}s`;
+
+            swiper.appendChild(shootingStar);
+        }
+
+        starsCreated = true;
+    }
 
     // Function to update button states
     function updateButtonStates(activeGallery, isRunning) {
@@ -137,6 +191,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetElement = document.querySelector(`.${type}-trailer-swiper`);
         targetElement.style.display = 'block';
 
+        // Create starry background for mobile portrait
+        createStarryBackground(targetElement);
+
         // Set active swiper
         activeSwiper = swiperInstance;
 
@@ -169,6 +226,22 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleGallery('kitchen', kitchenSwiper);
         });
     }
+
+    // Clean up any existing text in pagination (fix for random text bug)
+    function cleanPaginationText() {
+        const paginations = document.querySelectorAll('.swiper-pagination');
+        paginations.forEach(pagination => {
+            // Remove any text nodes
+            Array.from(pagination.childNodes).forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+                    node.remove();
+                }
+            });
+        });
+    }
+
+    // Run cleanup after a short delay
+    setTimeout(cleanPaginationText, 100);
 });
 </script>
 {{ end }}

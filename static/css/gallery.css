@@ -180,6 +180,9 @@
   margin: 0;
   padding: 0;
   background: #0a0e17; /* Dark space background for mobile */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Starry background overlay - only for mobile portrait */
@@ -219,14 +222,13 @@
 .swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: center; /* Keep center alignment */
+  align-items: center;
   height: 100%;
-  background: #f8f9fa;
   width: 100%;
   padding: 0;
   margin: 0;
   position: relative;
-  overflow: visible; /* Changed to visible for stars to show outside */
+  overflow: hidden;
 }
 
 /* Slide images - FILL FULL SPACE */
@@ -345,10 +347,6 @@
     background: #f8f9fa;
   }
 
-  .swiper-slide {
-    align-items: center; /* Center for landscape */
-  }
-
   .swiper-slide img {
     object-fit: cover; /* Cover for landscape */
   }
@@ -390,28 +388,36 @@
     min-height: 270px; /* Reduced from 300px by 10% */
     background: #0a0e17; /* Dark space background */
     position: relative;
-    overflow: visible; /* Changed to visible for stars */
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .swiper::before {
     opacity: 1; /* Show starry background */
   }
 
-  /* FIX: Image centered with starry background around */
+  /* FIX: Image centered properly */
   .swiper-slide {
-    background: transparent; /* Remove white background */
-    align-items: center; /* Center image vertically */
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    max-height: 65vh;
   }
 
-  /* Image takes reasonable height, centered */
+  /* Image centered with starry background around - REMOVED ALL CONSTRAINTS */
   .swiper-slide img {
     object-fit: contain; /* Show full image without cropping */
-    height: auto; /* Auto height */
-    max-height: 65%; /* Image takes 65% of height, leaving 35% for stars (17.5% top, 17.5% bottom) */
     width: auto;
-    max-width: 90%; /* Slight side margins */
+    height: auto;
+    max-height: 60vh; /* Takes reasonable height */
+    max-width: 95%; /* Slight side margins */
     background: transparent;
-    z-index: 2; /* Above stars */
+    z-index: 2;
+    display: block;
+    margin: 0 auto;
   }
 
   .swiper-button-next,
@@ -422,7 +428,7 @@
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
-    z-index: 3; /* Above everything */
+    z-index: 3;
   }
 
   .swiper-button-next:after,
@@ -435,6 +441,8 @@
   .star {
     opacity: 0.7;
     animation: twinkle 3s infinite;
+    width: 2px;
+    height: 2px;
   }
 
   .shooting-star {
@@ -442,49 +450,32 @@
     animation: shoot 5s infinite;
   }
 
-  /* Distribute stars evenly - some in top area */
-  .star:nth-child(odd) {
-    top: 0% !important; /* Top 25% area */
-    animation-delay: 0s !important;
+  /* Stars distributed throughout entire height */
+  .star {
+    animation-delay: calc(var(--i) * 0.1s);
   }
 
-  .star:nth-child(even) {
-    top: 75% !important; /* Bottom 25% area */
-    animation-delay: 1.5s !important;
-  }
-
-  /* Shooting stars in both top and bottom */
-  .shooting-star:nth-child(1) {
-    top: 20% !important; /* Top area */
-    animation-delay: 0s !important;
-  }
-
-  .shooting-star:nth-child(2) {
-    top: 50% !important; /* Middle area */
-    animation-delay: 2.5s !important;
-  }
-
-  .shooting-star:nth-child(3) {
-    top: 80% !important; /* Bottom area */
-    animation-delay: 4s !important;
+  /* Shooting stars at different heights */
+  .shooting-star {
+    animation-delay: calc(var(--i) * 2s);
   }
 
   @keyframes twinkle {
     0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
+    50% { opacity: 1; transform: scale(1.2); }
   }
 
   @keyframes shoot {
     0% {
       opacity: 0;
-      transform: translateX(-100px) translateY(0);
+      transform: translateX(-100px) translateY(var(--start-y));
     }
     10% {
       opacity: 1;
     }
     20% {
       opacity: 0;
-      transform: translateX(100vw) translateY(50px);
+      transform: translateX(100vw) translateY(calc(var(--start-y) + 50px));
     }
     100% {
       opacity: 0;
@@ -523,17 +514,8 @@
 
   /* Adjust image size for smaller screens */
   .swiper-slide img {
-    max-height: 70%; /* Slightly larger on smaller screens */
-    max-width: 95%; /* More width */
-  }
-
-  /* More stars for smaller screens */
-  .star:nth-child(odd) {
-    top: 0% !important;
-  }
-
-  .star:nth-child(even) {
-    top: 80% !important;
+    max-height: 55vh; /* Smaller on very small screens */
+    max-width: 98%; /* More width */
   }
 }
 
@@ -566,8 +548,8 @@
   }
 
   .swiper-slide img {
-    max-height: 75%; /* Even larger on very small screens */
-    max-width: 98%; /* Almost full width */
+    max-height: 50vh; /* Even smaller on tiny screens */
+    max-width: 99%; /* Almost full width */
   }
 }
 
@@ -578,6 +560,6 @@
   }
 
   .swiper-slide img {
-    max-height: 60%; /* Smaller image on tall screens for more star space */
+    max-height: 45vh; /* Smaller image on tall screens */
   }
 }

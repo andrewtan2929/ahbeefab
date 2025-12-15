@@ -179,6 +179,21 @@
   box-shadow: none; /* Removed shadow for cleaner full-width look */
   margin: 0;
   padding: 0;
+  background: #0a0e17; /* Dark space background for mobile */
+}
+
+/* Starry background overlay - only for mobile portrait */
+.swiper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Desktop - even larger for big screens (REDUCED BY 10%) */
@@ -187,6 +202,7 @@
     height: 72vh; /* Reduced from 80vh by 10% */
     max-height: 765px; /* Reduced from 850px by 10% */
     min-height: 450px; /* Reduced from 500px by 10% */
+    background: #f8f9fa; /* Reset background for desktop */
   }
 }
 
@@ -203,12 +219,14 @@
 .swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start */
   height: 100%;
   background: #f8f9fa;
   width: 100%;
   padding: 0;
   margin: 0;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Slide images - FILL FULL SPACE */
@@ -220,30 +238,71 @@
   transition: transform 0.3s ease;
   margin: 0;
   padding: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .swiper-slide img:hover {
   transform: scale(1.01); /* Slight scale for hover effect */
 }
 
-/* Swiper pagination bullets */
+/* Star particles - hidden by default */
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Shooting stars */
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Swiper pagination bullets - FIXED positioning */
 .swiper-pagination {
-  position: relative;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
+  position: absolute !important; /* Force absolute positioning */
+  bottom: 10px !important;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  padding-bottom: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .swiper-pagination-bullet {
   background: #e74c3c;
   opacity: 0.5;
   transition: all 0.3s ease;
-  width: 12px;
-  height: 12px;
+  width: 10px; /* Slightly smaller for mobile */
+  height: 10px;
+  display: inline-block;
+  margin: 0 4px;
 }
 
 .swiper-pagination-bullet-active {
   opacity: 1;
   transform: scale(1.2);
+  background: #e74c3c;
+}
+
+/* Hide pagination text/numbers if present */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-bullets-dynamic {
+  font-size: 0; /* Hide any text */
 }
 
 /* ===== Mobile Responsive (ALL REDUCED BY 10%) ===== */
@@ -278,15 +337,30 @@
   }
 }
 
-/* Mobile Landscape (REDUCED BY 10%) */
+/* Mobile Landscape (REDUCED BY 10%) - Keep normal background */
 @media (max-width: 768px) and (orientation: landscape) {
   .swiper {
     height: 67.5vh; /* Reduced from 75vh by 10% */
     min-height: 270px; /* Reduced from 300px by 10% */
+    background: #f8f9fa;
+  }
+
+  .swiper-slide {
+    align-items: center; /* Center for landscape */
+  }
+
+  .swiper-slide img {
+    object-fit: cover; /* Cover for landscape */
+  }
+
+  /* Hide stars in landscape */
+  .star, .shooting-star {
+    display: none;
   }
 }
 
-@media (max-width: 768px) {
+/* MOBILE PORTRAIT ONLY - Special treatment */
+@media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
   }
@@ -314,26 +388,93 @@
   .swiper {
     height: 49.5vh; /* Reduced from 55vh by 10% */
     min-height: 270px; /* Reduced from 300px by 10% */
+    background: #0a0e17; /* Dark space background */
+    position: relative;
+    overflow: hidden;
   }
 
+  .swiper::before {
+    opacity: 1; /* Show starry background */
+  }
+
+  /* FIX: Fill the space - image takes more height */
+  .swiper-slide {
+    background: transparent; /* Remove white background */
+    align-items: flex-start; /* Align to top */
+    padding-top: 2%; /* Small top padding */
+  }
+
+  /* FIXED: Image fills more space - removed max constraints */
   .swiper-slide img {
-    object-fit: contain; /* Changed to contain for mobile to see full images */
+    object-fit: contain; /* Show full image without cropping */
+    height: 85%; /* Increased from auto to fill more space */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Fill width */
+    background: transparent;
+    margin-top: 2%; /* Small top margin */
   }
 
   .swiper-button-next,
   .swiper-button-prev {
     width: 32px;
     height: 32px;
+    background: rgba(231, 76, 60, 0.9);
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%);
+    margin-top: 0;
   }
 
   .swiper-button-next:after,
   .swiper-button-prev:after {
     font-size: 14px;
+    color: white;
+  }
+
+  /* Position stars better in the empty space */
+  .star {
+    opacity: 0.7;
+    animation: twinkle 3s infinite;
+  }
+
+  .shooting-star {
+    opacity: 0;
+    animation: shoot 5s infinite;
+  }
+
+  /* Target more stars to bottom area (where empty space is) */
+  .star:nth-child(n+20) {
+    top: 70% !important; /* Force more stars to bottom 30% */
+  }
+
+  .shooting-star:nth-child(n+2) {
+    top: 80% !important; /* Shooting stars in bottom area */
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  @keyframes shoot {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px) translateY(0);
+    }
+    10% {
+      opacity: 1;
+    }
+    20% {
+      opacity: 0;
+      transform: translateX(100px) translateY(50px);
+    }
+    100% {
+      opacity: 0;
+    }
   }
 }
 
-/* Small Mobile Devices (REDUCED BY 10%) */
-@media (max-width: 480px) {
+/* Small Mobile Devices Portrait (REDUCED BY 10%) */
+@media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
   }
@@ -360,10 +501,21 @@
     height: 45vh; /* Reduced from 50vh by 10% */
     min-height: 252px; /* Reduced from 280px by 10% */
   }
+
+  /* Even more height for smaller screens */
+  .swiper-slide img {
+    height: 88%; /* More height on smaller screens */
+    margin-top: 1%; /* Less top margin */
+  }
+
+  /* More stars in bottom area for smaller screens */
+  .star:nth-child(n+15) {
+    top: 75% !important;
+  }
 }
 
-/* Very Small Screens (REDUCED BY 10%) */
-@media (max-width: 360px) {
+/* Very Small Screens Portrait (REDUCED BY 10%) */
+@media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
   }
@@ -389,11 +541,20 @@
     height: 40.5vh; /* Reduced from 45vh by 10% */
     min-height: 225px; /* Reduced from 250px by 10% */
   }
+
+  .swiper-slide img {
+    height: 90%; /* Maximum height on very small screens */
+    margin-top: 0; /* No top margin */
+  }
 }
 
 /* For very tall screens (like some mobile devices in portrait) (REDUCED BY 10%) */
-@media (max-height: 600px) and (max-width: 768px) {
+@media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
   .swiper {
     height: 58.5vh; /* Reduced from 65vh by 10% */
+  }
+
+  .swiper-slide img {
+    height: 82%; /* Adjust for tall screens */
   }
 }
