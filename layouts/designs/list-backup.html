@@ -74,6 +74,7 @@
 
 <!-- JavaScript -->
 <script>
+// Clean JavaScript - No Emergency Close
 document.addEventListener('DOMContentLoaded', function() {
   const viewButtons = document.querySelectorAll('.view-design-btn');
   const pdfModal = document.getElementById('pdfModal');
@@ -81,44 +82,41 @@ document.addEventListener('DOMContentLoaded', function() {
   const pdfModalTitle = document.getElementById('pdfModalTitle');
   const closeModal = document.querySelector('.close-modal');
 
-  // Simple open PDF function
+  // Open PDF in modal
   viewButtons.forEach(button => {
     button.addEventListener('click', function() {
       const pdfFile = this.getAttribute('data-pdf');
       const designTitle = this.closest('.design-card').querySelector('.design-title').textContent;
 
-      // Set title
+      pdfViewer.src = `/images/drawings/${pdfFile}`;
       pdfModalTitle.textContent = designTitle;
-
-      // Show modal
       pdfModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
-
-      // Set PDF source with cache busting
-      const timestamp = new Date().getTime();
-      pdfViewer.src = `/images/drawings/${pdfFile}?t=${timestamp}`;
     });
   });
 
-  // Simple close function
-  function closePDFModal() {
+  // Close modal
+  closeModal.addEventListener('click', function() {
     pdfModal.style.display = 'none';
     pdfViewer.src = '';
     document.body.style.overflow = 'auto';
-  }
+  });
 
-  // Close events
-  closeModal.addEventListener('click', closePDFModal);
-
+  // Close modal when clicking outside
   pdfModal.addEventListener('click', function(e) {
     if (e.target === pdfModal) {
-      closePDFModal();
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+      document.body.style.overflow = 'auto';
     }
   });
 
+  // Close modal with Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && pdfModal.style.display === 'flex') {
-      closePDFModal();
+      pdfModal.style.display = 'none';
+      pdfViewer.src = '';
+      document.body.style.overflow = 'auto';
     }
   });
 });
