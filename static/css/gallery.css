@@ -388,7 +388,7 @@
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - FIXED TO ELIMINATE 33% BOTTOM SPACE ===== */
+/* ===== MOBILE PORTRAIT ONLY - ADDED 7% TO FILL BOTTOM SPACE ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -414,10 +414,10 @@
     min-width: 140px;
   }
 
-  /* FIXED: Swiper container now much taller to fill bottom space */
+  /* FINAL FIX: Added 7% more height (82vh = 75vh + 7vh) */
   .swiper {
-    height: 75vh !important; /* Increased from 49.5vh to fill bottom gap */
-    min-height: 400px !important; /* Increased from 270px */
+    height: 82vh !important; /* Increased by 7% from 75vh */
+    min-height: 428px !important; /* Increased proportionally */
     background: #0a0e17;
     position: relative;
     overflow: visible !important;
@@ -442,7 +442,7 @@
   /* Image stays centered with more room for stars */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 65vh !important; /* Slightly increased from 60vh */
+    max-height: 70vh !important; /* Slightly increased to match new container */
     width: auto !important;
     max-width: 95% !important;
     height: auto !important;
@@ -480,7 +480,7 @@
   }
 }
 
-/* Small Mobile Devices Portrait - Adjusted heights */
+/* Small Mobile Devices Portrait - Added 7% */
 @media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
@@ -504,19 +504,20 @@
     gap: 0.5rem;
   }
 
+  /* Added 7% (77vh = 70vh + 7vh) */
   .swiper {
-    height: 70vh !important; /* Increased from 45vh */
-    min-height: 380px !important; /* Increased from 252px */
+    height: 77vh !important; /* Increased by 7% from 70vh */
+    min-height: 407px !important; /* Increased proportionally */
   }
 
   /* Adjust image size for smaller screens */
   .swiper-slide img {
-    max-height: 60vh !important; /* Adjusted for new container height */
+    max-height: 65vh !important; /* Adjusted for new container height */
     max-width: 98% !important;
   }
 }
 
-/* Very Small Screens Portrait - Adjusted heights */
+/* Very Small Screens Portrait - Added 7% */
 @media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
@@ -539,24 +540,26 @@
     max-width: 200px;
   }
 
+  /* Added 7% (72vh = 65vh + 7vh) */
   .swiper {
-    height: 65vh !important; /* Increased from 40.5vh */
-    min-height: 350px !important; /* Increased from 225px */
+    height: 72vh !important; /* Increased by 7% from 65vh */
+    min-height: 375px !important; /* Increased proportionally */
   }
 
   .swiper-slide img {
-    max-height: 55vh !important; /* Adjusted */
+    max-height: 60vh !important; /* Adjusted */
     max-width: 99% !important;
   }
 }
 
-/* For very tall screens - Adjusted heights */
+/* For very tall screens - Added 7% */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
+  /* Added 7% (92vh = 85vh + 7vh) */
   .swiper {
-    height: 85vh !important; /* Increased from 58.5vh */
+    height: 92vh !important; /* Increased by 7% from 85vh */
   }
 
   .swiper-slide img {
-    max-height: 75vh !important; /* Adjusted */
+    max-height: 80vh !important; /* Adjusted */
   }
 }

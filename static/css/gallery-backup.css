@@ -164,22 +164,22 @@
   overflow: hidden;
   position: relative;
   margin-top: 1rem;
-  padding: 0; /* Changed from 1rem to 0 for full width */
+  padding: 0;
 }
 
 /* Swiper container - FULL WIDTH (REDUCED BY 10%) */
 .swiper {
   width: 100%;
-  height: 67.5vh; /* Reduced from 75vh by 10% (75 * 0.9 = 67.5) */
-  max-height: 720px; /* Reduced from 800px by 10% */
-  min-height: 405px; /* Reduced from 450px by 10% */
+  height: 67.5vh;
+  max-height: 720px;
+  min-height: 405px;
   position: relative;
   z-index: 1;
-  border-radius: 0; /* Removed border radius for full width */
-  box-shadow: none; /* Removed shadow for cleaner full-width look */
+  border-radius: 0;
+  box-shadow: none;
   margin: 0;
   padding: 0;
-  background: #0a0e17; /* Dark space background for mobile */
+  background: #0a0e17;
 }
 
 /* Starry background overlay - only for mobile portrait */
@@ -199,19 +199,19 @@
 /* Desktop - even larger for big screens (REDUCED BY 10%) */
 @media (min-width: 1025px) {
   .swiper {
-    height: 72vh; /* Reduced from 80vh by 10% */
-    max-height: 765px; /* Reduced from 850px by 10% */
-    min-height: 450px; /* Reduced from 500px by 10% */
-    background: #f8f9fa; /* Reset background for desktop */
+    height: 72vh;
+    max-height: 765px;
+    min-height: 450px;
+    background: #f8f9fa;
   }
 }
 
 /* Ultra-wide screens (REDUCED BY 10%) */
 @media (min-width: 1600px) {
   .swiper {
-    height: 76.5vh; /* Reduced from 85vh by 10% */
-    max-height: 810px; /* Reduced from 900px by 10% */
-    min-height: 495px; /* Reduced from 550px by 10% */
+    height: 76.5vh;
+    max-height: 810px;
+    min-height: 495px;
   }
 }
 
@@ -219,9 +219,8 @@
 .swiper-slide {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Changed from center to flex-start */
+  align-items: center;
   height: 100%;
-  background: #f8f9fa;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -229,11 +228,11 @@
   overflow: hidden;
 }
 
-/* Slide images - FILL FULL SPACE */
+/* Slide images - FILL FULL SPACE (For desktop) */
 .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Changed from contain to cover for full area coverage */
+  object-fit: cover;
   display: block;
   transition: transform 0.3s ease;
   margin: 0;
@@ -243,10 +242,10 @@
 }
 
 .swiper-slide img:hover {
-  transform: scale(1.01); /* Slight scale for hover effect */
+  transform: scale(1.01);
 }
 
-/* Star particles - hidden by default */
+/* Star particles - hidden by default (will be shown for mobile portrait) */
 .star {
   position: absolute;
   background-color: white;
@@ -254,6 +253,9 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
+  width: 2px;
+  height: 2px;
+  animation: twinkle 3s infinite;
 }
 
 /* Shooting stars */
@@ -265,11 +267,42 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
+  animation: shoot 5s infinite;
+}
+
+/* Twinkle animation for stars */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Shooting star animation */
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) translateY(var(--start-y, 0px));
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+    transform: translateX(100vw) translateY(calc(var(--start-y, 0px) + 50px));
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Swiper pagination bullets - FIXED positioning */
 .swiper-pagination {
-  position: absolute !important; /* Force absolute positioning */
+  position: absolute !important;
   bottom: 10px !important;
   left: 0;
   right: 0;
@@ -285,7 +318,7 @@
   background: #e74c3c;
   opacity: 0.5;
   transition: all 0.3s ease;
-  width: 10px; /* Slightly smaller for mobile */
+  width: 10px;
   height: 10px;
   display: inline-block;
   margin: 0 4px;
@@ -302,10 +335,10 @@
 .swiper-pagination-custom,
 .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-bullets-dynamic {
-  font-size: 0; /* Hide any text */
+  font-size: 0;
 }
 
-/* ===== Mobile Responsive (ALL REDUCED BY 10%) ===== */
+/* ===== Mobile Responsive ===== */
 @media (max-width: 1024px) {
   .gallery-header {
     flex-direction: column;
@@ -332,25 +365,21 @@
   }
 
   .swiper {
-    height: 54vh; /* Reduced from 60vh by 10% */
-    min-height: 315px; /* Reduced from 350px by 10% */
+    height: 54vh;
+    min-height: 315px;
   }
 }
 
-/* Mobile Landscape (REDUCED BY 10%) - Keep normal background */
+/* Mobile Landscape - Keep normal background */
 @media (max-width: 768px) and (orientation: landscape) {
   .swiper {
-    height: 67.5vh; /* Reduced from 75vh by 10% */
-    min-height: 270px; /* Reduced from 300px by 10% */
+    height: 67.5vh;
+    min-height: 270px;
     background: #f8f9fa;
   }
 
-  .swiper-slide {
-    align-items: center; /* Center for landscape */
-  }
-
   .swiper-slide img {
-    object-fit: cover; /* Cover for landscape */
+    object-fit: cover;
   }
 
   /* Hide stars in landscape */
@@ -359,7 +388,7 @@
   }
 }
 
-/* MOBILE PORTRAIT ONLY - Special treatment */
+/* ===== MOBILE PORTRAIT ONLY - FIXED TO ELIMINATE 33% BOTTOM SPACE ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -385,43 +414,54 @@
     min-width: 140px;
   }
 
+  /* FIXED: Swiper container now much taller to fill bottom space */
   .swiper {
-    height: 49.5vh; /* Reduced from 55vh by 10% */
-    min-height: 270px; /* Reduced from 300px by 10% */
-    background: #0a0e17; /* Dark space background */
+    height: 75vh !important; /* Increased from 49.5vh to fill bottom gap */
+    min-height: 400px !important; /* Increased from 270px */
+    background: #0a0e17;
     position: relative;
-    overflow: hidden;
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .swiper::before {
-    opacity: 1; /* Show starry background */
+    opacity: 1;
   }
 
-  /* FIX: Fill the space - image takes more height */
+  /* Make slide transparent and center content */
   .swiper-slide {
-    background: transparent; /* Remove white background */
-    align-items: flex-start; /* Align to top */
-    padding-top: 2%; /* Small top padding */
+    background: transparent !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
   }
 
-  /* FIXED: Image fills more space - removed max constraints */
+  /* Image stays centered with more room for stars */
   .swiper-slide img {
-    object-fit: contain; /* Show full image without cropping */
-    height: 85%; /* Increased from auto to fill more space */
-    width: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Fill width */
+    object-fit: contain !important;
+    max-height: 65vh !important; /* Slightly increased from 60vh */
+    width: auto !important;
+    max-width: 95% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    z-index: 2;
     background: transparent;
-    margin-top: 2%; /* Small top margin */
   }
 
+  /* Navigation buttons */
   .swiper-button-next,
   .swiper-button-prev {
     width: 32px;
     height: 32px;
     background: rgba(231, 76, 60, 0.9);
-    top: 50%; /* Center vertically */
+    top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
+    z-index: 3;
   }
 
   .swiper-button-next:after,
@@ -430,50 +470,17 @@
     color: white;
   }
 
-  /* Position stars better in the empty space */
+  /* Show stars for mobile portrait */
   .star {
     opacity: 0.7;
-    animation: twinkle 3s infinite;
   }
 
   .shooting-star {
-    opacity: 0;
-    animation: shoot 5s infinite;
-  }
-
-  /* Target more stars to bottom area (where empty space is) */
-  .star:nth-child(n+20) {
-    top: 70% !important; /* Force more stars to bottom 30% */
-  }
-
-  .shooting-star:nth-child(n+2) {
-    top: 80% !important; /* Shooting stars in bottom area */
-  }
-
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.1); }
-  }
-
-  @keyframes shoot {
-    0% {
-      opacity: 0;
-      transform: translateX(-100px) translateY(0);
-    }
-    10% {
-      opacity: 1;
-    }
-    20% {
-      opacity: 0;
-      transform: translateX(100px) translateY(50px);
-    }
-    100% {
-      opacity: 0;
-    }
+    opacity: 0.8;
   }
 }
 
-/* Small Mobile Devices Portrait (REDUCED BY 10%) */
+/* Small Mobile Devices Portrait - Adjusted heights */
 @media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
@@ -498,23 +505,18 @@
   }
 
   .swiper {
-    height: 45vh; /* Reduced from 50vh by 10% */
-    min-height: 252px; /* Reduced from 280px by 10% */
+    height: 70vh !important; /* Increased from 45vh */
+    min-height: 380px !important; /* Increased from 252px */
   }
 
-  /* Even more height for smaller screens */
+  /* Adjust image size for smaller screens */
   .swiper-slide img {
-    height: 88%; /* More height on smaller screens */
-    margin-top: 1%; /* Less top margin */
-  }
-
-  /* More stars in bottom area for smaller screens */
-  .star:nth-child(n+15) {
-    top: 75% !important;
+    max-height: 60vh !important; /* Adjusted for new container height */
+    max-width: 98% !important;
   }
 }
 
-/* Very Small Screens Portrait (REDUCED BY 10%) */
+/* Very Small Screens Portrait - Adjusted heights */
 @media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
@@ -538,23 +540,23 @@
   }
 
   .swiper {
-    height: 40.5vh; /* Reduced from 45vh by 10% */
-    min-height: 225px; /* Reduced from 250px by 10% */
+    height: 65vh !important; /* Increased from 40.5vh */
+    min-height: 350px !important; /* Increased from 225px */
   }
 
   .swiper-slide img {
-    height: 90%; /* Maximum height on very small screens */
-    margin-top: 0; /* No top margin */
+    max-height: 55vh !important; /* Adjusted */
+    max-width: 99% !important;
   }
 }
 
-/* For very tall screens (like some mobile devices in portrait) (REDUCED BY 10%) */
+/* For very tall screens - Adjusted heights */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
   .swiper {
-    height: 58.5vh; /* Reduced from 65vh by 10% */
+    height: 85vh !important; /* Increased from 58.5vh */
   }
 
   .swiper-slide img {
-    height: 82%; /* Adjust for tall screens */
+    max-height: 75vh !important; /* Adjusted */
   }
 }
