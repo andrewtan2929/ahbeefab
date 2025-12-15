@@ -167,12 +167,12 @@
   padding: 0; /* Changed from 1rem to 0 for full width */
 }
 
-/* Swiper container - FULL WIDTH */
+/* Swiper container - FULL WIDTH (REDUCED BY 10%) */
 .swiper {
   width: 100%;
-  height: 75vh; /* Increased from 65vh for more space */
-  max-height: 800px; /* Increased for better utilization */
-  min-height: 450px;
+  height: 67.5vh; /* Reduced from 75vh by 10% (75 * 0.9 = 67.5) */
+  max-height: 720px; /* Reduced from 800px by 10% */
+  min-height: 405px; /* Reduced from 450px by 10% */
   position: relative;
   z-index: 1;
   border-radius: 0; /* Removed border radius for full width */
@@ -181,21 +181,21 @@
   padding: 0;
 }
 
-/* Desktop - even larger for big screens */
+/* Desktop - even larger for big screens (REDUCED BY 10%) */
 @media (min-width: 1025px) {
   .swiper {
-    height: 80vh; /* Increased from 71.5vh */
-    max-height: 850px;
-    min-height: 500px;
+    height: 72vh; /* Reduced from 80vh by 10% */
+    max-height: 765px; /* Reduced from 850px by 10% */
+    min-height: 450px; /* Reduced from 500px by 10% */
   }
 }
 
-/* Ultra-wide screens */
+/* Ultra-wide screens (REDUCED BY 10%) */
 @media (min-width: 1600px) {
   .swiper {
-    height: 85vh;
-    max-height: 900px;
-    min-height: 550px;
+    height: 76.5vh; /* Reduced from 85vh by 10% */
+    max-height: 810px; /* Reduced from 900px by 10% */
+    min-height: 495px; /* Reduced from 550px by 10% */
   }
 }
 
@@ -246,7 +246,7 @@
   transform: scale(1.2);
 }
 
-/* ===== Mobile Responsive ===== */
+/* ===== Mobile Responsive (ALL REDUCED BY 10%) ===== */
 @media (max-width: 1024px) {
   .gallery-header {
     flex-direction: column;
@@ -273,16 +273,16 @@
   }
 
   .swiper {
-    height: 60vh; /* Adjusted for tablets */
-    min-height: 350px;
+    height: 54vh; /* Reduced from 60vh by 10% */
+    min-height: 315px; /* Reduced from 350px by 10% */
   }
 }
 
-/* Mobile Landscape */
+/* Mobile Landscape (REDUCED BY 10%) */
 @media (max-width: 768px) and (orientation: landscape) {
   .swiper {
-    height: 75vh; /* More height in landscape */
-    min-height: 300px;
+    height: 67.5vh; /* Reduced from 75vh by 10% */
+    min-height: 270px; /* Reduced from 300px by 10% */
   }
 }
 
@@ -312,8 +312,8 @@
   }
 
   .swiper {
-    height: 55vh; /* Good height for mobile portrait */
-    min-height: 300px;
+    height: 49.5vh; /* Reduced from 55vh by 10% */
+    min-height: 270px; /* Reduced from 300px by 10% */
   }
 
   .swiper-slide img {
@@ -332,7 +332,7 @@
   }
 }
 
-/* Small Mobile Devices */
+/* Small Mobile Devices (REDUCED BY 10%) */
 @media (max-width: 480px) {
   .gallery-header {
     padding: 0.75rem;
@@ -357,12 +357,12 @@
   }
 
   .swiper {
-    height: 50vh;
-    min-height: 280px;
+    height: 45vh; /* Reduced from 50vh by 10% */
+    min-height: 252px; /* Reduced from 280px by 10% */
   }
 }
 
-/* Very Small Screens */
+/* Very Small Screens (REDUCED BY 10%) */
 @media (max-width: 360px) {
   .gallery-title {
     font-size: 1.1rem;
@@ -386,14 +386,14 @@
   }
 
   .swiper {
-    height: 45vh;
-    min-height: 250px;
+    height: 40.5vh; /* Reduced from 45vh by 10% */
+    min-height: 225px; /* Reduced from 250px by 10% */
   }
 }
 
-/* For very tall screens (like some mobile devices in portrait) */
+/* For very tall screens (like some mobile devices in portrait) (REDUCED BY 10%) */
 @media (max-height: 600px) and (max-width: 768px) {
   .swiper {
-    height: 65vh;
+    height: 58.5vh; /* Reduced from 65vh by 10% */
   }
 }
