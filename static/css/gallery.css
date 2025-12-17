@@ -254,10 +254,10 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+  /* Default size - will be overridden by classes */
   width: 2px;
   height: 2px;
-  animation: twinkle 3s infinite;
-  box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
 }
 
 /* Different star sizes for more realism */
@@ -399,20 +399,20 @@
   .swiper {
     height: 67.5vh;
     min-height: 270px;
-    background: #f8f9fa;
+    background: #f8f9fa !important; /* Force override */
   }
 
   .swiper-slide img {
-    object-fit: cover;
+    object-fit: cover !important;
   }
 
   /* Hide stars in landscape */
   .star, .shooting-star {
-    display: none;
+    display: none !important;
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - BLUE NIGHT SKY ===== */
+/* ===== MOBILE PORTRAIT ONLY - STAR BACKGROUND REDUCED BY ANOTHER 4% (TOTAL 8%) ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -449,12 +449,12 @@
       #3949ab 60%,     /* Medium blue */
       #5c6bc0 80%,     /* Soft blue */
       #7986cb 100%     /* Light blue at bottom */
-    );
+    ) !important; /* Force override */
     position: relative;
     overflow: visible !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .swiper::before {
@@ -468,22 +468,23 @@
     align-items: center !important;
     justify-content: center !important;
     height: 100% !important;
+    position: relative !important;
   }
 
-  /* ===== STAR BACKGROUND CONTAINER (REDUCED BY 4%) ===== */
+  /* ===== STAR BACKGROUND CONTAINER (REDUCED BY ANOTHER 4% - TOTAL 8% FROM ORIGINAL) ===== */
   .swiper-slide::before {
     content: '';
     position: absolute;
-    top: 2%; /* Reduced from full height */
+    top: 4%; /* Increased from 2% to 4% - another 4% reduction */
     left: 0;
     width: 100%;
-    height: 96%; /* Reduced by 4% (100% - 4% = 96%) */
+    height: 92%; /* Reduced by another 4% (96% - 4% = 92%) - total 8% reduction */
     z-index: 0;
     pointer-events: none;
     background: transparent;
   }
 
-  /* ===== IMAGE STAYS CENTERED VERTICALLY ===== */
+  /* ===== IMAGE STAYS CENTERED VERTICALLY IN FULL CONTAINER ===== */
   .swiper-slide img {
     object-fit: contain !important;
     max-height: 70vh !important;
@@ -492,47 +493,51 @@
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
-    z-index: 2;
-    background: transparent;
-    /* Ensure vertical centering */
-    position: relative;
-    top: 0;
-    transform: translateY(0);
+    z-index: 2 !important;
+    background: transparent !important;
+    /* Ensure vertical centering in FULL container */
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
     /* Add subtle glow to make images pop against blue */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 8px !important;
   }
 
-  /* ===== STAR POSITIONING WITHIN REDUCED CONTAINER ===== */
+  /* ===== STAR POSITIONING WITHIN REDUCED 92% CONTAINER ===== */
   .star {
-    opacity: 0.8;
-    position: absolute;
-    z-index: 0;
+    opacity: 0.8 !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    animation: twinkle 3s infinite !important;
+    /* Stars are now positioned within the 92% height container */
   }
 
   .shooting-star {
-    opacity: 0.9;
-    position: absolute;
-    z-index: 0;
+    opacity: 0.9 !important;
+    position: absolute !important;
+    z-index: 0 !important;
+    animation: shoot 5s infinite !important;
+    /* Shooting stars also within reduced container */
   }
 
   /* Navigation buttons - better contrast against blue */
   .swiper-button-next,
   .swiper-button-prev {
-    width: 32px;
-    height: 32px;
-    background: rgba(231, 76, 60, 0.95);
-    top: 50%;
-    transform: translateY(-50%);
-    margin-top: 0;
-    z-index: 3;
-    border: 2px solid white;
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(231, 76, 60, 0.95) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin-top: 0 !important;
+    z-index: 3 !important;
+    border: 2px solid white !important;
   }
 
   .swiper-button-next:after,
   .swiper-button-prev:after {
-    font-size: 14px;
-    color: white;
+    font-size: 14px !important;
+    color: white !important;
   }
 }
 
@@ -570,13 +575,13 @@
       #283593 50%,
       #3949ab 75%,
       #5c6bc0 100%
-    );
+    ) !important;
   }
 
-  /* STAR BACKGROUND CONTAINER (REDUCED BY 4%) */
+  /* STAR BACKGROUND CONTAINER (REDUCED BY ANOTHER 4% - TOTAL 8%) */
   .swiper-slide::before {
-    top: 2%;
-    height: 96%; /* Reduced by 4% */
+    top: 4%; /* Another 4% reduction */
+    height: 92%; /* Total 8% reduction */
   }
 
   /* Adjust image size for smaller screens */
@@ -619,13 +624,13 @@
       #283593 60%,
       #3949ab 90%,
       #5c6bc0 100%
-    );
+    ) !important;
   }
 
-  /* STAR BACKGROUND CONTAINER (REDUCED BY 4%) */
+  /* STAR BACKGROUND CONTAINER (REDUCED BY ANOTHER 4% - TOTAL 8%) */
   .swiper-slide::before {
-    top: 2%;
-    height: 96%; /* Reduced by 4% */
+    top: 4%; /* Another 4% reduction */
+    height: 92%; /* Total 8% reduction */
   }
 
   .swiper-slide img {
@@ -646,13 +651,13 @@
       #3949ab 60%,
       #5c6bc0 85%,
       #7986cb 100%
-    );
+    ) !important;
   }
 
-  /* STAR BACKGROUND CONTAINER (REDUCED BY 4%) */
+  /* STAR BACKGROUND CONTAINER (REDUCED BY ANOTHER 4% - TOTAL 8%) */
   .swiper-slide::before {
-    top: 2%;
-    height: 96%; /* Reduced by 4% */
+    top: 4%; /* Another 4% reduction */
+    height: 92%; /* Total 8% reduction */
   }
 
   .swiper-slide img {
