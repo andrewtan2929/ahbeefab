@@ -83,55 +83,72 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceBetween: 20,
     });
 
-    // Function to create starry background for mobile portrait
-    function createStarryBackground(swiperElement) {
-        // Only create stars once and only for mobile portrait
-        if (starsCreated || window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
-            return;
-        }
+// In your existing JavaScript, update the createStarryBackground function:
 
-        const swiper = swiperElement;
-        const starCount = 30;
-        const shootingStarCount = 3;
-
-        // Create stars
-        for (let i = 0; i < starCount; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-
-            // Random size between 1-3px
-            const size = Math.random() * 2 + 1;
-            star.style.width = `${size}px`;
-            star.style.height = `${size}px`;
-
-            // Random position
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
-
-            // Random twinkle delay
-            star.style.animationDelay = `${Math.random() * 3}s`;
-
-            swiper.appendChild(star);
-        }
-
-        // Create shooting stars
-        for (let i = 0; i < shootingStarCount; i++) {
-            const shootingStar = document.createElement('div');
-            shootingStar.className = 'shooting-star';
-
-            // Random position and angle
-            shootingStar.style.left = `${Math.random() * 100}%`;
-            shootingStar.style.top = `${Math.random() * 100}%`;
-
-            // Random shoot delay
-            shootingStar.style.animationDelay = `${Math.random() * 5}s`;
-
-            swiper.appendChild(shootingStar);
-        }
-
-        starsCreated = true;
+function createStarryBackground(swiperElement) {
+    // Only create stars once and only for mobile portrait
+    if (starsCreated || window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
+        return;
     }
 
+    const swiper = swiperElement;
+    const starCount = 50; // Increased for better coverage
+    const shootingStarCount = 5; // Increased
+
+    // Clear any existing stars
+    const existingStars = swiper.querySelectorAll('.star, .shooting-star');
+    existingStars.forEach(star => star.remove());
+
+    // Create stars distributed throughout entire height
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+
+        // Random size between 1-3px
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+
+        // Random position - distribute throughout entire height
+        const topPosition = Math.random() * 100; // 0% to 100%
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${topPosition}%`;
+
+        // Set CSS variable for animation delay
+        star.style.setProperty('--i', i);
+
+        // Random opacity
+        star.style.opacity = Math.random() * 0.5 + 0.3;
+
+        swiper.appendChild(star);
+    }
+
+    // Create shooting stars at different heights
+    for (let i = 0; i < shootingStarCount; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.className = 'shooting-star';
+
+        // Random height between 10% and 90%
+        const startY = Math.random() * 80 + 10;
+        shootingStar.style.top = `${startY}%`;
+
+        // Random horizontal start
+        const startX = Math.random() * 20;
+        shootingStar.style.left = `${startX}%`;
+
+        // Set CSS variables for animation
+        shootingStar.style.setProperty('--i', i);
+        shootingStar.style.setProperty('--start-y', `${startY}px`);
+
+        // Random length
+        const length = Math.random() * 80 + 50;
+        shootingStar.style.width = `${length}px`;
+
+        swiper.appendChild(shootingStar);
+    }
+
+    starsCreated = true;
+}
     // Function to update button states
     function updateButtonStates(activeGallery, isRunning) {
         // Remove all states from buttons
