@@ -5,29 +5,23 @@
 [build.environment]
   HUGO_VERSION = "0.149.1"
 
-# 1. Redirect Old Netlify Subdomain (THE FIX for your GSC error)
+# 1. Redirect Old Netlify Domain to WWW (Fixes your GSC error)
 [[redirects]]
   from = "https://ahbeefab.netlify.app/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
-# 2. Redirect non-HTTPS (HTTP) to HTTPS & www
+# 2. Redirect non-WWW to WWW (Netlify handles this, but this ensures it)
+[[redirects]]
+  from = "https://ahbeefabrication.com.au/*"
+  to = "https://www.ahbeefabrication.com.au/:splat"
+  status = 301
+
+# 3. Redirect HTTP to HTTPS (Essential for security)
 [[redirects]]
   from = "http://ahbeefabrication.com.au/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
-[[redirects]]
-  from = "http://www.ahbeefabrication.com.au/*"
-  to = "https://www.ahbeefabrication.com.au/:splat"
-  status = 301
-
-# Netlify Forms and environment settings
 [context.production.environment]
   HUGO_ENV = "production"
-
-[context.deploy-preview]
-  command = "hugo -b $DEPLOY_PRIME_URL"
-
-[context.branch-deploy]
-  command = "hugo -b $DEPLOY_PRIME_URL"
