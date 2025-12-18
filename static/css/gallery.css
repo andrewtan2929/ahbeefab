@@ -241,7 +241,6 @@
   opacity: 0;
   width: 2px;
   height: 2px;
-  animation: twinkle 3s infinite var(--i, 0s) alternate;
 }
 
 /* Shooting stars */
@@ -253,7 +252,6 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  animation: shoot 5s infinite var(--i, 0s) linear;
 }
 
 /* Enhanced twinkle animation for stars */
@@ -282,15 +280,16 @@
     opacity: 0;
     transform: translateX(-100px) translateY(var(--start-y, 0px)) rotate(15deg);
   }
-  5% {
+  10% {
     opacity: 1;
   }
-  15% {
-    opacity: 0;
-    transform: translateX(100vw) translateY(calc(var(--start-y, 0px) + 60px)) rotate(15deg);
+  20% {
+    opacity: 0.5;
+    transform: translateX(calc(100vw + 100px)) translateY(calc(var(--start-y, 0px) + 80px)) rotate(15deg);
   }
   100% {
     opacity: 0;
+    transform: translateX(calc(100vw + 100px)) translateY(calc(var(--start-y, 0px) + 80px)) rotate(15deg);
   }
 }
 
@@ -378,7 +377,7 @@
 
   /* Hide stars in landscape */
   .star, .shooting-star {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -485,7 +484,7 @@
   }
 
   .shooting-star {
-    opacity: 0.8;
+    opacity: 0;
     z-index: 1;
   }
 }

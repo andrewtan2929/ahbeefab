@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let activeSwiper = null;
     let currentGallery = null;
-    let starsCreated = false;
 
     // Initialize swipers
     const cageSwiper = new Swiper('.cage-trailer-swiper', {
@@ -85,13 +84,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Updated createStarryBackground function for bright blue sky background
     function createStarryBackground(swiperElement) {
-        // Only create stars once and only for mobile portrait
-        if (starsCreated || window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
+        // Only create stars for mobile portrait
+        if (window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
             return;
         }
 
         const swiper = swiperElement;
-        const starCount = 80; // Increased for brighter blue background
+        const starCount = 80;
         const shootingStarCount = 8;
 
         // Clear any existing stars
@@ -113,11 +112,16 @@ document.addEventListener('DOMContentLoaded', function() {
             star.style.left = `${Math.random() * 100}%`;
             star.style.top = `${topPosition}%`;
 
-            // Set CSS variable for animation delay
-            star.style.setProperty('--i', i);
+            // Set CSS variable for animation delay with units
+            const delay = Math.random() * 3;
+            star.style.setProperty('--delay', `${delay}s`);
+
+            // Set animation duration
+            const duration = Math.random() * 2 + 2;
+            star.style.setProperty('--duration', `${duration}s`);
 
             // Brighter stars for bright blue sky
-            const brightness = Math.random() * 0.8 + 0.4; // 0.4 to 1.2
+            const brightness = Math.random() * 0.8 + 0.4;
             star.style.opacity = brightness;
 
             // Random color variation from white to light blue
@@ -129,6 +133,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 0 0 ${size * 2}px ${size / 2}px rgba(255, 255, 255, 0.7),
                 0 0 ${size * 4}px ${size}px rgba(173, 216, 230, 0.4)
             `;
+
+            // Set animation properties directly
+            star.style.animation = `twinkle var(--duration) infinite var(--delay) alternate`;
 
             swiper.appendChild(star);
         }
@@ -146,8 +153,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const startX = Math.random() * 20;
             shootingStar.style.left = `${startX}%`;
 
-            // Set CSS variables for animation
-            shootingStar.style.setProperty('--i', i);
+            // Set CSS variables for animation with units
+            const delay = Math.random() * 10;
+            shootingStar.style.setProperty('--delay', `${delay}s`);
             shootingStar.style.setProperty('--start-y', `${startY}px`);
 
             // Random length
@@ -155,13 +163,17 @@ document.addEventListener('DOMContentLoaded', function() {
             shootingStar.style.width = `${length}px`;
 
             // Brighter shooting stars with blue tint
-            shootingStar.style.opacity = '1';
+            shootingStar.style.opacity = '0';
             shootingStar.style.background = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(135, 206, 235, 0.8), transparent)';
+
+            // Set animation properties directly
+            shootingStar.style.animation = `shoot 3s infinite var(--delay) linear`;
 
             swiper.appendChild(shootingStar);
         }
 
-        starsCreated = true;
+        // Force a reflow to trigger animations
+        void swiper.offsetWidth;
     }
 
     // Function to update button states
@@ -275,9 +287,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Run cleanup after a short delay
     setTimeout(cleanPaginationText, 100);
 
-    // Handle window resize - reset stars flag
+    // Handle window resize - recreate stars on orientation change
     window.addEventListener('resize', function() {
-        starsCreated = false;
+        if (activeSwiper && currentGallery) {
+            const targetElement = document.querySelector(`.${currentGallery}-trailer-swiper`);
+            if (targetElement.style.display === 'block') {
+                createStarryBackground(targetElement);
+            }
+        }
     });
 });
 </script>
