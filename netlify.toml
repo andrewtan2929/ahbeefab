@@ -6,7 +6,6 @@
   HUGO_VERSION = "0.149.1"
 
 # 1. CANONICAL REDIRECTS (MOST IMPORTANT)
-# Redirect all HTTP and non-www to HTTPS & www
 [[redirects]]
   from = "http://ahbeefabrication.com.au/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
@@ -28,13 +27,12 @@
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
 
-# 3. TRAILING SLASH HANDLING (Simplified)
-# Remove trailing slashes for ALL paths, not just specific pages
+# 3. TRAILING SLASH HANDLING
 [[redirects]]
   from = "/*/"
   to = "/:splat"
   status = 301
-  force = true  # Ensures it overrides Hugo's default behavior
+  force = true
 
 # Netlify Forms and environment settings
 [context.production.environment]
