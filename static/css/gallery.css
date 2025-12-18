@@ -182,20 +182,6 @@
   background: #0a0e17;
 }
 
-/* Starry background overlay - only for mobile portrait */
-.swiper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: -1;
-  opacity: 0;
-  pointer-events: none;
-}
-
 /* Desktop - even larger for big screens (REDUCED BY 10%) */
 @media (min-width: 1025px) {
   .swiper {
@@ -255,7 +241,6 @@
   opacity: 0;
   width: 2px;
   height: 2px;
-  animation: twinkle 3s infinite;
 }
 
 /* Shooting stars */
@@ -267,34 +252,43 @@
   z-index: 0;
   pointer-events: none;
   opacity: 0;
-  animation: shoot 5s infinite;
-  transform: rotate(-30deg);
 }
 
-/* Twinkle animation for stars */
+/* Enhanced twinkle animation for stars */
 @keyframes twinkle {
   0%, 100% {
     opacity: 0.3;
     transform: scale(1);
   }
+  25% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
   50% {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.5);
+  }
+  75% {
+    opacity: 0.6;
+    transform: scale(1.1);
   }
 }
 
-/* Shooting star animation */
+/* Enhanced shooting star animation */
 @keyframes shoot {
   0% {
     opacity: 0;
-    transform: translateX(-100px) translateY(var(--start-y, 0px)) rotate(-30deg);
+    transform: translateX(-150px) translateY(var(--start-y, 0px)) rotate(15deg);
   }
-  10% {
+  5% {
     opacity: 1;
   }
-  20% {
+  15% {
+    opacity: 0.7;
+  }
+  25% {
     opacity: 0;
-    transform: translateX(100vw) translateY(calc(var(--start-y, 0px) + 50px)) rotate(-30deg);
+    transform: translateX(calc(100vw + 150px)) translateY(calc(var(--start-y, 0px) + 100px)) rotate(15deg);
   }
   100% {
     opacity: 0;
@@ -385,11 +379,11 @@
 
   /* Hide stars in landscape */
   .star, .shooting-star {
-    display: none;
+    display: none !important;
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - BRIGHT LIGHT BLUE TO BLUE GRADIENT WITH 4% HEIGHT REDUCTION ===== */
+/* ===== MOBILE PORTRAIT ONLY - BLUE TO DARK BLUE GRADIENT ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -415,11 +409,11 @@
     min-width: 140px;
   }
 
-  /* BRIGHT LIGHT BLUE TO BLUE GRADIENT with 4% height reduction (73vh = 77vh - 4vh) */
+  /* BLUE TO DARK BLUE GRADIENT BACKGROUND with 4% height reduction */
   .swiper {
-    height: 73vh !important; /* Reduced by 4% from original 77vh */
+    height: 73.92vh !important; /* Reduced by 4% from 77vh (77 * 0.96) */
     min-height: 384px !important; /* Adjusted proportionally */
-    background: linear-gradient(to bottom, #B3E0FF, #4A90E2); /* Bright light blue to blue gradient */
+    background: linear-gradient(to bottom, #4A6FA5 0%, #3A5A8C 30%, #2A4A73 70%, #1A3A5A 100%); /* Blue to dark blue gradient */
     position: relative;
     overflow: visible !important;
     display: flex;
@@ -427,8 +421,17 @@
     justify-content: center;
   }
 
+  /* Starry background overlay - reduced by 4% */
   .swiper::before {
-    opacity: 1;
+    content: '';
+    position: absolute;
+    top: 4%; /* Start 4% from top */
+    left: 0;
+    width: 100%;
+    height: 92%; /* 100% - 8% (4% top + 4% bottom) */
+    background: transparent;
+    z-index: 0;
+    pointer-events: none;
   }
 
   /* Make slide transparent and center content */
@@ -440,22 +443,25 @@
     height: 100% !important;
     margin: 0;
     padding: 0;
+    position: relative;
+    z-index: 2;
   }
 
-  /* Image stays centered with proper sizing */
+  /* Image stays centered with proper sizing - reduced to fit in starry area */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 61vh !important; /* Adjusted for new container height */
+    max-height: 62.4vh !important; /* Reduced by 4% from 65vh */
     width: auto !important;
     max-width: 95% !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
-    z-index: 2;
+    z-index: 3;
     background: transparent;
+    position: relative;
   }
 
-  /* Navigation buttons */
+  /* Navigation buttons - positioned for starry background */
   .swiper-button-next,
   .swiper-button-prev {
     width: 32px;
@@ -464,7 +470,7 @@
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
-    z-index: 3;
+    z-index: 4;
   }
 
   .swiper-button-next:after,
@@ -473,17 +479,19 @@
     color: white;
   }
 
-  /* Show stars for mobile portrait */
+  /* Show stars for mobile portrait - positioned within the 92% height area */
   .star {
-    opacity: 0.85; /* Increased opacity for bright background */
+    opacity: 0.8;
+    z-index: 1;
   }
 
   .shooting-star {
-    opacity: 1; /* Full opacity for bright background */
+    opacity: 0;
+    z-index: 1;
   }
 }
 
-/* Small Mobile Devices Portrait - Blue Gradient with 4% reduction */
+/* Small Mobile Devices Portrait - Blue to Dark Blue with 4% reduction */
 @media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
@@ -507,21 +515,21 @@
     gap: 0.5rem;
   }
 
-  /* Blue Gradient with 4% reduction (68vh = 72vh - 4vh) */
+  /* Blue to Dark Blue with 4% reduction */
   .swiper {
-    height: 68vh !important; /* Reduced by 4% from original 72vh */
+    height: 66.24vh !important; /* 69.12vh reduced by 4% (72 * 0.96 * 0.96) */
     min-height: 360px !important; /* Adjusted proportionally */
-    background: linear-gradient(to bottom, #B3E0FF, #4A90E2);
+    background: linear-gradient(to bottom, #4A6FA5 0%, #3A5A8C 30%, #2A4A73 70%, #1A3A5A 100%);
   }
 
-  /* Adjust image size for smaller screens */
+  /* Adjust image size for smaller screens - reduced by 4% */
   .swiper-slide img {
-    max-height: 56vh !important; /* Adjusted for new container height */
+    max-height: 54.72vh !important; /* 57vh reduced by 4% */
     max-width: 98% !important;
   }
 }
 
-/* Very Small Screens Portrait - Blue Gradient with 4% reduction */
+/* Very Small Screens Portrait - Blue to Dark Blue with 4% reduction */
 @media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
@@ -544,28 +552,28 @@
     max-width: 200px;
   }
 
-  /* Blue Gradient with 4% reduction (63vh = 67vh - 4vh) */
+  /* Blue to Dark Blue with 4% reduction */
   .swiper {
-    height: 63vh !important; /* Reduced by 4% from original 67vh */
+    height: 61.44vh !important; /* 64.32vh reduced by 4% (67 * 0.96 * 0.96 * 0.96) */
     min-height: 336px !important; /* Adjusted proportionally */
-    background: linear-gradient(to bottom, #B3E0FF, #4A90E2);
+    background: linear-gradient(to bottom, #4A6FA5 0%, #3A5A8C 30%, #2A4A73 70%, #1A3A5A 100%);
   }
 
   .swiper-slide img {
-    max-height: 51vh !important; /* Adjusted */
+    max-height: 50.88vh !important; /* 53vh reduced by 4% */
     max-width: 99% !important;
   }
 }
 
-/* For very tall screens - Blue Gradient with 4% reduction */
+/* For very tall screens - Blue to Dark Blue with 4% reduction */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
-  /* Blue Gradient with 4% reduction (83vh = 87vh - 4vh) */
+  /* Blue to Dark Blue with 4% reduction */
   .swiper {
-    height: 83vh !important; /* Reduced by 4% from original 87vh */
-    background: linear-gradient(to bottom, #B3E0FF, #4A90E2);
+    height: 79.87vh !important; /* 83.52vh reduced by 4% (87 * 0.96 * 0.96) */
+    background: linear-gradient(to bottom, #4A6FA5 0%, #3A5A8C 30%, #2A4A73 70%, #1A3A5A 100%);
   }
 
   .swiper-slide img {
-    max-height: 71vh !important; /* Adjusted */
+    max-height: 69.12vh !important; /* 72vh reduced by 4% */
   }
 }
