@@ -388,7 +388,7 @@
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - ADDED 7% TO FILL BOTTOM SPACE ===== */
+/* ===== MOBILE PORTRAIT ONLY - BLUE SKY WITH 5% HEIGHT REDUCTION ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -414,15 +414,15 @@
     min-width: 140px;
   }
 
-  /* FINAL FIX: Added 7% more height (82vh = 75vh + 7vh) */
+  /* BLUE SKY BACKGROUND with 5% height reduction (77vh = 82vh - 5vh) */
   .swiper {
-    height: 82vh !important; /* Increased by 7% from 75vh */
-    min-height: 428px !important; /* Increased proportionally */
-    background: #0a0e17;
+    height: 77vh !important; /* Reduced by 5% from 82vh */
+    min-height: 400px !important; /* Adjusted proportionally */
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF); /* Blue sky gradient */
     position: relative;
     overflow: visible !important;
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertical centering */
     justify-content: center;
   }
 
@@ -437,12 +437,14 @@
     align-items: center !important;
     justify-content: center !important;
     height: 100% !important;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Image stays centered with more room for stars */
+  /* Image stays centered with proper sizing */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 70vh !important; /* Slightly increased to match new container */
+    max-height: 65vh !important; /* Adjusted for new container height */
     width: auto !important;
     max-width: 95% !important;
     height: auto !important;
@@ -480,7 +482,7 @@
   }
 }
 
-/* Small Mobile Devices Portrait - Added 7% */
+/* Small Mobile Devices Portrait - Blue Sky with 5% reduction */
 @media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
@@ -504,20 +506,21 @@
     gap: 0.5rem;
   }
 
-  /* Added 7% (77vh = 70vh + 7vh) */
+  /* Blue Sky with 5% reduction (72vh = 77vh - 5vh) */
   .swiper {
-    height: 77vh !important; /* Increased by 7% from 70vh */
-    min-height: 407px !important; /* Increased proportionally */
+    height: 72vh !important; /* Reduced by 5% from 77vh */
+    min-height: 375px !important; /* Adjusted proportionally */
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
   }
 
   /* Adjust image size for smaller screens */
   .swiper-slide img {
-    max-height: 65vh !important; /* Adjusted for new container height */
+    max-height: 60vh !important; /* Adjusted for new container height */
     max-width: 98% !important;
   }
 }
 
-/* Very Small Screens Portrait - Added 7% */
+/* Very Small Screens Portrait - Blue Sky with 5% reduction */
 @media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
@@ -540,26 +543,28 @@
     max-width: 200px;
   }
 
-  /* Added 7% (72vh = 65vh + 7vh) */
+  /* Blue Sky with 5% reduction (67vh = 72vh - 5vh) */
   .swiper {
-    height: 72vh !important; /* Increased by 7% from 65vh */
-    min-height: 375px !important; /* Increased proportionally */
+    height: 67vh !important; /* Reduced by 5% from 72vh */
+    min-height: 350px !important; /* Adjusted proportionally */
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
   }
 
   .swiper-slide img {
-    max-height: 60vh !important; /* Adjusted */
+    max-height: 55vh !important; /* Adjusted */
     max-width: 99% !important;
   }
 }
 
-/* For very tall screens - Added 7% */
+/* For very tall screens - Blue Sky with 5% reduction */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
-  /* Added 7% (92vh = 85vh + 7vh) */
+  /* Blue Sky with 5% reduction (87vh = 92vh - 5vh) */
   .swiper {
-    height: 92vh !important; /* Increased by 7% from 85vh */
+    height: 87vh !important; /* Reduced by 5% from 92vh */
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
   }
 
   .swiper-slide img {
-    max-height: 80vh !important; /* Adjusted */
+    max-height: 75vh !important; /* Adjusted */
   }
 }
