@@ -1,5 +1,18 @@
 /* ===== Gallery Page Styles ===== */
 
+/* ===== Body and Layout Fixes ===== */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* ===== Simple Intro Statement ===== */
 .gallery-intro-statement {
   text-align: center;
@@ -44,6 +57,7 @@
   background-size: cover;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   gap: 2rem;
+  flex-shrink: 0;
 }
 
 /* Left section with logo and title */
@@ -165,6 +179,7 @@
   position: relative;
   margin-top: 1rem;
   padding: 0;
+  flex: 1 0 auto; /* Makes gallery section grow and push footer down */
 }
 
 /* Swiper container - FULL WIDTH */
@@ -452,6 +467,14 @@
   font-size: 0;
 }
 
+/* ===== Footer Sticky Bottom ===== */
+/* This assumes your footer has a class or ID - adjust as needed */
+footer, .footer, #footer {
+  flex-shrink: 0;
+  margin-top: auto;
+  width: 100%;
+}
+
 /* ===== Mobile Responsive ===== */
 @media (max-width: 1024px) {
   .gallery-header {
@@ -502,7 +525,7 @@
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - ENHANCED DARK SHINING BLUE BACKGROUND ===== */
+/* ===== MOBILE PORTRAIT ONLY - EXTENDED DARK SHINING BLUE BACKGROUND ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -528,10 +551,10 @@
     min-width: 140px;
   }
 
-  /* ENHANCED DARK SHINING BLUE BACKGROUND */
+  /* EXTENDED DARK SHINING BLUE BACKGROUND - 20% taller */
   .swiper {
-    height: 73.92vh !important;
-    min-height: 384px !important;
+    height: 93vh !important; /* Increased by 20% from original */
+    min-height: 460px !important; /* Increased proportionally */
     background: linear-gradient(
       135deg,
       #0a0e2a 0%,
@@ -545,6 +568,9 @@
     animation: space-gradient 30s ease infinite !important;
     position: relative;
     overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   @keyframes space-gradient {
@@ -575,9 +601,9 @@
   /* Image stays centered with proper sizing */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 62.4vh !important;
+    max-height: 50vh !important; /* Adjusted for larger container */
     width: auto !important;
-    max-width: 95% !important;
+    max-width: 92% !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
@@ -607,12 +633,14 @@
     font-weight: bold;
   }
 
-  /* Starry background styles - ENHANCED */
+  /* Extended starry background - covers 100% of the taller container */
   .starry-background {
     opacity: 1 !important;
     z-index: 0 !important;
     pointer-events: none !important;
     mix-blend-mode: screen;
+    top: 0 !important;
+    height: 100% !important; /* Now covers the entire taller container */
   }
 }
 
@@ -641,8 +669,8 @@
   }
 
   .swiper {
-    height: 66.24vh !important;
-    min-height: 360px !important;
+    height: 90vh !important; /* Increased proportionally */
+    min-height: 432px !important; /* Increased proportionally */
     background: linear-gradient(
       135deg,
       #0a0e2a 0%,
@@ -656,8 +684,8 @@
 
   /* Adjust image size for smaller screens */
   .swiper-slide img {
-    max-height: 54.72vh !important;
-    max-width: 98% !important;
+    max-height: 48vh !important; /* Adjusted for larger container */
+    max-width: 96% !important;
   }
 }
 
@@ -685,21 +713,21 @@
   }
 
   .swiper {
-    height: 61.44vh !important;
-    min-height: 336px !important;
+    height: 88vh !important; /* Increased proportionally */
+    min-height: 403px !important; /* Increased proportionally */
     animation: space-gradient 20s ease infinite !important;
   }
 
   .swiper-slide img {
-    max-height: 50.88vh !important;
-    max-width: 99% !important;
+    max-height: 45vh !important; /* Adjusted for larger container */
+    max-width: 98% !important;
   }
 }
 
 /* For very tall screens */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
   .swiper {
-    height: 79.87vh !important;
+    height: 96vh !important; /* Increased proportionally */
     background: linear-gradient(
       135deg,
       #0a0e2a 0%,
@@ -711,6 +739,6 @@
   }
 
   .swiper-slide img {
-    max-height: 69.12vh !important;
+    max-height: 55vh !important; /* Adjusted for larger container */
   }
 }
