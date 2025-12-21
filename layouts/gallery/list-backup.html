@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         spaceBetween: 20,
     });
 
-    // Function to create IMPROVED starry background
+    // Function to create starry background for dark shining blue
     function createStarryBackground(swiperElement) {
         // Only create stars for mobile portrait
         if (window.innerWidth > 768 || window.innerHeight <= window.innerWidth) {
@@ -91,24 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const swiper = swiperElement;
-        const starCount = 120; // Increased star count for more brilliance
-        const shootingStarCount = 8; // More shooting stars
-
-        // Enhanced nebula colors for more vibrant background
-        const nebulaColors = [
-            'rgba(10, 14, 42, 0.8)',    // Deep Blue
-            'rgba(26, 31, 74, 0.6)',    // Medium Blue
-            'rgba(42, 47, 106, 0.4)',   // Light Blue
-            'rgba(65, 90, 150, 0.3)',   // Bright Blue
-            'rgba(90, 120, 200, 0.2)',  // Luminous Blue
-        ];
+        const starCount = 70;
+        const shootingStarCount = 5;
 
         // Clear any existing starry background
         if (starryBackground) {
             starryBackground.remove();
         }
 
-        // Create starry background container with nebula effect
+        // Create starry background container
         starryBackground = document.createElement('div');
         starryBackground.className = 'starry-background';
         starryBackground.style.position = 'absolute';
@@ -120,169 +111,81 @@ document.addEventListener('DOMContentLoaded', function() {
         starryBackground.style.pointerEvents = 'none';
         starryBackground.style.overflow = 'hidden';
 
-        // Create nebula gradient background
-        const nebula = document.createElement('div');
-        nebula.className = 'nebula';
-        nebula.style.position = 'absolute';
-        nebula.style.top = '0';
-        nebula.style.left = '0';
-        nebula.style.width = '100%';
-        nebula.style.height = '100%';
-        nebula.style.background = `
-            radial-gradient(ellipse at 20% 30%, ${nebulaColors[3]} 0%, transparent 50%),
-            radial-gradient(ellipse at 70% 60%, ${nebulaColors[2]} 0%, transparent 50%),
-            radial-gradient(ellipse at 40% 80%, ${nebulaColors[1]} 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 20%, ${nebulaColors[4]} 0%, transparent 50%),
-            ${nebulaColors[0]}
-        `;
-        nebula.style.opacity = '0.7';
-        nebula.style.animation = 'nebula-drift 60s infinite linear';
-
-        starryBackground.appendChild(nebula);
-
-        // Create brilliant stars with varying properties
+        // Create stars for dark shining blue background
         for (let i = 0; i < starCount; i++) {
             const star = document.createElement('div');
             star.className = 'star';
 
-            // More varied sizes for realistic star field
-            const sizeType = Math.random();
-            let size, glowSize, brightness;
-
-            if (sizeType < 0.7) { // 70% small stars
-                size = Math.random() * 2 + 0.5;
-                glowSize = size * 4;
-                brightness = Math.random() * 0.4 + 0.6; // Brighter baseline
-            } else if (sizeType < 0.9) { // 20% medium stars
-                size = Math.random() * 3 + 1.5;
-                glowSize = size * 6;
-                brightness = Math.random() * 0.5 + 0.7;
-            } else { // 10% large, brilliant stars
-                size = Math.random() * 4 + 3;
-                glowSize = size * 8;
-                brightness = Math.random() * 0.6 + 0.8;
-            }
-
+            // Varying sizes for more realistic look
+            const size = Math.random() * 3 + 1;
             star.style.width = `${size}px`;
             star.style.height = `${size}px`;
 
-            // Random position
+            // Random position within starry background area
             const topPosition = Math.random() * 100;
             const leftPosition = Math.random() * 100;
             star.style.left = `${leftPosition}%`;
             star.style.top = `${topPosition}%`;
 
-            // Enhanced animation with varied timing
-            const delay = Math.random() * 10;
+            // Set animation delay and duration
+            const delay = Math.random() * 5;
             star.style.setProperty('--delay', `${delay}s`);
-            const duration = Math.random() * 3 + 1.5; // Faster twinkle
+            const duration = Math.random() * 4 + 2;
             star.style.setProperty('--duration', `${duration}s`);
 
-            // Star colors - more vibrant with color variations
-            const colorVariation = Math.random();
-            let starColor;
-
-            if (colorVariation < 0.7) { // 70% white/blue stars
-                const blueTint = Math.random() * 0.3;
-                starColor = `rgba(255, ${255 - blueTint * 100}, 255, 1)`;
-            } else if (colorVariation < 0.85) { // 15% blue stars
-                starColor = `rgba(173, 216, 255, 1)`;
-            } else if (colorVariation < 0.95) { // 10% slightly yellow stars
-                starColor = `rgba(255, 255, 200, 1)`;
-            } else { // 5% special bright stars
-                starColor = `rgba(255, 255, 255, 1)`;
-            }
-
-            star.style.backgroundColor = starColor;
+            // Brightness for dark background
+            const brightness = Math.random() * 0.8 + 0.2;
             star.style.opacity = brightness;
 
-            // Enhanced glow effect with multiple layers
-            const glowIntensity = brightness * 2;
+            // Star color - white to slightly blue for shine
+            const blueTint = Math.random() * 0.4;
+            star.style.backgroundColor = `rgba(${255 - blueTint * 50}, ${255 - blueTint * 30}, 255, 1)`;
+
+            // Glow effect for shining stars
+            const glowSize = size * 2;
             star.style.boxShadow = `
-                0 0 ${glowSize * 0.5}px ${size * 0.3}px rgba(255, 255, 255, ${glowIntensity * 0.8}),
-                0 0 ${glowSize}px ${size * 0.6}px rgba(173, 216, 255, ${glowIntensity * 0.4}),
-                0 0 ${glowSize * 2}px ${size}px rgba(135, 206, 250, ${glowIntensity * 0.2})
+                0 0 ${glowSize}px ${size / 2}px rgba(255, 255, 255, 0.8),
+                0 0 ${glowSize * 2}px ${size}px rgba(173, 216, 255, 0.4)
             `;
 
-            // Add shine effect with radial gradient
-            star.style.backgroundImage = `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), transparent 70%)`;
-
-            // Set improved animation
+            // Set animation
             star.style.animation = `star-twinkle var(--duration) infinite var(--delay) alternate`;
 
             starryBackground.appendChild(star);
         }
 
-        // Create brilliant shooting stars with trails
+        // Create shooting stars
         for (let i = 0; i < shootingStarCount; i++) {
             const shootingStar = document.createElement('div');
-            const trail = document.createElement('div'); // Separate trail element
-
             shootingStar.className = 'shooting-star';
-            trail.className = 'shooting-star-trail';
 
             // Random starting position
             const startY = Math.random() * 100;
             shootingStar.style.top = `${startY}%`;
-            trail.style.top = `${startY}%`;
 
             // Random horizontal start
             const startX = Math.random() * 30;
             shootingStar.style.left = `${startX}%`;
-            trail.style.left = `${startX}%`;
 
             // Set animation properties
-            const delay = Math.random() * 25 + 5; // More frequent shooting stars
+            const delay = Math.random() * 20;
             shootingStar.style.setProperty('--delay', `${delay}s`);
-            trail.style.setProperty('--delay', `${delay}s`);
+            shootingStar.style.setProperty('--start-y', `${startY}%`);
 
             // Random length and angle
-            const length = Math.random() * 200 + 100; // Longer trails
+            const length = Math.random() * 150 + 80;
             shootingStar.style.width = `${length}px`;
-            trail.style.width = `${length * 2}px`; // Trail is longer
-
-            const angle = Math.random() * 40 + 5; // More varied angles
+            const angle = Math.random() * 30 + 10;
             shootingStar.style.transform = `rotate(${angle}deg)`;
-            trail.style.transform = `rotate(${angle}deg)`;
 
-            // Enhanced shooting star color with gradient
-            shootingStar.style.background = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9), transparent)';
+            // Shooting star color with bright trail
+            shootingStar.style.background = 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), rgba(200, 220, 255, 0.7), transparent)';
             shootingStar.style.opacity = '0';
-            shootingStar.style.boxShadow = '0 0 15px 5px rgba(255, 255, 255, 0.8)';
 
-            // Trail with gradient fade
-            trail.style.background = 'linear-gradient(90deg, transparent, rgba(173, 216, 255, 0.4), rgba(135, 206, 250, 0.2), transparent)';
-            trail.style.opacity = '0';
-            trail.style.filter = 'blur(3px)';
-
-            // Set animations
-            shootingStar.style.animation = `shooting-star-move 2s infinite var(--delay) cubic-bezier(0.4, 0, 0.2, 1)`;
-            trail.style.animation = `shooting-star-trail 2.5s infinite var(--delay) ease-out`;
+            // Set animation
+            shootingStar.style.animation = `star-shoot 3s infinite var(--delay) linear`;
 
             starryBackground.appendChild(shootingStar);
-            starryBackground.appendChild(trail);
-        }
-
-        // Add twinkling clusters for extra brilliance
-        const clusterCount = 3;
-        for (let i = 0; i < clusterCount; i++) {
-            const cluster = document.createElement('div');
-            cluster.className = 'star-cluster';
-
-            const clusterX = Math.random() * 80 + 10;
-            const clusterY = Math.random() * 80 + 10;
-
-            cluster.style.position = 'absolute';
-            cluster.style.left = `${clusterX}%`;
-            cluster.style.top = `${clusterY}%`;
-            cluster.style.width = '60px';
-            cluster.style.height = '60px';
-            cluster.style.opacity = '0.3';
-            cluster.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%)';
-            cluster.style.filter = 'blur(5px)';
-            cluster.style.animation = `cluster-pulse ${Math.random() * 10 + 15}s infinite alternate`;
-
-            starryBackground.appendChild(cluster);
         }
 
         // Add the starry background to swiper
@@ -403,17 +306,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(cleanPaginationText, 100);
 
     // Handle window resize - recreate stars on orientation change
-    let resizeTimeout;
     window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-            if (activeSwiper && currentGallery) {
-                const targetElement = document.querySelector(`.${currentGallery}-trailer-swiper`);
-                if (targetElement.style.display === 'block') {
-                    createStarryBackground(targetElement);
-                }
+        if (activeSwiper && currentGallery) {
+            const targetElement = document.querySelector(`.${currentGallery}-trailer-swiper`);
+            if (targetElement.style.display === 'block') {
+                createStarryBackground(targetElement);
             }
-        }, 250);
+        }
     });
 
     // Handle page visibility change (for mobile)
@@ -421,10 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!document.hidden && activeSwiper && currentGallery) {
             const targetElement = document.querySelector(`.${currentGallery}-trailer-swiper`);
             if (targetElement.style.display === 'block') {
-                // Small delay to ensure DOM is ready
-                setTimeout(() => {
-                    createStarryBackground(targetElement);
-                }, 100);
+                createStarryBackground(targetElement);
             }
         }
     });
