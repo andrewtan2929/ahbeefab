@@ -1,23 +1,5 @@
 /* ===== Gallery Page Styles ===== */
 
-/* ===== Body and Layout Fixes ===== */
-html {
-  height: 100%;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-}
-
-/* Main content wrapper - this pushes footer down */
-.main-content {
-  flex: 1 0 auto;
-}
-
 /* ===== Simple Intro Statement ===== */
 .gallery-intro-statement {
   text-align: center;
@@ -249,45 +231,70 @@ body {
   transform: scale(1.01);
 }
 
-/* ===== ENHANCED STARRY BACKGROUND FOR MOBILE PORTRAIT ===== */
+/* Starry background container */
+.starry-background {
+  position: absolute !important;
+  top: 4% !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 92% !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+}
 
 /* Star particles */
 .star {
   position: absolute;
   background-color: white;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
   opacity: 0;
+  width: 2px;
+  height: 2px;
 }
 
 /* Shooting stars */
 .shooting-star {
   position: absolute;
+  width: 100px;
   height: 2px;
   background: linear-gradient(90deg, transparent, white, transparent);
-  z-index: 2;
+  z-index: 0;
   pointer-events: none;
   opacity: 0;
 }
 
-/* Star twinkle animation */
+/* Enhanced twinkle animation for stars */
 @keyframes star-twinkle {
   0%, 100% {
     opacity: 0.3;
     transform: scale(1);
   }
-  50% {
-    opacity: 1;
+  20% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+  40% {
+    opacity: 0.9;
+    transform: scale(1.3);
+  }
+  60% {
+    opacity: 0.6;
     transform: scale(1.2);
+  }
+  80% {
+    opacity: 0.4;
+    transform: scale(1.05);
   }
 }
 
-/* Shooting star animation */
+/* Enhanced shooting star animation */
 @keyframes star-shoot {
   0% {
     opacity: 0;
-    transform: translateX(-100px);
+    transform: translateX(-100px) rotate(var(--angle, 15deg));
   }
   10% {
     opacity: 1;
@@ -297,7 +304,7 @@ body {
   }
   30% {
     opacity: 0;
-    transform: translateX(calc(100vw + 100px));
+    transform: translateX(calc(100vw + 100px)) rotate(var(--angle, 15deg));
   }
   100% {
     opacity: 0;
@@ -334,12 +341,12 @@ body {
   background: #e74c3c;
 }
 
-/* ===== Footer Styling ===== */
-/* Assuming your footer has a class like .site-footer or #footer */
-.site-footer, #footer, footer {
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: auto;
+/* Hide pagination text/numbers if present */
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.swiper-pagination-bullets-dynamic {
+  font-size: 0;
 }
 
 /* ===== Mobile Responsive ===== */
@@ -392,7 +399,7 @@ body {
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - REDUCED BY 3% MORE ===== */
+/* ===== MOBILE PORTRAIT ONLY - DARK SHINING BLUE BACKGROUND ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -418,24 +425,27 @@ body {
     min-width: 140px;
   }
 
-  /* REDUCED BLUE STARRY BACKGROUND - Reduced by another 3% from 81.12vh to 78.69vh */
+  /* DARK SHINING BLUE BACKGROUND with 4% height reduction */
   .swiper {
-    height: 78.69vh !important; /* Reduced by 3% from 81.12vh */
-    min-height: 406.9px !important; /* Reduced proportionally (419.5px * 0.97) */
-    background: linear-gradient(
-      135deg,
+    height: 73.92vh !important; /* Reduced by 4% from 77vh (77 * 0.96) */
+    min-height: 384px !important; /* Adjusted proportionally */
+    background: linear-gradient(135deg,
       #0a0e2a 0%,
-      #1a1f4a 20%,
-      #2a2f6a 40%,
-      #3a3f8a 60%,
-      #2a2f6a 80%,
+      #1a1f4a 25%,
+      #2a2f6a 50%,
+      #1a1f4a 75%,
       #0a0e2a 100%
-    ) !important;
+    ); /* Dark shining blue gradient */
     position: relative;
-    overflow: hidden !important;
+    overflow: visible !important;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  /* Remove the old ::before overlay */
+  .swiper::before {
+    display: none;
   }
 
   /* Make slide transparent and center content */
@@ -451,55 +461,46 @@ body {
     z-index: 2;
   }
 
-  /* Image stays centered with proper sizing - adjusted for reduced container */
+  /* Image stays centered with proper sizing - reduced to fit in starry area */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 48.9vh !important; /* Reduced by 3% from 50.4vh */
+    max-height: 62.4vh !important; /* Reduced by 4% from 65vh */
     width: auto !important;
-    max-width: 92% !important;
+    max-width: 95% !important;
     height: auto !important;
     display: block !important;
     margin: 0 auto !important;
     z-index: 3;
     background: transparent;
     position: relative;
-    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.5));
   }
 
-  /* Navigation buttons */
+  /* Navigation buttons - positioned for starry background */
   .swiper-button-next,
   .swiper-button-prev {
-    width: 36px;
-    height: 36px;
-    background: rgba(231, 76, 60, 0.95);
+    width: 32px;
+    height: 32px;
+    background: rgba(231, 76, 60, 0.9);
     top: 50%;
     transform: translateY(-50%);
     margin-top: 0;
     z-index: 4;
-    box-shadow: 0 0 15px rgba(231, 76, 60, 0.7);
   }
 
   .swiper-button-next:after,
   .swiper-button-prev:after {
-    font-size: 16px;
+    font-size: 14px;
     color: white;
-    font-weight: bold;
   }
 
-  /* Starry background now covers the reduced area */
+  /* Starry background styles */
   .starry-background {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important; /* Now covers full reduced height */
-    z-index: 0 !important;
-    pointer-events: none !important;
-    overflow: hidden !important;
+    opacity: 1;
+    z-index: 0;
   }
 }
 
-/* Small Mobile Devices Portrait */
+/* Small Mobile Devices Portrait - Dark Shining Blue with 4% reduction */
 @media (max-width: 480px) and (orientation: portrait) {
   .gallery-header {
     padding: 0.75rem;
@@ -523,19 +524,27 @@ body {
     gap: 0.5rem;
   }
 
-  /* Reduced by another 3% for small screens */
+  /* Dark Shining Blue with 4% reduction */
   .swiper {
-    height: 76.08vh !important; /* Reduced by 3% from 78.43vh */
-    min-height: 381.8px !important; /* Reduced proportionally (393.6px * 0.97) */
+    height: 66.24vh !important; /* 69.12vh reduced by 4% (72 * 0.96 * 0.96) */
+    min-height: 360px !important; /* Adjusted proportionally */
+    background: linear-gradient(135deg,
+      #0a0e2a 0%,
+      #1a1f4a 25%,
+      #2a2f6a 50%,
+      #1a1f4a 75%,
+      #0a0e2a 100%
+    );
   }
 
+  /* Adjust image size for smaller screens - reduced by 4% */
   .swiper-slide img {
-    max-height: 46.93vh !important; /* Reduced by 3% from 48.38vh */
-    max-width: 96% !important;
+    max-height: 54.72vh !important; /* 57vh reduced by 4% */
+    max-width: 98% !important;
   }
 }
 
-/* Very Small Screens Portrait */
+/* Very Small Screens Portrait - Dark Shining Blue with 4% reduction */
 @media (max-width: 360px) and (orientation: portrait) {
   .gallery-title {
     font-size: 1.1rem;
@@ -558,33 +567,40 @@ body {
     max-width: 200px;
   }
 
-  /* Reduced by another 3% for very small screens */
+  /* Dark Shining Blue with 4% reduction */
   .swiper {
-    height: 74.31vh !important; /* Reduced by 3% from 76.61vh */
-    min-height: 356.7px !important; /* Reduced proportionally (367.7px * 0.97) */
-  }
-
-  .swiper-slide img {
-    max-height: 44vh !important; /* Reduced by 3% from 45.36vh */
-    max-width: 98% !important;
-  }
-}
-
-/* For very tall screens */
-@media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
-  .swiper {
-    height: 84.92vh !important; /* Reduced by 3% from 87.55vh */
-    background: linear-gradient(
-      135deg,
+    height: 61.44vh !important; /* 64.32vh reduced by 4% (67 * 0.96 * 0.96 * 0.96) */
+    min-height: 336px !important; /* Adjusted proportionally */
+    background: linear-gradient(135deg,
       #0a0e2a 0%,
       #1a1f4a 25%,
       #2a2f6a 50%,
       #1a1f4a 75%,
       #0a0e2a 100%
-    ) !important;
+    );
   }
 
   .swiper-slide img {
-    max-height: 53.08vh !important; /* Reduced by 3% from 54.72vh */
+    max-height: 50.88vh !important; /* 53vh reduced by 4% */
+    max-width: 99% !important;
+  }
+}
+
+/* For very tall screens - Dark Shining Blue with 4% reduction */
+@media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
+  /* Dark Shining Blue with 4% reduction */
+  .swiper {
+    height: 79.87vh !important; /* 83.52vh reduced by 4% (87 * 0.96 * 0.96) */
+    background: linear-gradient(135deg,
+      #0a0e2a 0%,
+      #1a1f4a 25%,
+      #2a2f6a 50%,
+      #1a1f4a 75%,
+      #0a0e2a 100%
+    );
+  }
+
+  .swiper-slide img {
+    max-height: 69.12vh !important; /* 72vh reduced by 4% */
   }
 }
