@@ -392,7 +392,7 @@ body {
   }
 }
 
-/* ===== MOBILE PORTRAIT ONLY - REDUCED BY 5% ===== */
+/* ===== MOBILE PORTRAIT ONLY - REDUCED BY 4% ===== */
 @media (max-width: 768px) and (orientation: portrait) {
   .gallery-left {
     gap: 0.75rem;
@@ -418,10 +418,10 @@ body {
     min-width: 140px;
   }
 
-  /* REDUCED BLUE STARRY BACKGROUND - Reduced by 5% from 89vh to 84.5vh */
+  /* REDUCED BLUE STARRY BACKGROUND - Reduced by 4% from 84.5vh to 81.12vh */
   .swiper {
-    height: 84.5vh !important; /* Reduced by 5% from 89vh */
-    min-height: 437px !important; /* Reduced proportionally */
+    height: 81.12vh !important; /* Reduced by 4% from 84.5vh */
+    min-height: 419.5px !important; /* Reduced proportionally (437px * 0.96) */
     background: linear-gradient(
       135deg,
       #0a0e2a 0%,
@@ -454,7 +454,7 @@ body {
   /* Image stays centered with proper sizing - adjusted for reduced container */
   .swiper-slide img {
     object-fit: contain !important;
-    max-height: 52.5vh !important; /* Slightly increased to maintain center position */
+    max-height: 50.4vh !important; /* Reduced by 4% from 52.5vh */
     width: auto !important;
     max-width: 92% !important;
     height: auto !important;
@@ -523,14 +523,14 @@ body {
     gap: 0.5rem;
   }
 
-  /* Reduced for small screens */
+  /* Reduced by 4% for small screens */
   .swiper {
-    height: 81.7vh !important; /* Reduced by 5% from 86vh */
-    min-height: 410px !important; /* Reduced proportionally */
+    height: 78.43vh !important; /* Reduced by 4% from 81.7vh */
+    min-height: 393.6px !important; /* Reduced proportionally (410px * 0.96) */
   }
 
   .swiper-slide img {
-    max-height: 50.4vh !important; /* Adjusted for reduced container */
+    max-height: 48.38vh !important; /* Reduced by 4% from 50.4vh */
     max-width: 96% !important;
   }
 }
@@ -558,14 +558,14 @@ body {
     max-width: 200px;
   }
 
-  /* Reduced for very small screens */
+  /* Reduced by 4% for very small screens */
   .swiper {
-    height: 79.8vh !important; /* Reduced by 5% from 84vh */
-    min-height: 383px !important; /* Reduced proportionally */
+    height: 76.61vh !important; /* Reduced by 4% from 79.8vh */
+    min-height: 367.7px !important; /* Reduced proportionally (383px * 0.96) */
   }
 
   .swiper-slide img {
-    max-height: 47.25vh !important; /* Adjusted for reduced container */
+    max-height: 45.36vh !important; /* Reduced by 4% from 47.25vh */
     max-width: 98% !important;
   }
 }
@@ -573,7 +573,7 @@ body {
 /* For very tall screens */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
   .swiper {
-    height: 91.2vh !important; /* Reduced by 5% from 96vh */
+    height: 87.55vh !important; /* Reduced by 4% from 91.2vh */
     background: linear-gradient(
       135deg,
       #0a0e2a 0%,
@@ -585,6 +585,6 @@ body {
   }
 
   .swiper-slide img {
-    max-height: 57vh !important; /* Adjusted for reduced container */
+    max-height: 54.72vh !important; /* Reduced by 4% from 57vh */
   }
 }
