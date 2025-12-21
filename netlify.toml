@@ -1,27 +1,30 @@
-[build]
+build]
   publish = "public"
   command = "hugo --gc --minify"
 
 [build.environment]
   HUGO_VERSION = "0.149.1"
 
-# 1. Redirect Old Netlify Domain to WWW (Fixes your GSC error)
+# 1. Redirect old Netlify subdomain to custom domain
 [[redirects]]
   from = "https://ahbeefab.netlify.app/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
+  force = true
 
-# 2. Redirect non-WWW to WWW (Netlify handles this, but this ensures it)
+# 2. Redirect apex to www (HTTPS)
 [[redirects]]
   from = "https://ahbeefabrication.com.au/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
+  force = true
 
-# 3. Redirect HTTP to HTTPS (Essential for security)
+# 3. Redirect HTTP apex to HTTPS www
 [[redirects]]
   from = "http://ahbeefabrication.com.au/*"
   to = "https://www.ahbeefabrication.com.au/:splat"
   status = 301
+  force = true
 
 [context.production.environment]
   HUGO_ENV = "production"
