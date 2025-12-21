@@ -4,3 +4,43 @@
 
 [build.environment]
   HUGO_VERSION = "0.149.1"
+
+# ====== CRITICAL: CANONICAL DOMAIN SETUP ======
+# 1. Force HTTPS on your primary domain
+[[redirects]]
+  from = "http://ahbeefabrication.com.au/*"
+  to = "https://ahbeefabrication.com.au/:splat"
+  status = 301
+  force = true
+
+# 2. Handle www version (choose ONE based on your preference)
+# Option A: Remove www (recommended for Australia)
+[[redirects]]
+  from = "https://www.ahbeefabrication.com.au/*"
+  to = "https://ahbeefabrication.com.au/:splat"
+  status = 301
+  force = true
+
+# OR Option B: Add www (if you prefer www version)
+# [[redirects]]
+#   from = "https://ahbeefabrication.com.au/*"
+#   to = "https://www.ahbeefabrication.com.au/:splat"
+#   status = 301
+#   force = true
+
+# ====== OLD DOMAIN REDIRECTS ======
+# 3. Redirect ALL variations of old Netlify domain to new domain
+[[redirects]]
+  from = "http://ahbeefab.netlify.app/*"
+  to = "https://ahbeefabrication.com.au/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://ahbeefab.netlify.app/*"
+  to = "https://ahbeefabrication.com.au/:splat"
+  status = 301
+  force = true
+
+[context.production.environment]
+  HUGO_ENV = "production"
