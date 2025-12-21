@@ -44,3 +44,8 @@
 
 [context.production.environment]
   HUGO_ENV = "production"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
