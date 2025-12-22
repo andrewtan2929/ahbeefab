@@ -1,0 +1,53 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML -}}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {{- /* Manually include exactly the pages we want */ -}}
+  
+  {{- /* 1. Homepage */ -}}
+  {{- with .Site.GetPage "/" -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  {{- end -}}
+
+  {{- /* 2. Sections */ -}}
+  {{- $sections := slice "designs" "gallery" -}}
+  {{- range $sections -}}
+    {{- with $.Site.GetPage . -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* 3. Regular pages */ -}}
+  {{- $pages := slice "about" "contact" "projects" "services" -}}
+  {{- range $pages -}}
+    {{- with $.Site.GetPage . -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* 4. Gallery subpages */ -}}
+  {{- $galleryPages := slice "cage-trailers" "custom-projects" -}}
+  {{- range $galleryPages -}}
+    {{- with $.Site.GetPage (print "gallery/" .) -}}
+  <url>
+    <loc>{{ .Permalink }}</loc>
+    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+    {{- end -}}
+  {{- end -}}
+</urlset>

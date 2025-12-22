@@ -2,7 +2,11 @@
 title: "About Ahbee Fabrication | Custom Trailer Specialist"
 description: "Learn about my expertise in custom trailer fabrication, specializing in bespoke trailers built from my Perth home workshop."
 date: 2024-01-01
+lastmod: 2025-12-09T19:19:06+08:00
 layout: "about"
+sitemap:
+  changefreq: monthly
+  priority: 0.6
 ---
 
 ## My Story

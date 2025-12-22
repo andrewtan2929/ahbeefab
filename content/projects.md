@@ -1,7 +1,11 @@
 ---
 title: "Build Your Custom Trailer | Start Your Project"
 date: 2024-01-01
+lastmod: 2025-12-13T17:54:02+08:00
 description: "Start your custom trailer project with Ahbee Fabrication. Get a free consultation and quote for your fabrication needs."
+sitemap:
+  changefreq: monthly
+  priority: 0.7
 ---
 
 ## Let's Build Something Amazing Together
