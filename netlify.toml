@@ -13,23 +13,14 @@
   status = 301
   force = true
 
-# 2. Handle www version (choose ONE based on your preference)
-# Option A: Remove www (recommended for Australia)
+# 2. Handle www version (Option A: Remove www)
 [[redirects]]
   from = "https://www.ahbeefabrication.com.au/*"
   to = "https://ahbeefabrication.com.au/:splat"
   status = 301
   force = true
 
-# OR Option B: Add www (if you prefer www version)
-# [[redirects]]
-#   from = "https://ahbeefabrication.com.au/*"
-#   to = "https://www.ahbeefabrication.com.au/:splat"
-#   status = 301
-#   force = true
-
 # ====== OLD DOMAIN REDIRECTS ======
-# 3. Redirect ALL variations of old Netlify domain to new domain
 [[redirects]]
   from = "http://ahbeefab.netlify.app/*"
   to = "https://ahbeefabrication.com.au/:splat"
@@ -47,6 +38,7 @@
   for = "/*"
   [headers.values]
     Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';"
+    X-Content-Type-Options = "nosniff"
 
 # Special header for sitemap.xml
 [[headers]]
