@@ -16,37 +16,37 @@
   <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta property="og:image" content="{{ "images/og-image.jpg" | absURL }}">
+  <meta property="og:image" content="{{ "images/og-image.jpg" | relURL }}">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="{{ .Permalink }}">
   <meta property="twitter:title" content="{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}">
   <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
-  <meta property="twitter:image" content="{{ "images/og-image.jpg" | absURL }}">
+  <meta property="twitter:image" content="{{ "images/og-image.jpg" | relURL }}">
 
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
 
 <!-- CSS Files -->
-<link rel="stylesheet" href="{{ "css/base.css" | absURL }}">
-<link rel="stylesheet" href="{{ "css/general.css" | absURL }}">
+<link rel="stylesheet" href="{{ "css/base.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/general.css" | relURL }}">
 
 <!-- Conditional CSS Loading -->
 {{ if .IsHome }}
-  <link rel="stylesheet" href="{{ "css/home.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/home.css" | relURL }}">
 {{ else if eq .RelPermalink "/about/" }}
-  <link rel="stylesheet" href="{{ "css/about.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/about.css" | relURL }}">
 {{ else if eq .RelPermalink "/services/" }}
-  <link rel="stylesheet" href="{{ "css/services.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/services.css" | relURL }}">
 {{ else if eq .RelPermalink "/projects/" }}
-  <link rel="stylesheet" href="{{ "css/projects.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/projects.css" | relURL }}">
 {{ else if eq .Section "gallery" }}
-  <link rel="stylesheet" href="{{ "css/gallery.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/gallery.css" | relURL }}">
 {{ else if eq .Section "designs" }}
-  <link rel="stylesheet" href="{{ "css/designs.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/designs.css" | relURL }}">
 {{ else if eq .RelPermalink "/contact/" }}
-  <link rel="stylesheet" href="{{ "css/contact.css" | absURL }}">
+  <link rel="stylesheet" href="{{ "css/contact.css" | relURL }}">
 {{ end }}
 </head>
 
