@@ -42,13 +42,9 @@
   status = 301
   force = true
 
-# ====== SECURITY HEADERS ======
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self';"
+[context.production.environment]
+  HUGO_ENV = "production"
 
-# Special header for sitemap.xml
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
