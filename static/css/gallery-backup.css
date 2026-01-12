@@ -586,27 +586,6 @@
   }
 }
 
-/* Add this to your gallery.css */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-family: swiper-icons !important;
-  font-size: 18px !important;
-  font-weight: normal !important;
-  text-transform: none !important;
-  letter-spacing: normal !important;
-  line-height: 1 !important;
-  color: inherit !important;
-}
-
-/* Fallback arrows if icons don't load */
-.swiper-button-next::after {
-  content: ">";
-}
-
-.swiper-button-prev::after {
-  content: "<";
-}
-
 /* For very tall screens - Dark Shining Blue with 4% reduction */
 @media (max-height: 600px) and (max-width: 768px) and (orientation: portrait) {
   /* Dark Shining Blue with 4% reduction */
