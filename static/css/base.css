@@ -67,6 +67,26 @@ body.homepage a.btn:hover {
     background-color: #c0392b;
 }
 
+/* Add to your main CSS file, not gallery.css */
+body.gallery-loading .gallery-section {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+body.gallery-ready .gallery-section {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.swiper {
+    visibility: hidden;
+}
+
+.swiper.swiper-container-initialized {
+    visibility: visible;
+}
+
 /* ===== Header ===== */
 .site-header {
     width: 100%;

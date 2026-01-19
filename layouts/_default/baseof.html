@@ -28,6 +28,12 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="{{ .Permalink }}">
 
+  <!-- Preload for Gallery Page (Swiper) -->
+  {{ if eq .Section "gallery" }}
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" as="style">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" as="script">
+  {{ end }}
+
 <!-- CSS Files -->
 <link rel="stylesheet" href="{{ "css/base.css" | relURL }}">
 <link rel="stylesheet" href="{{ "css/general.css" | relURL }}">
