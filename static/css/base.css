@@ -19,6 +19,7 @@ main {
     flex: 1;
 }
 
+
 /* ===== Homepage Styles ===== */
 body.homepage {
     margin: 0;
@@ -417,4 +418,78 @@ body.services-page {
 * {
     max-width: 100%;
     box-sizing: border-box;
+}
+
+:root {
+    /* Keep variables for colors, spacing, etc. */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-wide: 1200px;
+
+    /* Use these for other properties */
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+}
+
+/* MOBILE FIRST APPROACH (Recommended) */
+
+/* Base styles - mobile */
+.container {
+    width: 100%;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+    }
+
+    /* Hide mobile menu button on tablet+ */
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+/* Wide desktop */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* ALTERNATIVE: DESKTOP FIRST APPROACH */
+
+/* Base styles - desktop */
+.desktop-nav {
+    display: flex;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
 }

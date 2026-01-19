@@ -1,5 +1,9 @@
 <!-- layouts/partials/nav.html -->
 <nav class="site-nav">
+  <button class="mobile-menu-toggle" aria-expanded="false" aria-controls="primary-menu">
+        <span class="sr-only">Menu</span>
+        <span class="hamburger"></span>
+  </button>
   <ul>
     <li><a href="{{ "/" | relURL }}">Home</a></li>
     <li><a href="{{ "/about/" | relURL }}">About</a></li>
@@ -12,5 +16,3 @@
   </ul>
 </nav>
 
-<!-- Fix external links -->
-<a href="https://ahbeeweb.netlify.app" target="_blank" rel="noopener noreferrer">AhbeeWeb</a>
