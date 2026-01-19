@@ -19,7 +19,6 @@ main {
     flex: 1;
 }
 
-
 /* ===== Homepage Styles ===== */
 body.homepage {
     margin: 0;
@@ -448,11 +447,6 @@ body.services-page {
         margin: 0 auto;
         padding: 0 var(--spacing-md);
     }
-
-    /* Hide mobile menu button on tablet+ */
-    .mobile-menu-toggle {
-        display: none !important;
-    }
 }
 
 /* Desktop */
@@ -480,10 +474,6 @@ body.services-page {
 @media (max-width: 1023px) {
     .desktop-nav {
         display: none;
-    }
-
-    .mobile-menu-toggle {
-        display: block;
     }
 }
 
