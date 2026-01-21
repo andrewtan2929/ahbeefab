@@ -625,3 +625,57 @@
     max-height: 69.12vh !important; /* 72vh reduced by 4% */
   }
 }
+
+/* For Debug: Add these to your existing gallery.css */
+
+/* Loading states */
+.gallery-loading .gallery-section {
+    opacity: 0.7;
+}
+
+.gallery-ready .gallery-section {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Make sure swipers are visible when initialized */
+.swiper.swiper-initialized {
+    visibility: visible !important;
+}
+
+/* Fix for button states */
+.btn-header.active {
+    background-color: #2ecc71 !important;
+}
+
+.btn-header.slideshow-running {
+    background-color: #3498db !important;
+    animation: pulse 2s infinite;
+}
+
+.btn-header.slideshow-paused {
+    background-color: #e67e22 !important;
+}
+
+/* Ensure gallery images don't conflict with starry background */
+.swiper-slide img.gallery-image {
+    position: relative;
+    z-index: 10;
+}
+
+/* Starry background visibility */
+.starry-background {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Animation fixes */
+@keyframes star-twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+.star {
+    animation: star-twinkle 3s infinite alternate;
+}
+
